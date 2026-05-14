@@ -276,87 +276,24 @@
       gap: 14px;
     }
 
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-    }
-
-    .pillar,
-    .resource {
+    .pillar {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
       box-shadow: 0 10px 26px rgba(23, 32, 42, 0.07);
-    }
-
-    .pillar {
       padding: 18px;
     }
 
-    .pillar h3,
-    .resource h3 {
+    .pillar h3 {
       font-size: 1rem;
       letter-spacing: 0;
     }
 
-    .resource h3 {
-      font-size: 0.92rem;
-      line-height: 1.28;
-    }
-
-    .resource-heading {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .resource-tag {
-      flex: 0 0 auto;
-      padding: 3px 7px;
-      border: 1px solid rgba(14, 111, 104, 0.22);
-      border-radius: 999px;
-      color: var(--accent-dark);
-      background: var(--soft);
-      font-size: 0.74rem;
-      font-weight: 800;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .pillar p,
-    .resource p {
+    .pillar p {
       margin-top: 10px;
       color: var(--muted);
       line-height: 1.5;
       overflow-wrap: break-word;
-    }
-
-    .resource p {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      line-height: 1.38;
-    }
-
-    .resource {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 10px;
-      padding: 14px;
-    }
-
-    .resource .button {
-      width: 100%;
-      min-height: 38px;
-      padding: 8px 10px;
-      font-size: 0.88rem;
-      background: var(--soft);
-    }
-
-    .resource-actions {
-      display: grid;
-      gap: 8px;
     }
 
     .program-band {
@@ -550,8 +487,7 @@
       }
 
       .quick-stats,
-      .pillar-grid,
-      .resource-grid {
+      .pillar-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
@@ -601,7 +537,6 @@
 
       .quick-stats,
       .pillar-grid,
-      .resource-grid,
       .program-band {
         grid-template-columns: 1fr;
       }
@@ -619,6 +554,7 @@
         margin-left: 48px;
         grid-template-columns: 1fr;
       }
+
     }
   </style>
 </head>
@@ -631,7 +567,7 @@
       </a>
       <div class="nav">
         <a href="index.html#program">Program</a>
-        <a href="index.html#resources">Resources</a>
+        <a href="resources.html">Resources</a>
         <a href="faq.html">FAQ</a>
         <a href="rangers_self_assessment.html">Self-Assessment</a>
       </div>
@@ -787,79 +723,6 @@
         <article class="pillar"><h3>Extreme Ownership</h3><p>Focus on outcomes, next actions, and accountability without blame.</p></article>
         <article class="pillar"><h3>Executive Communication</h3><p>Translate complex technical context into clear status, risk, and asks.</p></article>
         <article class="pillar"><h3>Operating System</h3><p>Build personal routines for preparation, recovery, feedback, and growth.</p></article>
-      </div>
-    </section>
-
-    <section id="resources" aria-label="Program resources">
-      <div class="section-head inline-section-head">
-        <span class="eyebrow">Resources</span>
-        <div class="inline-section-title">
-          <h2>Program materials</h2>
-          <p>Open the current program documents, book summaries, and training links directly from this page.</p>
-        </div>
-      </div>
-      <div class="resource-grid">
-        <article class="resource">
-          <h3>Extreme Ownership Summary</h3>
-          <p>Download the recommended book summary or open the related TEDx talk on ownership.</p>
-          <div class="resource-actions">
-            <a class="button" href="extreme_ownership_10_page_summary.pdf" download>Download PDF</a>
-            <a class="button" href="https://www.youtube.com/embed/ljqra3BcqWM?si=8rix3cnfJSpIEQnL" target="_blank" rel="noopener">Open TEDx Talk</a>
-          </div>
-        </article>
-        <article class="resource">
-          <h3>The Emergency Mind Summary</h3>
-          <p>Download the recommended book summary for performance, judgment, and calm under pressure.</p>
-          <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Having Difficult Conversations</h3>
-            <span class="resource-tag">1h 3m</span>
-          </div>
-          <p>Open the Difficult conversations module from Having Difficult Conversations by Marlene Chism.</p>
-          <a class="button" href="https://www.linkedin.com/learning/having-difficult-conversations-2018/difficult-conversations?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Perform Under Pressure</h3>
-            <span class="resource-tag">56m</span>
-          </div>
-          <p>Open the Welcome module from Performing under Pressure by Eddie Davila.</p>
-          <a class="button" href="https://www.linkedin.com/learning/performing-under-pressure/welcome?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Being Assertive</h3>
-            <span class="resource-tag">52m</span>
-          </div>
-          <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
-          <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Time Management Mindset</h3>
-            <span class="resource-tag">47m</span>
-          </div>
-          <p>Open the Make time management your superpower module from Building a Time Management Mindset by Brad Aeon.</p>
-          <a class="button" href="https://www.linkedin.com/learning/building-a-time-management-mindset/make-time-management-your-superpower?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Peak Performance</h3>
-            <span class="resource-tag">51m</span>
-          </div>
-          <p>Open the Your most valuable resource module from Recharge Your Energy for Peak Performance by Heidi Hanna.</p>
-          <a class="button" href="https://www.linkedin.com/learning/recharge-your-energy-for-peak-performance/your-most-valuable-resource?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>High-Stakes Leadership</h3>
-            <span class="resource-tag">1h 4m</span>
-          </div>
-          <p>Open the High-stakes communication module from High-Stakes Communication by Jenna Lange.</p>
-          <a class="button" href="https://www.linkedin.com/learning/high-stakes-communication/high-stakes-communication?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
       </div>
     </section>
   </main>

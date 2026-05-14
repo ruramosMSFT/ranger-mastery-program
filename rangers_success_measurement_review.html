@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Success measurement guidance for the Ranger Mastery Program.">
+  <title>Ranger Mastery Program Success Measurement</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6a7b;
+      --line: #d8e0ea;
+      --paper: #ffffff;
+      --page: #edf3f6;
+      --soft: #f6f8fb;
+      --accent: #0e6f68;
+      --accent-dark: #0a5852;
+      --gold: #b27a1f;
+      --navy: #26384b;
+      --shadow: 0 22px 54px rgba(23, 32, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--page);
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 56%, #e9f3f1 100%);
+    }
+
+    .hero-inner,
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 16px;
+      padding: 44px 0 40px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 860px;
+      color: var(--navy);
+      font-size: clamp(2.05rem, 5vw, 4.1rem);
+      line-height: 1;
+    }
+
+    .lead {
+      max-width: 78ch;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.62;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow-wrap: anywhere;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      border-color: var(--accent-dark);
+      background: var(--accent-dark);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    main {
+      display: grid;
+      gap: 22px;
+      margin-top: 28px;
+      margin-bottom: 48px;
+    }
+
+    .panel {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 1.15;
+    }
+
+    h3 {
+      color: var(--navy);
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .section-head p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .metric-grid,
+    .timeline-grid,
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric-card,
+    .timeline-card,
+    .info-card {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .metric-card {
+      gap: 8px;
+      padding: 13px 14px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .metric-card h3 {
+      font-size: 0.96rem;
+    }
+
+    .metric-card ul {
+      gap: 0.38rem;
+      padding-left: 1rem;
+    }
+
+    .metric-card li {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.42;
+    }
+
+    .metric-card.communication {
+      border-left-color: var(--navy);
+    }
+
+    .metric-card.ownership {
+      border-left-color: var(--gold);
+    }
+
+    .metric-card.rhythm {
+      border-left-color: var(--accent-dark);
+    }
+
+    .metric-card.team {
+      border-left-color: #16766f;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0.2rem 0.62rem;
+      border: 1px solid rgba(14, 111, 104, 0.42);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(14, 111, 104, 0.08);
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1;
+      white-space: normal;
+    }
+
+    .tag.gold {
+      border-color: rgba(178, 122, 31, 0.45);
+      color: var(--gold);
+      background: rgba(178, 122, 31, 0.08);
+    }
+
+    .tag.navy {
+      border-color: rgba(38, 56, 75, 0.42);
+      color: var(--navy);
+      background: rgba(38, 56, 75, 0.08);
+    }
+
+    .tag.dark {
+      border-color: rgba(10, 88, 82, 0.42);
+      color: var(--accent-dark);
+      background: rgba(10, 88, 82, 0.08);
+    }
+
+    ul,
+    ol {
+      display: grid;
+      gap: 0.58rem;
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    li {
+      padding-left: 0.15rem;
+    }
+
+    .callout {
+      padding: 16px;
+      border: 1px solid rgba(178, 122, 31, 0.32);
+      border-radius: 8px;
+      background: rgba(178, 122, 31, 0.07);
+    }
+
+    .print-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 780px) {
+      .hero-inner,
+      main {
+        width: min(100% - 20px, 1120px);
+      }
+
+      .hero-inner {
+        padding: 30px 0;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .button {
+        width: 100%;
+        white-space: normal;
+      }
+
+      .metric-grid,
+      .timeline-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .hero {
+        background: #ffffff;
+      }
+
+      .panel,
+      .metric-card,
+      .timeline-card,
+      .info-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Success Measurement</span>
+      <h1>Ranger Mastery Program Success Measurement</h1>
+      <p class="lead">A practical way to check whether the cohort is showing better behaviours in high-severity incidents: calmer execution, clearer communication, stronger ownership, and more consistent operating habits.</p>
+      <div class="hero-actions">
+        <a class="button" href="faq.html">Back to FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" aria-labelledby="principles-heading">
+      <div class="section-head">
+        <span class="eyebrow">Measurement Principles</span>
+        <h2 id="principles-heading">Measure behaviour change, not course completion</h2>
+        <p>The useful signal is whether participants behave differently before, during, and after incidents. Keep the measurement light enough to run every cohort.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Primary success question</h3>
+          <p>Do participants show more calm, ownership, structure, and clarity in realistic incident situations?</p>
+        </article>
+        <article class="info-card">
+          <h3>Recommended measurement window</h3>
+          <p>Capture Week 0 baseline, Week 7 endline, and one 30-45 day follow-up check.</p>
+        </article>
+      </div>
+      <div class="callout">
+        <strong>Practical guardrail:</strong> do not use incident volume as the main success measure. Use real incidents as evidence, but judge the behaviours shown inside them.
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="timeline-heading">
+      <div class="section-head">
+        <span class="eyebrow">Collection Plan</span>
+        <h2 id="timeline-heading">Start, end, and follow-up checks</h2>
+        <p>Use the same simple checks at the start and end so the comparison is fair.</p>
+      </div>
+      <div class="timeline-grid">
+        <article class="timeline-card">
+          <div class="tag-row"><span class="tag">Week 0</span><span class="tag gold">Baseline</span></div>
+          <h3>Before the program</h3>
+          <ul>
+            <li>Participant completes the existing self-assessment.</li>
+            <li>Manager scores the same behaviours from observation.</li>
+            <li>Participant brings one recent incident example.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="tag-row"><span class="tag navy">Week 3 or 4</span><span class="tag">Pulse</span></div>
+          <h3>Midpoint check</h3>
+          <ul>
+            <li>Short pulse on workload, confidence, and cohort safety.</li>
+            <li>Facilitator notes from live sessions.</li>
+            <li>Pick one behaviour to practise in the second half.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="tag-row"><span class="tag dark">Week 7</span><span class="tag gold">Endline</span></div>
+          <h3>At program close</h3>
+          <ul>
+            <li>Repeat participant and manager assessment.</li>
+            <li>Review final simulation, panel, or operating manual.</li>
+            <li>Capture one clear behaviour change per participant.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="tag-row"><span class="tag">30-45 days</span><span class="tag navy">Transfer</span></div>
+          <h3>After the program</h3>
+          <ul>
+            <li>Manager confirms what changed in live work.</li>
+            <li>Review one real incident or high-stakes customer moment.</li>
+            <li>Check whether the new habits are still being used.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="indicators-heading">
+      <div class="section-head">
+        <span class="eyebrow">Success Indicators</span>
+        <h2 id="indicators-heading">Recommended indicators and measures</h2>
+        <p>Small-cohort indicators that can be checked with forms, manager input, facilitator notes, and a few real examples.</p>
+      </div>
+      <div class="metric-grid">
+        <article class="metric-card">
+          <div class="tag-row"><span class="tag">Performance Under Pressure</span></div>
+          <h3>Composure and structure under pressure</h3>
+          <ul>
+            <li><strong>Measure:</strong> participant and manager view on composure.</li>
+            <li><strong>Target:</strong> most can name and use one pressure protocol.</li>
+          </ul>
+        </article>
+        <article class="metric-card communication">
+          <div class="tag-row"><span class="tag navy">Communication Skills</span></div>
+          <h3>Clear stakeholder and executive communication</h3>
+          <ul>
+            <li><strong>Measure:</strong> one executive update or role-play.</li>
+            <li><strong>Target:</strong> most clearly state status, risk, action, and ask.</li>
+          </ul>
+        </article>
+        <article class="metric-card ownership">
+          <div class="tag-row"><span class="tag gold">Ownership and Decision-Making</span></div>
+          <h3>Timely decisions and ownership behaviour</h3>
+          <ul>
+            <li><strong>Measure:</strong> one decision or debrief example.</li>
+            <li><strong>Target:</strong> each participant shows ownership without blame.</li>
+          </ul>
+        </article>
+        <article class="metric-card rhythm">
+          <div class="tag-row"><span class="tag dark">Operating Rhythm</span></div>
+          <h3>Personal operating system and sustainability</h3>
+          <ul>
+            <li><strong>Measure:</strong> preparation, recovery, and boundary habits.</li>
+            <li><strong>Target:</strong> most document a repeatable routine.</li>
+          </ul>
+        </article>
+        <article class="metric-card team">
+          <div class="tag-row"><span class="tag dark">Team Activities</span></div>
+          <h3>Participation and applied practice</h3>
+          <ul>
+            <li><strong>Measure:</strong> attendance, pre-work, and participation.</li>
+            <li><strong>Target:</strong> missed work is the exception, not the norm.</li>
+          </ul>
+        </article>
+        <article class="metric-card communication">
+          <div class="tag-row"><span class="tag navy">Business Transfer</span></div>
+          <h3>Observed change in real work</h3>
+          <ul>
+            <li><strong>Measure:</strong> manager follow-up plus one work example.</li>
+            <li><strong>Target:</strong> most show one verified change in 30-45 days.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="decision-heading">
+      <div class="section-head">
+        <span class="eyebrow">Decision Criteria</span>
+        <h2 id="decision-heading">How to decide whether the cohort succeeded</h2>
+        <p>Use judgement across observed growth, real-work evidence, and whether the program was practical to run.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Go / continue</h3>
+          <ul>
+            <li>Most participants show visible behaviour growth.</li>
+            <li>Most have one real-work example within 30-45 days.</li>
+            <li>Managers say the protected time was worth it.</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Refine before scaling</h3>
+          <ul>
+            <li>Self-assessment improves, but work examples are weak.</li>
+            <li>Workload prevents enough practice.</li>
+            <li>One skill improves while another stays flat.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout">
+        <strong>Recommended first-cohort target:</strong> prove useful movement, not perfection. A realistic win is one credible example per participant showing clearer communication, stronger ownership, or better pressure response.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

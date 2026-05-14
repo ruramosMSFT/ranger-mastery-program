@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ranger Mastery Program: an 8-week high-severity incident leadership and performance cohort.">
+  <title>Ranger Mastery Program</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6a7b;
+      --line: #d8e0ea;
+      --surface: #ffffff;
+      --soft: #f4f7fa;
+      --page: #edf3f6;
+      --accent: #0e6f68;
+      --accent-dark: #0a5852;
+      --gold: #b27a1f;
+      --navy: #26384b;
+      --shadow: 0 22px 54px rgba(23, 32, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--page);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.76) 46%, rgba(255, 255, 255, 0.46)),
+        url("logo.png") right center / min(58vw, 760px) auto no-repeat,
+        #f7fafc;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.88);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .nav a:focus-visible,
+    .button:focus-visible {
+      border-color: var(--accent-dark);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .hero-content {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      align-content: center;
+      gap: 24px;
+      padding: 42px 0 56px;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 10px;
+      max-width: 760px;
+      font-size: clamp(2.6rem, 7vw, 5.7rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+      color: var(--navy);
+    }
+
+    .lead {
+      margin-top: 20px;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.6;
+      overflow-wrap: break-word;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .quick-stats {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      background: var(--line);
+    }
+
+    .stat {
+      min-height: 98px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.3rem;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 34px auto 48px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      color: var(--navy);
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 58ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .inline-section-head {
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    .inline-section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .inline-section-title p {
+      max-width: none;
+      margin: 0;
+      margin-left: auto;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .pillar,
+    .resource {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px rgba(23, 32, 42, 0.07);
+    }
+
+    .pillar {
+      padding: 18px;
+    }
+
+    .pillar h3,
+    .resource h3 {
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .resource h3 {
+      font-size: 0.92rem;
+      line-height: 1.28;
+    }
+
+    .resource-heading {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .resource-tag {
+      flex: 0 0 auto;
+      padding: 3px 7px;
+      border: 1px solid rgba(14, 111, 104, 0.22);
+      border-radius: 999px;
+      color: var(--accent-dark);
+      background: var(--soft);
+      font-size: 0.74rem;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .pillar p,
+    .resource p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    .resource p {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      line-height: 1.38;
+    }
+
+    .resource {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .resource .button {
+      width: 100%;
+      min-height: 38px;
+      padding: 8px 10px;
+      font-size: 0.88rem;
+      background: var(--soft);
+    }
+
+    .resource-actions {
+      display: grid;
+      gap: 8px;
+    }
+
+    .program-band {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 24px;
+      align-items: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .program-band img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      --timeline-rail-left: 29px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 84px;
+      bottom: 12px;
+      left: var(--timeline-rail-left);
+      width: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #0e6f68 0%, #16766f 18%, #26384b 39%, #b27a1f 66%, #0a5852 100%);
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 58px 112px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .week-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      grid-column: 2;
+    }
+
+    .timeline-summary {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 58px 112px 1fr;
+      gap: 14px;
+      align-items: start;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .timeline-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .timeline-summary::before {
+      content: "";
+    }
+
+    .timeline-summary > span:last-child {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .timeline-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(14, 111, 104, 0.35);
+      border-radius: 50%;
+      color: var(--accent-dark);
+      background: var(--soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .timeline-toggle::before {
+      content: "+";
+    }
+
+    .timeline-row[open] .timeline-toggle::before {
+      content: "-";
+    }
+
+    .timeline-summary:hover .timeline-toggle,
+    .timeline-summary:focus-visible .timeline-toggle {
+      color: #ffffff;
+      background: var(--accent);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    .timeline-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline-row strong {
+      color: var(--accent);
+    }
+
+    .timeline-row span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .timeline-detail {
+      display: grid;
+      grid-column: 2 / -1;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1px;
+      margin-top: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .timeline-detail div {
+      padding: 10px;
+      background: var(--surface);
+    }
+
+    .timeline-detail strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    .timeline-detail p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 940px) {
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.82)),
+          url("logo.png") center 74% / min(82vw, 520px) auto no-repeat,
+          #f7fafc;
+      }
+
+      .topbar,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav,
+      .hero-actions {
+        width: 100%;
+      }
+
+      .nav a,
+      .button {
+        flex: 1 1 180px;
+      }
+
+      .quick-stats,
+      .pillar-grid,
+      .resource-grid,
+      .program-band {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.86)),
+          url("logo.png") center bottom 24px / min(82vw, 340px) auto no-repeat,
+          #f7fafc;
+        padding-bottom: min(72vw, 300px);
+      }
+
+      .topbar,
+      .hero-content,
+      .quick-stats,
+      main {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav a,
+      .button {
+        flex: 1 1 100%;
+        width: 100%;
+        white-space: normal;
+      }
+
+      .hero-content {
+        align-content: start;
+        padding: 24px 0 32px;
+      }
+
+      h1 {
+        font-size: 2.45rem;
+        line-height: 1;
+      }
+
+      .program-band {
+        padding: 16px;
+      }
+
+      .quick-stats,
+      .pillar-grid,
+      .resource-grid,
+      .program-band {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row,
+      .timeline-summary {
+        grid-template-columns: 48px 1fr;
+      }
+
+      .timeline-summary > .week-label,
+      .timeline-summary > span:last-child {
+        grid-column: 2;
+      }
+
+      .timeline-detail {
+        grid-column: 2 / -1;
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Go to home page">
+        <img src="logo.png" alt="Ranger Mastery Program logo" width="48" height="48">
+        <span>Ranger Mastery Program</span>
+      </a>
+      <div class="nav">
+        <a href="index.html#program">Program</a>
+        <a href="index.html#resources">Resources</a>
+        <a href="faq.html">FAQ</a>
+        <a href="rangers_self_assessment.html">Self-Assessment</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-copy">
+        <span class="eyebrow">Crisis leadership practice for high-severity incidents</span>
+        <h1>Ranger Mastery Program</h1>
+        <p class="lead">An 8-week cohort experience that helps selected individuals perform calmly under pressure, take ownership, communicate with clarity, and build a personal operating system for critical customer moments.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="rangers_self_assessment.html">Start Self-Assessment</a>
+          <a class="button" href="rangers_program_proposal.html">Open Program Model</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-stats" aria-label="Program summary">
+      <div class="stat"><strong>8 weeks</strong><span>Structured practice journey</span></div>
+      <div class="stat"><strong>4 to 6</strong><span>Rangers per cohort</span></div>
+      <div class="stat"><strong>Hybrid</strong><span>Self-paced learning, presentations, and group discussions</span></div>
+      <div class="stat"><strong>4 pillars</strong><span>Pressure, ownership, communication, operating rhythm</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="program" class="program-band" aria-label="Program overview">
+      <img src="logo.png" alt="Ranger Mastery Program logo mark" loading="lazy">
+      <div class="timeline">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Program Flow</span>
+            <h2>From baseline to field-ready habits</h2>
+          </div>
+        </div>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 0</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Selection, Baseline, Expectations</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Launch cohort, confirm expectations, complete onboarding, issue pre-reading, and baseline the starting behaviors.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Cohort starts aligned on objectives, expectations, and success criteria.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 1</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Emergency Mindset &amp; Extreme Ownership</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Complete setup and alignment activities, review survey insights, and establish the shared operating language for the cohort.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Participants understand the program model and the behaviors being reinforced.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 2</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Cognitive Tools: Not Cracking Under Pressure</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Run pressure-mindset sessions, structured scoping discussions, and facilitated examples focused on composure and control.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Participants begin to apply structure under pressure and reduce reactive behavior.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 3</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Executive &amp; High-Stakes Conversations</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Reinforce core concepts through discussion-led sessions, reflections, and practical examples from Rangers and Technical Advisors.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Mindset concepts start to convert into repeatable operating habits.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 4</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Prioritization, Triage, and Delegation</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Deliver ownership-focused sessions, panel discussions, and reflection exercises centered on judgment and accountability.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Participants show a stronger bias toward ownership and controlled decision-making.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 5</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Boundaries, Saying No</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Run simulations, scenario-based questioning, and role-play interactions to test performance under ambiguity and time pressure.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Participants demonstrate decision speed, structured troubleshooting, and communication discipline.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 6</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Mission X: Leadership in Crisis</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Begin inverted shadowing and participant-led execution with observation from Rangers, Technical Advisors, and managers.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Leadership can assess whether participants are ready to lead with reduced support.</p>
+            </div>
+          </div>
+        </details>
+        <details class="timeline-row has-detail">
+          <summary class="timeline-summary"><span class="week-label"><strong>Week 7</strong><span class="timeline-toggle" aria-hidden="true"></span></span><span>Capstone</span></summary>
+          <div class="timeline-detail">
+            <div>
+              <strong>Delivery Activities</strong>
+              <p>Complete final observations, gather participant and manager feedback, document lessons learned, and review readiness outcomes.</p>
+            </div>
+            <div>
+              <strong>Expected Outcome</strong>
+              <p>Leadership has a clear readiness signal and evidence base for go / refine / scale decisions.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section aria-label="Program pillars">
+      <div class="section-head inline-section-head">
+        <span class="eyebrow">Mastery Areas</span>
+        <div class="inline-section-title">
+          <h2>What Rangers practice</h2>
+          <p>Each pillar is designed for repeatable behavior during high-stakes customer and engineering moments.</p>
+        </div>
+      </div>
+      <div class="pillar-grid">
+        <article class="pillar"><h3>Perform Under Pressure</h3><p>Stay composed, reduce noise, and keep the incident team oriented.</p></article>
+        <article class="pillar"><h3>Extreme Ownership</h3><p>Focus on outcomes, next actions, and accountability without blame.</p></article>
+        <article class="pillar"><h3>Executive Communication</h3><p>Translate complex technical context into clear status, risk, and asks.</p></article>
+        <article class="pillar"><h3>Operating System</h3><p>Build personal routines for preparation, recovery, feedback, and growth.</p></article>
+      </div>
+    </section>
+
+    <section id="resources" aria-label="Program resources">
+      <div class="section-head inline-section-head">
+        <span class="eyebrow">Resources</span>
+        <div class="inline-section-title">
+          <h2>Program materials</h2>
+          <p>Open the current program documents, book summaries, and training links directly from this page.</p>
+        </div>
+      </div>
+      <div class="resource-grid">
+        <article class="resource">
+          <h3>Extreme Ownership Summary</h3>
+          <p>Download the recommended book summary or open the related TEDx talk on ownership.</p>
+          <div class="resource-actions">
+            <a class="button" href="extreme_ownership_10_page_summary.pdf" download>Download PDF</a>
+            <a class="button" href="https://www.youtube.com/embed/ljqra3BcqWM?si=8rix3cnfJSpIEQnL" target="_blank" rel="noopener">Open TEDx Talk</a>
+          </div>
+        </article>
+        <article class="resource">
+          <h3>The Emergency Mind Summary</h3>
+          <p>Download the recommended book summary for performance, judgment, and calm under pressure.</p>
+          <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>Having Difficult Conversations</h3>
+            <span class="resource-tag">1h 3m</span>
+          </div>
+          <p>Open the Difficult conversations module from Having Difficult Conversations by Marlene Chism.</p>
+          <a class="button" href="https://www.linkedin.com/learning/having-difficult-conversations-2018/difficult-conversations?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>Perform Under Pressure</h3>
+            <span class="resource-tag">56m</span>
+          </div>
+          <p>Open the Welcome module from Performing under Pressure by Eddie Davila.</p>
+          <a class="button" href="https://www.linkedin.com/learning/performing-under-pressure/welcome?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>Being Assertive</h3>
+            <span class="resource-tag">52m</span>
+          </div>
+          <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
+          <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>Time Management Mindset</h3>
+            <span class="resource-tag">47m</span>
+          </div>
+          <p>Open the Make time management your superpower module from Building a Time Management Mindset by Brad Aeon.</p>
+          <a class="button" href="https://www.linkedin.com/learning/building-a-time-management-mindset/make-time-management-your-superpower?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>Peak Performance</h3>
+            <span class="resource-tag">51m</span>
+          </div>
+          <p>Open the Your most valuable resource module from Recharge Your Energy for Peak Performance by Heidi Hanna.</p>
+          <a class="button" href="https://www.linkedin.com/learning/recharge-your-energy-for-peak-performance/your-most-valuable-resource?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource">
+          <div class="resource-heading">
+            <h3>High-Stakes Leadership</h3>
+            <span class="resource-tag">1h 4m</span>
+          </div>
+          <p>Open the High-stakes communication module from High-Stakes Communication by Jenna Lange.</p>
+          <a class="button" href="https://www.linkedin.com/learning/high-stakes-communication/high-stakes-communication?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

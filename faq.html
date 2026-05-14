@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frequently asked questions for the Ranger Mastery Program.">
+  <title>Ranger Mastery Program FAQ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6a7b;
+      --line: #d8e0ea;
+      --surface: #ffffff;
+      --soft: #f4f7fa;
+      --page: #edf3f6;
+      --accent: #0e6f68;
+      --accent-dark: #0a5852;
+      --gold: #b27a1f;
+      --navy: #26384b;
+      --shadow: 0 22px 54px rgba(23, 32, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--page);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84)),
+        url("logo.png") right center / min(42vw, 520px) auto no-repeat,
+        #f7fafc;
+    }
+
+    .topbar,
+    .hero-inner,
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 800;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .nav a:focus-visible,
+    .button:focus-visible {
+      border-color: var(--accent-dark);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 18px;
+      padding: 42px 0 52px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+      margin-bottom: 48px;
+    }
+
+    .faq-section {
+      display: grid;
+      gap: 12px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      letter-spacing: 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px rgba(23, 32, 42, 0.07);
+    }
+
+    .faq-card h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    .faq-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .faq-card .button {
+      margin-top: 14px;
+      min-height: 38px;
+      padding: 8px 12px;
+      background: var(--soft);
+    }
+
+    @media (max-width: 760px) {
+      .topbar,
+      .hero-inner,
+      main {
+        width: min(100% - 20px, 1040px);
+      }
+
+      .topbar,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav,
+      .hero-actions {
+        width: 100%;
+      }
+
+      .nav a,
+      .button {
+        width: 100%;
+        white-space: normal;
+      }
+
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88)),
+          url("logo.png") center bottom 18px / min(76vw, 300px) auto no-repeat,
+          #f7fafc;
+        padding-bottom: min(62vw, 250px);
+      }
+
+      .hero-inner {
+        padding: 28px 0 30px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Go to home page">
+        <img src="logo.png" alt="Ranger Mastery Program logo" width="48" height="48">
+        <span>Ranger Mastery Program</span>
+      </a>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#resources">Resources</a>
+        <a href="https://microsofteur-my.sharepoint.com/:x:/g/personal/ropac_microsoft_com/IQCOJAw-Do2MSJdx0xtqdIBMATjf760yZZRutTYLg-bMePg?e=rDBTFC" target="_blank" rel="noopener">Playbook</a>
+        <a href="rangers_self_assessment.html">Self-Assessment</a>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <span class="eyebrow">Frequently Asked Questions</span>
+      <h1>Ranger Mastery Program FAQ</h1>
+      <p class="lead">Quick answers for participants, managers, and facilitators about selection, expectations, time commitment, privacy, and program outputs.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="rangers_self_assessment.html">Start Self-Assessment</a>
+        <a class="button" href="rangers_program_proposal.html">Open Program Model</a>
+        <a class="button" href="rangers_success_measurement_review.html">Success Measurement</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="faq-section" aria-label="Program FAQ">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Program Details</span>
+          <h2>Common Questions</h2>
+        </div>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-card">
+          <h3>Who is the program for?</h3>
+          <p>Senior support engineers, escalation owners, and incident leaders who regularly work through SEV As-Sev 1s customer-impacting situations.</p>
+        </article>
+        <article class="faq-card">
+          <h3>How many Rangers are in each cohort?</h3>
+          <p>The recommended cohort size is 4 to 6 participants, which keeps simulations personal while preserving enough diversity for peer learning.</p>
+          <a class="button" href="rangers_cohort_size_rationale.html">Open Cohort Rationale</a>
+        </article>
+        <article class="faq-card">
+          <h3>How long does the program run?</h3>
+          <p>The program is designed as an 8-week journey, beginning with Week 0 for selection, baseline capture, and expectation setting.</p>
+        </article>
+        <article class="faq-card">
+          <h3>What is the weekly time commitment?</h3>
+          <p>Plan for roughly 4-5 hours each week, including self-paced learning, live cohort practice, and on-the-job application.</p>
+        </article>
+        <article class="faq-card">
+          <h3>Is the self-assessment a performance review?</h3>
+          <p>No. The self-assessment is a growth baseline. It helps each Ranger identify strengths and development priorities before the program begins.</p>
+        </article>
+        <article class="faq-card">
+          <h3>Are self-assessment answers stored?</h3>
+          <p>Responses are submitted through Microsoft Forms and can be reviewed from the form response dashboard.</p>
+        </article>
+        <article class="faq-card">
+          <h3>What does Week 0 produce?</h3>
+          <p>Week 0 should produce a final cohort list, completed baseline assessments, initial focus areas, and a cohort working agreement.</p>
+        </article>
+        <article class="faq-card">
+          <h3>What will participants practice?</h3>
+          <p>Rangers practice pressure performance, Extreme Ownership, executive communication, triage, delegation, boundaries, and crisis leadership.</p>
+        </article>
+        <article class="faq-card">
+          <h3>What materials are recommended?</h3>
+          <p>The program uses summaries and selected concepts from The Emergency Mind, Extreme Ownership, Crucial Conversations, and related leadership resources.</p>
+        </article>
+        <article class="faq-card">
+          <h3>What is the final output?</h3>
+          <p>Each Ranger develops a personal operating manual describing how they perform in high-severity incidents and what habits they will keep improving.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

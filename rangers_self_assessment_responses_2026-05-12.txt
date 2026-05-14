@@ -1,0 +1,55 @@
+Rangers Program Pre-Program Self-Assessment
+Saved locally by the participant
+Generated: 12/05/2026, 12:12:56
+
+Rating scale: 1 = Strongly disagree, 5 = Strongly agree
+
+Communication
+1. I can explain complex technical issues in a way that senior non-technical stakeholders understand.
+Rating: 1
+
+2. In high-pressure situations, I communicate clearly and concisely instead of rambling.
+Rating: 5
+
+3. I actively listen and check for understanding before responding.
+Rating: Not answered
+
+Decision-Making
+4. When information is incomplete, I can still make timely decisions instead of waiting for certainty.
+Rating: 1
+
+5. I am comfortable prioritizing and saying "this comes first" when everything feels urgent.
+Rating: 2
+
+6. I am willing to change my decision when new information clearly supports a better option.
+Rating: Not answered
+
+Stress Management
+7. Under pressure, I remain composed and avoid visibly panicking or shutting down.
+Rating: 2
+
+8. I have specific techniques, such as breathing, taking a short pause, or using a mental checklist, that I use to stay grounded.
+Rating: 3
+
+9. After a tough incident, I have ways to recover my energy and reflect, rather than just moving on.
+Rating: Not answered
+
+Leadership
+10. In incidents, I naturally step up to coordinate people and tasks when needed.
+Rating: 1
+
+11. I take ownership for outcomes instead of blaming other teams or circumstances.
+Rating: 1
+
+12. I make sure others feel heard, even when I need to make a hard call.
+Rating: 2
+
+Open Questions
+A. Describe one incident where you are proud of how you performed under pressure. What did you do?
+sdfs
+
+B. Describe one incident where you wish you had handled things differently. What would you change now?
+sdfs
+
+C. What do you most want to improve about how you operate in high-severity incidents?
+sdf

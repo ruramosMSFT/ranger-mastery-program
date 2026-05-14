@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Rangers Week 0 Overview</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0 auto;
+      width: min(100% - 32px, 42em);
+      max-width: 42em;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        width: min(100% - 20px, 42em);
+        font-size: 1em;
+        padding-top: 20px;
+        padding-bottom: 24px;
+      }
+      h1 {
+        font-size: 1.7em;
+        line-height: 1.15;
+      }
+      h2 {
+        font-size: 1.28em;
+      }
+      h3 {
+        font-size: 1.08em;
+      }
+      header {
+        margin-bottom: 2em;
+      }
+      ol, ul {
+        padding-left: 1.25em;
+      }
+      li {
+        margin-bottom: 0.35em;
+      }
+      p, li, h1, h2, h3 {
+        overflow-wrap: break-word;
+      }
+      div.columns {
+        display: block;
+      }
+      div.column {
+        width: 100% !important;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Rangers Week 0 Overview</h1>
+</header>
+<h1 id="rangers-program-week-0-overview">Rangers Program – Week 0
+Overview</h1>
+<p><strong>Selection, Baseline, Expectations</strong></p>
+<p>Week 0 happens 2–3 weeks before Week 1. Its job is to select the
+right cohort, capture baselines, and align expectations so the program
+can run smoothly and have impact.</p>
+<h2 id="week-0-goals">1. Week 0 Goals</h2>
+<ul>
+<li>Select 6–8 Rangers against clear, behavior-based criteria.</li>
+<li>Capture baselines: self-assessment and manager input.</li>
+<li>Align expectations on time commitment, ways of working, and
+psychological safety.</li>
+<li>Secure manager support so participants can fully engage in the
+program.</li>
+</ul>
+<h2 id="selection">2. Selection</h2>
+<h3 id="eligibility-criteria">2.1 Eligibility criteria</h3>
+<p>Suggested criteria for candidates: - Shows signs of calm under
+pressure and does not escalate drama. - Demonstrates ownership for
+outcomes rather than habitual blame. - Communicates clearly with
+multiple stakeholders (support, engineering, product, account
+teams).</p>
+<h3 id="manager-nomination">2.2 Manager nomination</h3>
+<p>Ask managers to nominate each candidate, capturing: - Why this
+person? - Top 2–3 strengths from the Gallup skills map. - Top 2–3
+development areas.</p>
+<h3 id="cohort-composition">2.3 Cohort composition</h3>
+<p>When choosing 6–8 participants, aim for: - A mix of profiles: some
+stronger in analysis/technical depth, others stronger in
+communication/relationships.</p>
+<h2 id="baseline-instruments-and-data">3. Baseline – Instruments and
+Data</h2>
+<h3 id="the-self-assessment-participant">3.1 The Self-assessment
+(participant)</h3>
+<p>Each selected participant completes the “Rangers Pre-Program
+Self-Assessment” (12 rating items + 3 open questions).</p>
+<p>Send it with a short note: this is for growth, not performance
+rating.</p>
+<p>Ask them to bring: - Their 1–2 highest-scored items (strengths). -
+Their 2–3 lowest-scored items (development priorities).</p>
+<h2 id="week-0-kickoff-session-6090-minutes">4. Week 0 Kickoff Session
+(60–90 minutes)</h2>
+<h3 id="objectives">4.1 Objectives</h3>
+<ul>
+<li>Create a shared understanding of what a Ranger is and why this
+program exists.</li>
+<li>Increase self-awareness using the self-assessment results.</li>
+<li>Clarify logistics and prepare for Week 1.</li>
+</ul>
+<h3 id="suggested-agenda">4.2 Suggested agenda</h3>
+<p>Total time: 60–90 minutes (remote-friendly).</p>
+<ol type="1">
+<li>Welcome and context (10–15 min)
+<ul>
+<li>Why Rangers exist: protect top customers during high-severity
+incidents.<br />
+</li>
+<li>Link to real crisis leadership: leading through disruption, not just
+“fixing tickets”.</li>
+</ul></li>
+<li>Program overview (10–15 min)
+<ul>
+<li>Duration, weekly time commitment, structure (pre-work + live
+sessions).<br />
+</li>
+<li>Emphasise cohort nature: this is a practice-based journey, not a
+webinar.</li>
+</ul></li>
+<li>Skills and mindset map (10–15 min)
+<ul>
+<li>Walk through the four pillars: perform under pressure, Extreme
+Ownership, executive communication, personal operating system.<br />
+</li>
+<li>Connect to the kind of crisis leader you want Rangers to be.</li>
+</ul></li>
+<li>Self-assessment reflection (20–25 min)
+<ul>
+<li>Plenary: Providae each individual space to elaborate on
+expectations</li>
+</ul></li>
+<li>Cohort working agreement (15–20 min)
+<ul>
+<li>Co-create simple norms, such as:
+<ul>
+<li>Attendance: live sessions are protected time.<br />
+</li>
+<li>Psychological safety: stories stay in the cohort; focus on learning,
+not blame.<br />
+</li>
+<li>Practice mindset: everyone will be “on stage”, mistakes in
+simulations are expected.<br />
+</li>
+<li>Feedback norms: specific, behavior-based feedback (what you saw,
+impact, alternative).</li>
+</ul></li>
+</ul></li>
+<li>Closing and next steps (5–10 min)
+<ul>
+<li>Recap key points.<br />
+</li>
+<li>Confirm Week 1 pre-work and schedule.<br />
+</li>
+<li>Ask each Ranger to write a one-line intention: “By the end of this
+program, I want to be the kind of Ranger who…”.</li>
+</ul></li>
+</ol>
+<h2 id="week-0-outputs">5. Week 0 Outputs</h2>
+<p>By the end of Week 0 you should have: - Final cohort list with a
+short rationale for each participant. - Completed self-assessments
+stored for comparison at Week 7. - Each Ranger’s initial focus areas
+(based on their lowest self-assessment items). - A one-page cohort
+working agreement summarising norms and expectations.</p>
+<p>These give you a clean starting point for the full 8-week Rangers
+program.</p>
+</body>
+</html>

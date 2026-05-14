@@ -278,9 +278,23 @@
 
     .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
+      align-items: stretch;
     }
+
+    .resource-day-1 { grid-column: 1; grid-row: 1; }
+    .resource-day-2 { grid-column: 2; grid-row: 1; }
+    .resource-day-3 { grid-column: 3; grid-row: 1; }
+    .resource-day-5 { grid-column: 4; grid-row: 1; }
+    .resource-day-6 { grid-column: 1; grid-row: 2; }
+    .resource-day-11 { grid-column: 1; grid-row: 3; }
+    .resource-day-12 { grid-column: 2; grid-row: 3; }
+    .resource-day-16 { grid-column: 1; grid-row: 4; }
+    .resource-day-21 { grid-column: 1; grid-row: 5; }
+    .resource-day-22 { grid-column: 2; grid-row: 5; }
+    .resource-day-26 { grid-column: 1; grid-row: 6; }
+    .resource-supplemental { grid-column: 4; grid-row: 6; }
 
     .pillar,
     .resource {
@@ -310,6 +324,52 @@
       align-items: start;
       justify-content: space-between;
       gap: 8px;
+    }
+
+    .resource-flowbar {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 44px;
+      margin-top: 10px;
+    }
+
+    .resource-flowbar::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0e6f68 0%, #16766f 26%, #26384b 52%, #b27a1f 78%, #0a5852 100%);
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+      transform: translateY(-50%);
+    }
+
+    .resource-flowbar::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 4px;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 18px solid var(--accent-dark);
+      transform: translateY(-50%);
+    }
+
+    .resource-step {
+      width: fit-content;
+      padding: 3px 7px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     .resource-tag {
@@ -554,6 +614,11 @@
       .resource-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .resource {
+        grid-column: auto;
+        grid-row: auto;
+      }
     }
 
     @media (max-width: 640px) {
@@ -618,6 +683,10 @@
       .timeline-detail {
         margin-left: 48px;
         grid-template-columns: 1fr;
+      }
+
+      .resource-flowbar {
+        height: 38px;
       }
     }
   </style>
@@ -795,11 +864,13 @@
         <span class="eyebrow">Resources</span>
         <div class="inline-section-title">
           <h2>Program materials</h2>
-          <p>Open the current program documents, book summaries, and training links directly from this page.</p>
+          <p>Open the program materials in the same order they first appear in the curriculum.</p>
         </div>
+        <div class="resource-flowbar" aria-label="Material consumption direction"></div>
       </div>
       <div class="resource-grid">
-        <article class="resource">
+        <article class="resource resource-day-1">
+          <span class="resource-step">Day 1</span>
           <h3>Extreme Ownership Summary</h3>
           <p>Download the recommended book summary or open the related TEDx talk on ownership.</p>
           <div class="resource-actions">
@@ -807,36 +878,8 @@
             <a class="button" href="https://www.youtube.com/embed/ljqra3BcqWM?si=8rix3cnfJSpIEQnL" target="_blank" rel="noopener">Open TEDx Talk</a>
           </div>
         </article>
-        <article class="resource">
-          <h3>The Emergency Mind Summary</h3>
-          <p>Download the recommended book summary for performance, judgment, and calm under pressure.</p>
-          <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Having Difficult Conversations</h3>
-            <span class="resource-tag">1h 3m</span>
-          </div>
-          <p>Open the Difficult conversations module from Having Difficult Conversations by Marlene Chism.</p>
-          <a class="button" href="https://www.linkedin.com/learning/having-difficult-conversations-2018/difficult-conversations?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Perform Under Pressure</h3>
-            <span class="resource-tag">56m</span>
-          </div>
-          <p>Open the Welcome module from Performing under Pressure by Eddie Davila.</p>
-          <a class="button" href="https://www.linkedin.com/learning/performing-under-pressure/welcome?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
-          <div class="resource-heading">
-            <h3>Being Assertive</h3>
-            <span class="resource-tag">52m</span>
-          </div>
-          <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
-          <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
-        </article>
-        <article class="resource">
+        <article class="resource resource-day-2">
+          <span class="resource-step">Day 2</span>
           <div class="resource-heading">
             <h3>Time Management Mindset</h3>
             <span class="resource-tag">47m</span>
@@ -844,7 +887,17 @@
           <p>Open the Make time management your superpower module from Building a Time Management Mindset by Brad Aeon.</p>
           <a class="button" href="https://www.linkedin.com/learning/building-a-time-management-mindset/make-time-management-your-superpower?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
         </article>
-        <article class="resource">
+        <article class="resource resource-day-3">
+          <span class="resource-step">Day 3</span>
+          <div class="resource-heading">
+            <h3>Being Assertive</h3>
+            <span class="resource-tag">52m</span>
+          </div>
+          <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
+          <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-5">
+          <span class="resource-step">Day 5</span>
           <div class="resource-heading">
             <h3>Peak Performance</h3>
             <span class="resource-tag">51m</span>
@@ -852,13 +905,74 @@
           <p>Open the Your most valuable resource module from Recharge Your Energy for Peak Performance by Heidi Hanna.</p>
           <a class="button" href="https://www.linkedin.com/learning/recharge-your-energy-for-peak-performance/your-most-valuable-resource?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
         </article>
-        <article class="resource">
+        <article class="resource resource-day-6">
+          <span class="resource-step">Day 6</span>
+          <h3>The Emergency Mind Summary</h3>
+          <p>Download the recommended book summary for performance, judgment, and calm under pressure.</p>
+          <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
+        </article>
+        <article class="resource resource-day-11">
+          <span class="resource-step">Day 11</span>
+          <div class="resource-heading">
+            <h3>Having Difficult Conversations</h3>
+            <span class="resource-tag">1h 3m</span>
+          </div>
+          <p>Open the Difficult conversations module from Having Difficult Conversations by Marlene Chism.</p>
+          <a class="button" href="https://www.linkedin.com/learning/having-difficult-conversations-2018/difficult-conversations?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-12">
+          <span class="resource-step">Day 12</span>
           <div class="resource-heading">
             <h3>High-Stakes Leadership</h3>
             <span class="resource-tag">1h 4m</span>
           </div>
           <p>Open the High-stakes communication module from High-Stakes Communication by Jenna Lange.</p>
           <a class="button" href="https://www.linkedin.com/learning/high-stakes-communication/high-stakes-communication?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-16">
+          <span class="resource-step">Day 16</span>
+          <div class="resource-heading">
+            <h3>Time Management Mindset</h3>
+            <span class="resource-tag">47m</span>
+          </div>
+          <p>Open the Make time management your superpower module from Building a Time Management Mindset by Brad Aeon.</p>
+          <a class="button" href="https://www.linkedin.com/learning/building-a-time-management-mindset/make-time-management-your-superpower?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-21">
+          <span class="resource-step">Day 21</span>
+          <div class="resource-heading">
+            <h3>Peak Performance</h3>
+            <span class="resource-tag">51m</span>
+          </div>
+          <p>Open the Your most valuable resource module from Recharge Your Energy for Peak Performance by Heidi Hanna.</p>
+          <a class="button" href="https://www.linkedin.com/learning/recharge-your-energy-for-peak-performance/your-most-valuable-resource?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-22">
+          <span class="resource-step">Day 22</span>
+          <div class="resource-heading">
+            <h3>Being Assertive</h3>
+            <span class="resource-tag">52m</span>
+          </div>
+          <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
+          <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-day-26">
+          <span class="resource-step">Day 26</span>
+          <div class="resource-heading">
+            <h3>High-Stakes Leadership</h3>
+            <span class="resource-tag">1h 4m</span>
+          </div>
+          <p>Open the High-stakes communication module from High-Stakes Communication by Jenna Lange.</p>
+          <a class="button" href="https://www.linkedin.com/learning/high-stakes-communication/high-stakes-communication?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        </article>
+        <article class="resource resource-supplemental">
+          <span class="resource-step">Supplemental</span>
+          <div class="resource-heading">
+            <h3>Perform Under Pressure</h3>
+            <span class="resource-tag">56m</span>
+          </div>
+          <p>Open the Welcome module from Performing under Pressure by Eddie Davila.</p>
+          <a class="button" href="https://www.linkedin.com/learning/performing-under-pressure/welcome?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
         </article>
       </div>
     </section>

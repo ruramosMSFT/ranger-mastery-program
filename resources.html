@@ -249,6 +249,7 @@
     .resource-day-15 { grid-column: 4; grid-row: 3; }
     .resource-day-16 { grid-column: 1; grid-row: 4; }
     .resource-day-17 { grid-column: 2; grid-row: 4; }
+    .resource-day-18 { grid-column: 3; grid-row: 4; }
     .resource-day-21 { grid-column: 1; grid-row: 5; }
     .resource-day-22 { grid-column: 2; grid-row: 5; }
     .resource-day-26 { grid-column: 1; grid-row: 6; }
@@ -322,6 +323,30 @@
     .resource-actions {
       display: grid;
       gap: 8px;
+    }
+
+    .resource-actions.compact {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .resource-actions.compact .button {
+      min-height: 34px;
+      padding: 7px 8px;
+      font-size: 0.82rem;
+    }
+
+    .resource-actions .optional-extra {
+      grid-column: 1 / -1;
+      border: 1px dashed rgba(178, 122, 31, 0.6);
+      color: #8a5f18;
+      background: rgba(178, 122, 31, 0.12);
+    }
+
+    .resource-actions .optional-extra:hover,
+    .resource-actions .optional-extra:focus-visible {
+      color: #ffffff;
+      background: #b27a1f;
     }
 
     @media (max-width: 940px) {
@@ -422,9 +447,10 @@
         <span class="resource-step">Day 1</span>
         <h3>Extreme Ownership Summary</h3>
         <p>Download the recommended book summary or open the related TEDx talk on ownership.</p>
-        <div class="resource-actions">
+        <div class="resource-actions compact">
           <a class="button" href="extreme_ownership_10_page_summary.pdf" download>Download PDF</a>
           <a class="button" href="https://www.youtube.com/embed/ljqra3BcqWM?si=8rix3cnfJSpIEQnL" target="_blank" rel="noopener">Open TEDx Talk</a>
+          <a class="button optional-extra" href="https://a.co/d/0ikMjg2d" target="_blank" rel="noopener">Optional Extra: Book</a>
         </div>
       </article>
       <article class="resource resource-day-2">
@@ -458,7 +484,10 @@
         <span class="resource-step">Day 6</span>
         <h3>The Emergency Mind Summary</h3>
         <p>Download the recommended book summary for performance, judgment, and calm under pressure.</p>
-        <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
+        <div class="resource-actions">
+          <a class="button" href="the_emergency_mind_10_page_summary.pdf" download>Download PDF</a>
+          <a class="button optional-extra" href="https://a.co/d/02qtA7oI" target="_blank" rel="noopener">Optional Extra: Book</a>
+        </div>
       </article>
       <article class="resource resource-day-7">
         <span class="resource-step">Day 7</span>
@@ -521,7 +550,10 @@
           <span class="resource-tag">42m</span>
         </div>
         <p>Open the How a growth mindset transforms challenges module from Cultivating a Growth Mindset by Dr Gemma Leigh Roberts.</p>
-        <a class="button" href="https://www.linkedin.com/learning/cultivating-a-growth-mindset-23792198/how-a-growth-mindset-transforms-challenges?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+        <div class="resource-actions">
+          <a class="button" href="https://www.linkedin.com/learning/cultivating-a-growth-mindset-23792198/how-a-growth-mindset-transforms-challenges?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
+          <a class="button optional-extra" href="https://a.co/d/04hcIUGP" target="_blank" rel="noopener">Optional Extra: Book</a>
+        </div>
       </article>
       <article class="resource resource-day-16">
         <span class="resource-step">Day 16</span>
@@ -539,7 +571,19 @@
           <span class="resource-tag">1h</span>
         </div>
         <p>Open the How To Develop A Growth Mindset video with Matthew Syed from High Performance.</p>
-        <a class="button" href="https://www.youtube.com/embed/-qb24oI3SoI?si=EtXuYlNb75jNsri_" target="_blank" rel="noopener">Open Video</a>
+        <div class="resource-actions">
+          <a class="button" href="https://www.youtube.com/embed/-qb24oI3SoI?si=EtXuYlNb75jNsri_" target="_blank" rel="noopener">Open Video</a>
+          <a class="button optional-extra" href="https://a.co/d/0aPHVNqi" target="_blank" rel="noopener">Optional Extra: Book</a>
+        </div>
+      </article>
+      <article class="resource resource-day-18">
+        <span class="resource-step">Day 18</span>
+        <div class="resource-heading">
+          <h3>Delegation Strategies for People Leaders</h3>
+          <span class="resource-tag">51m</span>
+        </div>
+        <p>Open the Uncover the power of delegation module from Delegation Strategies for People Leaders by Madecraft and Carol Walsh.</p>
+        <a class="button" href="https://www.linkedin.com/learning/delegation-strategies-for-people-leaders/uncover-the-power-of-delegation?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
       <article class="resource resource-day-21">
         <span class="resource-step">Day 21</span>

@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ranger Mastery Program executive leadership playbook for operating model, execution plan, and leadership decisions.">
+  <title>Ranger Mastery Program Playbook</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6a7b;
+      --line: #d8e0ea;
+      --paper: #ffffff;
+      --page: #edf3f6;
+      --soft: #f6f8fb;
+      --accent: #0e6f68;
+      --accent-dark: #0a5852;
+      --gold: #b27a1f;
+      --navy: #26384b;
+      --shadow: 0 22px 54px rgba(23, 32, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--page);
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .document-hero {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 58%, #e9f3f1 100%);
+    }
+
+    .document-hero-inner,
+    .playbook-shell {
+      width: min(1040px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    .document-hero-inner {
+      display: grid;
+      gap: 18px;
+      padding: 44px 0 40px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 830px;
+      font-size: clamp(2.15rem, 6vw, 4.4rem);
+      line-height: 1;
+    }
+
+    h2 {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      font-size: 1.35rem;
+    }
+
+    h2:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .document-hero p,
+    .closing-note {
+      max-width: 72ch;
+      color: var(--muted);
+    }
+
+    .document-hero p {
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      border-color: var(--accent-dark);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .playbook-shell {
+      display: grid;
+      gap: 1.5rem;
+      margin-block: 28px 48px;
+      padding: 34px 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .signal-grid,
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .signal-card,
+    .meta-item {
+      padding: 0.85rem 0.95rem;
+      border: 1px solid rgba(14, 111, 104, 0.36);
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(14, 111, 104, 0.1), #ffffff 62%);
+      box-shadow: 0 8px 20px rgba(23, 32, 42, 0.06);
+    }
+
+    .signal-card strong,
+    .meta-item strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    ul {
+      display: grid;
+      gap: 0.7rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      min-width: 0;
+      padding: 0.55rem 0.7rem 0.55rem 2.1rem;
+      border-left: 3px solid rgba(14, 111, 104, 0.28);
+      border-radius: 6px;
+      background: var(--soft);
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      top: 1.15rem;
+      left: 0.82rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #f7fbfa;
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      color: #ffffff;
+      background: var(--accent);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    details[open] summary::before {
+      content: "-";
+    }
+
+    .detail-body {
+      display: grid;
+      gap: 0.7rem;
+      padding: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 0.75rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #ffffff;
+      background: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    @media (max-width: 780px) {
+      .document-hero-inner,
+      .playbook-shell {
+        width: min(100% - 20px, 1040px);
+      }
+
+      .document-hero-inner {
+        padding: 28px 0 26px;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      .playbook-shell {
+        margin-block: 16px 28px;
+        padding: 20px 16px;
+        box-shadow: 0 10px 24px rgba(23, 32, 42, 0.1);
+      }
+
+      .signal-grid,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      summary {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="document-hero">
+    <div class="document-hero-inner">
+      <span class="eyebrow">Ranger Mastery Program</span>
+      <h1>Executive Leadership Playbook</h1>
+      <p>Operating model, execution plan, and leadership decisions to build decision-ready operators under pressure.</p>
+      <nav class="hero-actions" aria-label="Playbook actions">
+        <a class="button primary" href="index.html">Back to Program Home</a>
+        <a class="button" href="Ranger%20Mastery%20Program_Playbook.docx" download>Download Original DOCX</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="playbook-shell">
+    <section class="section" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">1. Executive Summary</h2>
+      <div class="signal-grid">
+        <p class="signal-card"><strong>Signal</strong>The current readiness model produces technically capable engineers, but not consistently decision-ready operators who can perform with speed, structure, and control during high-pressure situations.</p>
+        <p class="signal-card"><strong>Implication</strong>This creates execution variability in Sev-A scenarios, weaker ownership under ambiguity, slower decision-making, and inconsistent customer confidence during critical moments.</p>
+        <p class="signal-card"><strong>Action</strong>Deploy RMP as a structured capability-building program focused on decision-making under pressure, ownership mindset, scoping discipline, and high-stakes execution.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="case-heading">
+      <h2 id="case-heading">2. Strategic Case for Change</h2>
+      <p>Technical expertise remains necessary but is not sufficient for high-impact support environments. The largest performance gap is not knowledge alone; it is the ability to establish control quickly, scope accurately, communicate clearly, and lead execution under pressure. RMP addresses this gap by converting technical readiness into reliable operational behavior.</p>
+    </section>
+
+    <section class="section" aria-labelledby="positioning-heading">
+      <h2 id="positioning-heading">3. Program Positioning</h2>
+      <ul>
+        <li><strong>What RMP is:</strong> a capability-building program for technically ready engineers, centered on behavioral mastery, operational judgment, and execution discipline in real scenarios.</li>
+        <li><strong>What RMP is not:</strong> a replacement for technical readiness, a theory-heavy curriculum, or an optional learning track without accountability.</li>
+        <li><strong>Core operating principle:</strong> move engineers from unknown to control to execution under pressure.</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="audience-heading">
+      <h2 id="audience-heading">4. Target Audience and Entry Criteria</h2>
+      <p>RMP is designed for engineers who are already technically competent and ready for the next stage of development: reliable performance in ambiguous and high-pressure environments. Entry requires pre-qualification through the SME pool, manager endorsement, and selection into small cohorts of four engineers to preserve intensity, feedback quality, and practical exposure.</p>
+      <div class="meta-grid">
+        <p class="meta-item"><strong>Decision-making</strong>Performance under pressure with speed and control.</p>
+        <p class="meta-item"><strong>Ownership mindset</strong>Accountability for the problem space and resolution path.</p>
+        <p class="meta-item"><strong>Structured thinking</strong>Scoping discipline that avoids reactive drift.</p>
+        <p class="meta-item"><strong>Communication clarity</strong>Clear updates that build customer and internal confidence.</p>
+        <p class="meta-item"><strong>Adaptability</strong>Reliable execution when ambiguity is present.</p>
+        <p class="meta-item"><strong>Execution discipline</strong>Consistent operating behavior in high-impact moments.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="journey-heading">
+      <h2 id="journey-heading">5. Operating Model and End-to-End Journey</h2>
+      <p>The program is delivered through five progressive missions. Each mission builds a specific layer of capability, moving engineers from mindset alignment to observed execution and trusted independence.</p>
+
+      <details open>
+        <summary>Mission 0 - Setup and Alignment</summary>
+        <div class="detail-body">
+          <p><strong>Objective:</strong> align expectations, language, and mindset before execution begins.</p>
+          <ul>
+            <li>Cohort onboarding and kickoff.</li>
+            <li>Pre-reading and condensed learning materials.</li>
+            <li>Baseline survey to assess mindset and behavioral starting point.</li>
+          </ul>
+          <p class="closing-note"><strong>Leadership outcome:</strong> engineers begin with a shared operating language, clear expectations, and a common understanding of what strong execution looks like.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mission 1 - Foundation Under Pressure</summary>
+        <div class="detail-body">
+          <p><strong>Objective:</strong> build the mental framework to remain effective under stress and uncertainty.</p>
+          <ul>
+            <li>The emergency mind: structured thinking under pressure.</li>
+            <li>Stress awareness and response management.</li>
+            <li>Scoping in demanding scenarios.</li>
+            <li>Leading under uncertainty.</li>
+            <li>Time management and boundary discipline.</li>
+          </ul>
+          <p class="closing-note"><strong>Leadership outcome:</strong> engineers reduce freeze behavior, improve composure, and begin to apply structure when ambiguity and urgency are high.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mission 2 - Decision and Ownership</summary>
+        <div class="detail-body">
+          <p><strong>Objective:</strong> shift the operating mindset from reactive escalation to accountable leadership of the problem space.</p>
+          <ul>
+            <li>Ownership principles reinforced through real examples.</li>
+            <li>Panel discussions centered on hard decisions and trade-offs.</li>
+            <li>Reflection on execution choices and accountability patterns.</li>
+          </ul>
+          <p class="closing-note"><strong>Leadership outcome:</strong> engineers demonstrate stronger accountability, better judgment, and a clearer bias toward owning and driving resolution.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mission 3 - Operating in Complexity</summary>
+        <div class="detail-body">
+          <p><strong>Objective:</strong> simulate the conditions of real escalations and test whether engineers can establish control quickly and execute with discipline.</p>
+          <ul>
+            <li>Time attack simulations: broken resources, incomplete logs, and constrained time windows.</li>
+            <li>Scenario-based evaluation: directed questioning, role-play interactions, and retrospective analysis of real cases.</li>
+            <li>Shadowing: curated exposure to valid Sev-A incidents and controlled high-impact cases.</li>
+            <li>CARES reinforcement: customer interaction discipline embedded into scenario execution.</li>
+          </ul>
+          <p class="closing-note"><strong>Leadership outcome:</strong> engineers demonstrate faster decision speed, more structured troubleshooting, and controlled execution in chaotic environments.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Mission 4 - Trusted Execution</summary>
+        <div class="detail-body">
+          <p><strong>Objective:</strong> confirm real-world readiness through observed execution where the engineer takes the lead.</p>
+          <ul>
+            <li>Inverted shadowing model where the engineer leads the engagement.</li>
+            <li>Minimum threshold of five cases or two weeks of active execution.</li>
+            <li>Evaluation by Rangers, Technical Advisors, and managers.</li>
+            <li>Observation of team-enabling behaviors beyond individual execution.</li>
+          </ul>
+          <p class="closing-note"><strong>Leadership outcome:</strong> engineers are validated as independently reliable in high-impact scenarios and begin to contribute as capability multipliers for the broader team.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="delivery-heading">
+      <h2 id="delivery-heading">6. Delivery Model</h2>
+      <p>RMP is delivered by Rangers and Technical Advisors, supported by a broader v-team. The model favors short, discussion-led sessions, real scenarios over theory, continuous reinforcement, and repeated exposure to practical judgment calls rather than lecture-based instruction.</p>
+    </section>
+
+    <section class="section" aria-labelledby="governance-heading">
+      <h2 id="governance-heading">7. Governance and Roles</h2>
+      <ul>
+        <li><strong>Executive leadership:</strong> endorse the capability milestone, protect cohort time, and review business impact.</li>
+        <li><strong>Managers:</strong> nominate candidates, reinforce expectations, and track post-program behavior changes.</li>
+        <li><strong>Rangers and Technical Advisors:</strong> deliver content, curate scenarios, observe execution, and evaluate readiness.</li>
+        <li><strong>Participants:</strong> engage fully, apply learning in live scenarios, and demonstrate visible ownership and team enablement.</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="evaluation-heading">
+      <h2 id="evaluation-heading">8. Evaluation Framework</h2>
+      <p>Readiness is validated through layered assessment rather than single-event completion. The evaluation model measures whether the engineer can sustain structure, ownership, and communication quality under pressure.</p>
+      <ul>
+        <li>Behavioral observation across missions.</li>
+        <li>Scenario performance in simulated escalation environments.</li>
+        <li>Shadowing and inverted-shadowing feedback.</li>
+        <li>Final panel evaluation against defined criteria.</li>
+        <li>Maintains structure under pressure.</li>
+        <li>Drives clarity from ambiguity.</li>
+        <li>Demonstrates ownership end-to-end.</li>
+        <li>Communicates effectively with customers and internal teams.</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading">9. Leadership Metrics and Business Impact</h2>
+      <p>RMP should be measured as a business capability investment. The table below links the behaviors the program builds to the operational measures leadership can use to validate value.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capability Built</th><th>Measured Through</th><th>Business Impact</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Faster decision-making</td><td>Time-to-hypothesis</td><td>Reduced MTTR</td></tr>
+            <tr><td>Better scoping</td><td>Case progression quality</td><td>Fewer unnecessary escalations</td></tr>
+            <tr><td>Ownership mindset</td><td>Case closure ownership</td><td>Improved customer confidence and CSAT</td></tr>
+            <tr><td>Execution under pressure</td><td>Sev-A handling quality</td><td>Reduced business impact</td></tr>
+            <tr><td>Team enablement</td><td>Knowledge sharing and peer support</td><td>Scaled capability across the organization</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="scaling-heading">
+      <h2 id="scaling-heading">10. Scaling Strategy Across the Organization</h2>
+      <ul>
+        <li><strong>Short term:</strong> pilot with small cohorts of four engineers and validate through observed Sev-A performance and manager feedback.</li>
+        <li><strong>Mid term:</strong> expand across PODs and standardize the evaluation model, content assets, and readiness criteria.</li>
+        <li><strong>Long term:</strong> establish Ranger capability as a formal milestone for senior readiness and embed RMP into the broader readiness lifecycle.</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="risks-heading">
+      <h2 id="risks-heading">11. Risks and Mitigations</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Risk</th><th>Mitigation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Low participation or weak engagement</td><td>Make the value explicit through career relevance, recognition, and visible leadership sponsorship.</td></tr>
+            <tr><td>Poor case quality for shadowing</td><td>Use Ranger-curated scenarios and controlled case selection.</td></tr>
+            <tr><td>Excessive load on Rangers</td><td>Adopt a shared delivery model across Rangers, Technical Advisors, and the v-team.</td></tr>
+            <tr><td>Inconsistent evaluation standards</td><td>Use defined criteria, shared calibration, and panel-based assessment.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="decisions-heading">
+      <h2 id="decisions-heading">12. Leadership Decisions Required</h2>
+      <p>To move RMP from concept to operating model, leadership alignment is required on three decisions: formalize Ranger capability as a development milestone, protect time allocation for cohort participation, and endorse the evaluation and certification model needed to make readiness decisions consistent and credible.</p>
+    </section>
+
+    <section class="section" aria-labelledby="alternative-heading">
+      <h2 id="alternative-heading">13. Alternative Path to Scale</h2>
+      <p>An alternative or complementary model is to rotate support engineers across verticals every six months, allowing capability breadth to build through repeated exposure. After three verticals, engineers would be considered Ranger-ready. This approach is simpler and more scalable, but less controlled than RMP. It may serve effectively as a feeder pipeline into the formal program.</p>
+    </section>
+
+    <section class="section" aria-labelledby="roadmap-heading">
+      <h2 id="roadmap-heading">14. Implementation Roadmap</h2>
+      <p>To move from concept to scaled capability, RMP should be deployed in phased increments with clear ownership, measurable exit criteria, and visible leadership checkpoints.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>Timing</th><th>Objective</th><th>Key Actions</th><th>Primary Owners</th><th>Exit Criteria</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Phase 1: Design and Alignment</td><td>Month 0-1</td><td>Finalize the operating model and secure leadership sponsorship.</td><td>Confirm mission design, define evaluation criteria, identify initial cohort, align managers, and assign delivery roles.</td><td>Executive sponsor, Rangers, Technical Advisors, managers</td><td>Program charter approved, cohort selected, ownership model confirmed</td></tr>
+            <tr><td>Phase 2: Pilot Launch</td><td>Month 2-3</td><td>Run the first cohort and validate the delivery model.</td><td>Deliver Missions 0-4, collect behavioral observations, capture participant and manager feedback, and review case quality.</td><td>Rangers, Technical Advisors, cohort managers</td><td>First cohort completed, lessons learned documented, readiness signal validated</td></tr>
+            <tr><td>Phase 3: Stabilize and Standardize</td><td>Month 4-6</td><td>Convert the pilot into a repeatable operating model.</td><td>Refine content, calibrate evaluators, standardize scorecards, create reusable assets, and define reporting baseline metrics.</td><td>Program leads, Rangers, Technical Advisors</td><td>Standard curriculum published, evaluation model calibrated, reporting rhythm established</td></tr>
+            <tr><td>Phase 4: Scale Across PODs</td><td>Month 6-12</td><td>Expand RMP while preserving consistency and quality.</td><td>Launch additional cohorts, train additional evaluators, monitor performance trends, and adjust capacity planning.</td><td>Executive sponsor, managers, program leads</td><td>Multi-POD adoption achieved, quality maintained, leadership reporting in place</td></tr>
+            <tr><td>Phase 5: Institutionalize</td><td>Month 12+</td><td>Embed RMP into the formal readiness lifecycle and leadership talent model.</td><td>Link RMP to senior-role readiness, integrate into talent planning, and review annual capability impact.</td><td>Executive leadership, managers, readiness owners</td><td>RMP recognized as a formal capability milestone with sustained funding and governance</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="weekly-heading">
+      <h2 id="weekly-heading">15. Phase 2 Weekly Delivery View</h2>
+      <p>To give leadership a clearer view of delivery cadence, Phase 2 can be broken into an eight-week execution rhythm. This creates visibility into when onboarding, missions, observation, and feedback loops occur during the pilot.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Week</th><th>Primary Focus</th><th>Delivery Activities</th><th>Expected Outcome</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Week 1</td><td>Pilot kickoff and participant alignment</td><td>Launch cohort, confirm expectations, complete onboarding, issue pre-reading, and baseline the starting behaviors.</td><td>Cohort starts aligned on objectives, expectations, and success criteria.</td></tr>
+            <tr><td>Week 2</td><td>Mission 0 completion</td><td>Complete setup and alignment activities, review survey insights, and establish the shared operating language for the cohort.</td><td>Participants understand the program model and the behaviors being reinforced.</td></tr>
+            <tr><td>Week 3</td><td>Mission 1: foundation under pressure</td><td>Run pressure-mindset sessions, structured scoping discussions, and facilitated examples focused on composure and control.</td><td>Participants begin to apply structure under pressure and reduce reactive behavior.</td></tr>
+            <tr><td>Week 4</td><td>Mission 1 reinforcement</td><td>Reinforce core concepts through discussion-led sessions, reflections, and practical examples from Rangers and Technical Advisors.</td><td>Mindset concepts start to convert into repeatable operating habits.</td></tr>
+            <tr><td>Week 5</td><td>Mission 2: decision and ownership</td><td>Deliver ownership-focused sessions, panel discussions, and reflection exercises centered on judgment and accountability.</td><td>Participants show a stronger bias toward ownership and controlled decision-making.</td></tr>
+            <tr><td>Week 6</td><td>Mission 3: operating in complexity</td><td>Run simulations, scenario-based questioning, and role-play interactions to test performance under ambiguity and time pressure.</td><td>Participants demonstrate decision speed, structured troubleshooting, and communication discipline.</td></tr>
+            <tr><td>Week 7</td><td>Mission 4: trusted execution</td><td>Begin inverted shadowing and participant-led execution with observation from Rangers, Technical Advisors, and managers.</td><td>Leadership can assess whether participants are ready to lead with reduced support.</td></tr>
+            <tr><td>Week 8</td><td>Pilot closeout and review</td><td>Complete final observations, gather participant and manager feedback, document lessons learned, and review readiness outcomes.</td><td>Leadership has a clear readiness signal and evidence base for go / refine / scale decisions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Progress should be reviewed through a monthly program checkpoint covering cohort status, readiness outcomes, delivery capacity, and business-impact signals. A quarterly leadership review should assess whether the program is meeting its intended operational outcomes and whether scale decisions or design adjustments are required.</p>
+    </section>
+
+    <section class="section" aria-labelledby="dependencies-heading">
+      <h2 id="dependencies-heading">16. Dependencies and Enablers</h2>
+      <p>Successful implementation depends not only on program design, but also on a small set of operating enablers that must be in place for the pilot and scale phases to succeed. These dependencies should be treated as leadership-owned conditions for execution.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Dependency / Enabler</th><th>What Must Be in Place</th><th>Leadership Implication</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Protected capacity</td><td>Managers must allocate time for cohort participation, shadowing, evaluation, and reinforcement activities without treating the program as side work.</td><td>Without protected time, participation quality will degrade and the pilot will not reflect true program value.</td></tr>
+            <tr><td>Qualified scenario pipeline</td><td>Rangers and Technical Advisors must have access to a curated set of valid scenarios, simulations, and live-case opportunities suitable for training and assessment.</td><td>The program's credibility depends on exposure to realistic, high-value situations rather than ad hoc case selection.</td></tr>
+            <tr><td>Evaluator calibration</td><td>Rangers, Technical Advisors, and managers must align on readiness criteria, scoring expectations, and what good execution looks like.</td><td>Without calibration, readiness decisions will be inconsistent and difficult to scale credibly.</td></tr>
+            <tr><td>Manager sponsorship</td><td>People managers must reinforce program expectations, monitor behavior changes, and support application after the formal missions are complete.</td><td>Manager follow-through is required for behavior change to transfer into day-to-day operations.</td></tr>
+            <tr><td>Leadership sponsorship and visibility</td><td>Executive leaders should visibly endorse the program, review progress, and reinforce the link between RMP and business outcomes.</td><td>Visible sponsorship increases participation quality, credibility, and long-term adoption.</td></tr>
+            <tr><td>Reusable delivery assets</td><td>The program needs standardized materials, scenario guides, scorecards, and facilitator content so the model can be repeated consistently.</td><td>Reusable assets reduce dependency on individual leaders and make scale operationally viable.</td></tr>
+            <tr><td>Reporting baseline</td><td>A small, stable set of pilot and scale metrics must be defined early to track readiness outcomes, delivery health, and business signal.</td><td>Without baseline reporting, leadership will not have enough evidence to make go / refine / scale decisions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="closing-heading">
+      <h2 id="closing-heading">17. Closing Narrative</h2>
+      <p class="closing-note">RMP is not intended to make engineers more technical. Its purpose is to make execution more reliable when pressure is highest. Today, technical expertise exists, but execution quality varies. RMP closes that gap by standardizing how engineers establish control, make decisions, communicate, and act when it matters most.</p>
+    </section>
+  </main>
+</body>
+</html>

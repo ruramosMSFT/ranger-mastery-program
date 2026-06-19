@@ -50,6 +50,7 @@
     }
 
     .hero {
+      position: relative;
       min-height: 88vh;
       display: grid;
       grid-template-rows: auto 1fr auto;
@@ -86,6 +87,37 @@
       height: 48px;
       object-fit: contain;
       border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .copilot-credit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      top: 96px;
+      right: 24px;
+      z-index: 2;
+      width: fit-content;
+      max-width: 100%;
+      padding: 7px 10px;
+      border: 1px solid rgba(14, 111, 104, 0.28);
+      border-radius: 8px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.08);
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .copilot-credit img {
+      width: 34px;
+      height: 34px;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 7px;
       background: #ffffff;
     }
 
@@ -476,6 +508,11 @@
         flex-direction: column;
       }
 
+      .copilot-credit {
+        top: 92px;
+        right: 16px;
+      }
+
       .nav,
       .hero-actions {
         width: 100%;
@@ -512,6 +549,21 @@
       .brand img {
         width: 40px;
         height: 40px;
+      }
+
+      .copilot-credit {
+        position: absolute;
+        top: 74px;
+        right: 10px;
+        width: min(100% - 20px, max-content);
+        font-size: 0.84rem;
+        white-space: normal;
+      }
+
+      .copilot-credit img {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 auto;
       }
 
       .nav a,
@@ -572,6 +624,11 @@
         <a href="rangers_self_assessment.html">Self-Assessment</a>
       </div>
     </nav>
+
+    <div class="copilot-credit" aria-label="Proudly built with Copilot">
+      <span>Proudly built with</span>
+      <img src="Copilot-Icon-3.webp" alt="Copilot" width="34" height="34">
+    </div>
 
     <div class="hero-content">
       <div class="hero-copy">

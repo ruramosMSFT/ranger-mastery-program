@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Time Attack</title>
+<style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6a7b;
+      --line: #d8e0ea;
+      --surface: #ffffff;
+      --soft: #f4f7fa;
+      --page: #edf3f6;
+      --accent: #0e6f68;
+      --accent-dark: #0a5852;
+      --gold: #b27a1f;
+      --navy: #26384b;
+      --shadow: 0 18px 42px rgba(23, 32, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 58%, #e9f3f1 100%);
+    }
+
+    .topbar,
+    .hero-inner,
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: inherit;
+      font-weight: 800;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .nav,
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav a,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .nav a:focus-visible,
+    .button:focus-visible {
+      border-color: var(--accent-dark);
+      outline: 3px solid rgba(14, 111, 104, 0.22);
+      outline-offset: 2px;
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 14px;
+      padding: 32px 0 36px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 840px;
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      line-height: 1;
+    }
+
+    .lead {
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      line-height: 1.6;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+      margin-block: 28px 48px;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+    }
+
+    .section-head p {
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .time-attack {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 12px 30px rgba(23, 32, 42, 0.08);
+    }
+
+    .time-attack[hidden],
+    .scenario-panel[hidden],
+    .resource-grid[hidden],
+    main > section[hidden],
+    .time-attack-run[hidden] {
+      display: none;
+    }
+
+    .scenario-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .scenario-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .scenario-tab {
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--navy);
+      background: var(--soft);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .scenario-tab[aria-selected="true"] {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .scenario-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .scenario-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .scenario-card {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfe;
+    }
+
+    .scenario-card h3 {
+      font-size: 1rem;
+      line-height: 1.28;
+    }
+
+    .scenario-card p,
+    .scenario-card li,
+    .time-attack-run p,
+    .time-attack-run li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.45;
+    }
+
+    .scenario-card ul,
+    .time-attack-run ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .scenario-meta {
+      width: fit-content;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--navy);
+      font-size: 0.64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .randomize-button {
+      border-color: #9b2c2c;
+      color: #ffffff;
+      background: #b83232;
+      box-shadow: 0 10px 24px rgba(184, 50, 50, 0.22);
+    }
+
+    .randomize-button:hover,
+    .randomize-button:focus-visible {
+      border-color: #7b1f1f;
+      background: #8f2626;
+      outline-color: rgba(184, 50, 50, 0.25);
+    }
+
+    .time-attack-run {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .run-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 18px;
+      border: 1px solid rgba(155, 44, 44, 0.35);
+      border-radius: 8px;
+      background: #fff8f8;
+      box-shadow: var(--shadow);
+    }
+
+    .timer {
+      min-width: 220px;
+      padding: 16px 18px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #b83232;
+      font-size: clamp(2.2rem, 7vw, 4.7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
+    }
+
+    .timer.warning {
+      background: #7b1f1f;
+      animation: pulseTimer 1s infinite alternate;
+    }
+
+    .timer.expired {
+      background: #17202a;
+    }
+
+    @keyframes pulseTimer {
+      from { transform: scale(1); }
+      to { transform: scale(1.035); }
+    }
+
+    .run-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 14px;
+    }
+
+    .run-card {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px rgba(23, 32, 42, 0.07);
+    }
+
+    .run-card.full {
+      grid-column: 1 / -1;
+    }
+
+    details.run-card summary {
+      color: var(--navy);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+
+[hidden] { display:none !important; }
+button { font:inherit; cursor:pointer; }
+button:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.run-header h1 { font-size:clamp(1.8rem,4vw,3.8rem); overflow-wrap:anywhere; }
+@media(max-width:760px) { .scenario-list,.run-grid,.run-header {grid-template-columns:1fr;} .topbar{flex-wrap:wrap;} .timer{min-width:0;} .run-header{position:static;} }
+@media(prefers-reduced-motion:reduce) { .timer.warning{animation:none;} }
+</style></head><body>
+<header class="site-header"><nav class="topbar" aria-label="Primary navigation"><a class="brand" href="index.html">Time Attack</a></nav><div class="hero-inner"><span class="eyebrow">Practice under pressure</span><h1>Time Attack</h1><p class="lead">Combine customer behaviour and technical challenges in a 30-minute support drill.</p></div></header>
+<main>    <section class="time-attack" id="timeAttackSection" aria-labelledby="timeAttackHeading">
+      <div class="section-head">
+        <span class="eyebrow">Time Attack</span>
+        <h2 id="timeAttackHeading">Scenario Library</h2>
+        <p>Mix a customer behavior profile with a technical scenario, then launch a 30-minute drill page for the candidate.</p>
+      </div>
+      <div class="scenario-toolbar">
+        <div class="scenario-tabs" role="tablist" aria-label="Time Attack scenario types">
+          <button class="scenario-tab" type="button" id="customerTab" role="tab" aria-selected="true" aria-controls="customerPanel">Customer Behaviour Scenario</button>
+          <button class="scenario-tab" type="button" id="technicalTab" role="tab" aria-selected="false" aria-controls="technicalPanel">Technical Scenarios</button>
+        </div>
+        <button class="button randomize-button" type="button" id="randomizeTimeAttack">Randomize Time Attack</button>
+      </div>
+      <div class="scenario-panel" id="customerPanel" role="tabpanel" aria-labelledby="customerTab">
+        <div class="scenario-list" id="customerScenarioList"></div>
+      </div>
+      <div class="scenario-panel" id="technicalPanel" role="tabpanel" aria-labelledby="technicalTab" hidden>
+        <div class="scenario-list" id="technicalScenarioList"></div>
+      </div>
+    </section>
+
+</main>
+<section class="time-attack-run" id="timeAttackRun" hidden></section>
+<script>
+    const customerBehaviours = [
+      {
+        name: "Aggressive Expert",
+        traits: [
+          "Highly technical",
+          "Interrupts constantly",
+          "Challenges every statement",
+          "Demands immediate answers",
+          "Tries to dominate the call"
+        ]
+      },
+      {
+        name: "Silent Gatekeeper",
+        traits: [
+          "Provides minimal answers",
+          "Only responds yes/no",
+          "Does not volunteer context",
+          "Has all the information but hides it"
+        ]
+      },
+      {
+        name: "The Escalation Threat",
+        traits: [
+          "Repeatedly mentions escalation",
+          "References management chain",
+          "Pushes urgency artificially",
+          "Uses pressure to rush troubleshooting"
+        ]
+      },
+      {
+        name: "The Confident but Wrong Architect",
+        traits: [
+          "Speaks with high confidence",
+          "Has incorrect assumptions",
+          "Rejects corrections initially",
+          "Forces the engineer to prove everything"
+        ]
+      },
+      {
+        name: "The Distracted Customer",
+        traits: [
+          "Multitasking on the call",
+          "Needs repetition",
+          "Misses critical explanations",
+          "Causes loss of troubleshooting flow"
+        ]
+      },
+      {
+        name: "The \"Just Give Me the Fix\" Customer",
+        traits: [
+          "Refuses troubleshooting steps",
+          "Wants final answer immediately",
+          "Rejects diagnostic questions",
+          "Pushes for shortcuts"
+        ]
+      },
+      {
+        name: "The Emotional Escalation",
+        traits: [
+          "Expresses frustration openly",
+          "Mentions business impact repeatedly",
+          "Uses emotional pressure instead of technical reasoning"
+        ]
+      },
+      {
+        name: "The Partial Information Provider",
+        traits: [
+          "Gives incomplete topology",
+          "Answers only what is asked",
+          "Withholds key dependencies unintentionally or intentionally"
+        ]
+      },
+      {
+        name: "The Over-Talker",
+        traits: [
+          "Talks excessively",
+          "Provides irrelevant details",
+          "Makes it difficult to control the call",
+          "Requires strong conversation steering"
+        ]
+      },
+      {
+        name: "The Constraint Blocker",
+        traits: [
+          "Accepts root cause",
+          "Rejects all valid solutions (\"not possible in our environment\")",
+          "Forces alternative paths",
+          "Tests architectural depth"
+        ]
+      }
+    ];
+
+    const technicalScenarios = [
+      {
+        name: "Azure Firewall FQDN Rule Not Matching Exchange Online",
+        level: "SEV A",
+        brief: "The customer reports that an Azure Firewall network rule allowing smtp.office365.com on ports 25 and 587 is not working. Logs show default deny under Network Rule, even though the FQDN appears to be allowed.",
+        known: [
+          "Hub/spoke Azure networking architecture",
+          "Azure Firewall is in the hub",
+          "The spoke workload VM initiates SMTP traffic",
+          "The customer initially shows only Network Rule logs"
+        ],
+        hidden: [
+          "The spoke VNet uses custom DNS servers",
+          "The clients are not using Azure Firewall DNS Proxy",
+          "The client and the firewall resolve smtp.office365.com to different Exchange Online frontend IPs",
+          "Exchange Online endpoint ranges are global and cannot be reliably constrained to West Europe only"
+        ],
+        expected: [
+          "Ask how the client resolves DNS and whether Azure Firewall DNS Proxy is used",
+          "Explain that FQDN-based network rules depend on DNS consistency between client and firewall",
+          "Recommend making Azure Firewall the DNS resolution source for this flow",
+          "Avoid inventing unsupported region-specific Exchange Online IP filtering guidance"
+        ]
+      },
+      {
+        name: "Private Endpoint Works from Hub but Not from Spoke",
+        level: "P1",
+        brief: "The customer says a storage account private endpoint resolves and connects from a hub jump box, but spoke workloads still resolve the public endpoint and fail policy checks.",
+        known: [
+          "Private endpoint exists in the hub",
+          "Hub VNet is linked to a privatelink.blob.core.windows.net private DNS zone",
+          "Spoke workloads use custom DNS"
+        ],
+        hidden: [
+          "The custom DNS servers are not forwarding private endpoint zones to Azure DNS",
+          "The spoke VNet is not linked to the private DNS zone",
+          "A stale public DNS record is cached on the workload"
+        ],
+        expected: [
+          "Validate name resolution from the failing spoke workload",
+          "Check private DNS zone links and conditional forwarding",
+          "Confirm the resolved private IP matches the private endpoint NIC",
+          "Separate DNS failure from storage firewall or RBAC failure"
+        ]
+      },
+      {
+        name: "Application Rule Fails Because TLS SNI Is Missing",
+        level: "P1",
+        brief: "Outbound HTTPS traffic is denied by Azure Firewall Application Rules even though the target FQDN is listed in the rule collection.",
+        known: [
+          "The destination is accessed over TCP 443",
+          "The application sometimes connects by IP address",
+          "Firewall logs show no expected FQDN rule match"
+        ],
+        hidden: [
+          "The client does not consistently send SNI",
+          "Some requests use a certificate common name that differs from the allowed FQDN",
+          "A fallback library path bypasses the proxy configuration"
+        ],
+        expected: [
+          "Ask whether the client sends TLS SNI and which hostname is used",
+          "Compare Network Rule versus Application Rule behavior",
+          "Use firewall logs to confirm rule type and matched target",
+          "Recommend hostname-consistent access or a network rule where appropriate"
+        ]
+      },
+      {
+        name: "AKS Egress Breaks After Forcing Traffic Through Firewall",
+        level: "P1",
+        brief: "An AKS cluster loses image pulls and control-plane dependent operations after a route table is updated to send outbound traffic to Azure Firewall.",
+        known: [
+          "UDR sends 0.0.0.0/0 from node subnets to Azure Firewall",
+          "Pods can reach some internal services",
+          "Image pulls and extension updates are failing"
+        ],
+        hidden: [
+          "Required Microsoft Container Registry and Azure management FQDNs are not allowed",
+          "DNS for the cluster nodes is inconsistent",
+          "NTP and package repository dependencies were not considered"
+        ],
+        expected: [
+          "Identify AKS outbound dependencies before adding broad allows",
+          "Review Azure Firewall FQDN tags or documented required endpoints",
+          "Validate DNS and route table association on node subnets",
+          "Explain why successful internal traffic does not prove outbound readiness"
+        ]
+      },
+      {
+        name: "ExpressRoute Traffic Becomes Asymmetric Through the Hub",
+        level: "SEV A",
+        brief: "On-premises clients intermittently fail to reach a spoke application after a hub firewall insertion project. Packet captures show requests arrive, but responses are inconsistent.",
+        known: [
+          "ExpressRoute terminates in the hub",
+          "Spokes are peered to the hub",
+          "Azure Firewall is intended to inspect north-south traffic"
+        ],
+        hidden: [
+          "Return routes from the spoke are more specific through a different next hop",
+          "Gateway route propagation is enabled where it should be controlled",
+          "One spoke subnet is missing the UDR back to Azure Firewall"
+        ],
+        expected: [
+          "Map forward and return paths separately",
+          "Check effective routes on the application NIC and subnet",
+          "Verify UDRs, propagation, and peering gateway transit settings",
+          "Explain asymmetric routing impact on stateful inspection"
+        ]
+      },
+      {
+        name: "VPN Forced Tunnel Accidentally Captures Azure Platform Traffic",
+        level: "P1",
+        brief: "After enabling BGP-learned forced tunneling over VPN, Azure workloads lose access to platform services and monitoring agents stop reporting.",
+        known: [
+          "A default route is learned from on-premises",
+          "The same workloads can still reach some private networks",
+          "Failures started after a routing change"
+        ],
+        hidden: [
+          "A broad 0.0.0.0/0 route is preferred over expected internet egress",
+          "Azure service dependencies are being sent to on-premises security devices",
+          "No explicit route exception exists for required platform flows"
+        ],
+        expected: [
+          "Inspect effective routes before blaming the application",
+          "Identify whether the default route is BGP-learned or UDR-based",
+          "Confirm where Azure platform and internet-bound traffic exits",
+          "Recommend deliberate route exceptions or firewall egress design"
+        ]
+      },
+      {
+        name: "TLS Inspection Breaks Authentication Flow",
+        level: "P1",
+        brief: "Azure Firewall Premium TLS inspection was enabled and users immediately report login failures to a SaaS application.",
+        known: [
+          "The SaaS endpoint is allowed by application rule",
+          "TLS inspection is enabled on the rule collection",
+          "Browser errors mention certificate trust or connection reset"
+        ],
+        hidden: [
+          "The enterprise CA used by Azure Firewall is not trusted on all clients",
+          "The identity provider uses certificate pinning on part of the flow",
+          "Some authentication endpoints are missing from the allow list"
+        ],
+        expected: [
+          "Separate trust-chain failures from policy denies",
+          "Check whether the client trusts the TLS inspection CA",
+          "Identify endpoints that should be excluded from inspection",
+          "Use logs to distinguish TLS handshake failure from rule mismatch"
+        ]
+      },
+      {
+        name: "Load Balancer Health Probe Fails Behind Security Controls",
+        level: "P2",
+        brief: "A public application intermittently drops out of rotation after NSG and firewall hardening. The backend service is healthy when tested locally.",
+        known: [
+          "Azure Load Balancer fronts two backend VMs",
+          "NSGs were tightened recently",
+          "Health probe status is unhealthy for one or more nodes"
+        ],
+        hidden: [
+          "The NSG allows client traffic but blocks the AzureLoadBalancer service tag",
+          "The probe port differs from the application port",
+          "A host firewall rule allows local tests but blocks probe source traffic"
+        ],
+        expected: [
+          "Check probe configuration, protocol, port, and path",
+          "Validate NSG rules for AzureLoadBalancer",
+          "Test from the perspective of the probe, not only localhost",
+          "Explain why healthy service process does not guarantee probe health"
+        ]
+      }
+    ];
+
+
+const randomizeButton = document.getElementById('randomizeTimeAttack');
+const customerTab = document.getElementById('customerTab');
+const technicalTab = document.getElementById('technicalTab');
+const customerPanel = document.getElementById('customerPanel');
+const technicalPanel = document.getElementById('technicalPanel');
+const customerList = document.getElementById('customerScenarioList');
+const technicalList = document.getElementById('technicalScenarioList');
+const runContainer = document.getElementById('timeAttackRun');
+    function appendList(parent, items) {
+      const list = document.createElement("ul");
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      parent.appendChild(list);
+    }
+
+
+    function renderCustomerLibrary() {
+      customerBehaviours.forEach((behaviour, index) => {
+        const card = document.createElement("article");
+        card.className = "scenario-card";
+        const meta = document.createElement("span");
+        meta.className = "scenario-meta";
+        meta.textContent = `Profile ${index + 1}`;
+        const title = document.createElement("h3");
+        title.textContent = behaviour.name;
+        card.append(meta, title);
+        appendList(card, behaviour.traits);
+        customerList.appendChild(card);
+      });
+    }
+
+    function renderTechnicalLibrary() {
+      technicalScenarios.forEach((scenario, index) => {
+        const card = document.createElement("article");
+        card.className = "scenario-card";
+        const meta = document.createElement("span");
+        meta.className = "scenario-meta";
+        meta.textContent = `${scenario.level} Scenario ${index + 1}`;
+        const title = document.createElement("h3");
+        title.textContent = scenario.name;
+        const brief = document.createElement("p");
+        brief.textContent = scenario.brief;
+        card.append(meta, title, brief);
+        appendList(card, scenario.expected);
+        technicalList.appendChild(card);
+      });
+    }
+
+    function activateScenarioTab(tabName) {
+      const customerActive = tabName === "customer";
+      customerTab.setAttribute("aria-selected", String(customerActive));
+      technicalTab.setAttribute("aria-selected", String(!customerActive));
+      customerPanel.hidden = !customerActive;
+      technicalPanel.hidden = customerActive;
+    }
+
+    async function openRandomTimeAttack() {
+
+      const behaviourIndex = Math.floor(Math.random() * customerBehaviours.length);
+      const technicalIndex = Math.floor(Math.random() * technicalScenarios.length);
+      const runUrl = new URL(window.location.href);
+      runUrl.searchParams.set("timeAttack", "run");
+      runUrl.searchParams.set("behaviour", String(behaviourIndex));
+      runUrl.searchParams.set("technical", String(technicalIndex));
+      window.location.assign(runUrl.toString());
+    }
+
+    function createRunCard(titleText, items, className) {
+      const card = document.createElement("article");
+      card.className = `run-card ${className || ""}`.trim();
+      const title = document.createElement("h2");
+      title.textContent = titleText;
+      card.appendChild(title);
+      appendList(card, items);
+      return card;
+    }
+
+    function startTimer(timerElement) {
+      const totalSeconds = 30 * 60;
+      const endAt = Date.now() + totalSeconds * 1000;
+      let timerInterval;
+
+      function update() {
+        const remaining = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+        const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+        const seconds = String(remaining % 60).padStart(2, "0");
+        timerElement.textContent = `${minutes}:${seconds}`;
+        timerElement.classList.toggle("warning", remaining > 0 && remaining <= 300);
+        timerElement.classList.toggle("expired", remaining === 0);
+        if (remaining === 0) {
+          timerElement.setAttribute("aria-label", "Time expired");
+          clearInterval(timerInterval);
+        }
+      }
+
+      update();
+      timerInterval = setInterval(update, 1000);
+    }
+
+    async function renderRunPage() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("timeAttack") !== "run") {
+        return;
+      }
+
+
+      const behaviour = customerBehaviours[Number(params.get("behaviour"))] || customerBehaviours[0];
+      const scenario = technicalScenarios[Number(params.get("technical"))] || technicalScenarios[0];
+      document.querySelector(".site-header").hidden = true;
+      document.querySelector("main").hidden = true;
+      document.title = `Time Attack | ${scenario.name}`;
+      runContainer.hidden = false;
+
+      const header = document.createElement("div");
+      header.className = "run-header";
+      const intro = document.createElement("div");
+      const eyebrow = document.createElement("span");
+      eyebrow.className = "eyebrow";
+      eyebrow.textContent = "30 Minute Time Attack";
+      const title = document.createElement("h1");
+      title.textContent = scenario.name;
+      const lead = document.createElement("p");
+      lead.className = "lead";
+      lead.textContent = "Start the call, control the pressure, discover the missing facts, and drive toward a supported technical recommendation.";
+      intro.append(eyebrow, title, lead);
+      const timer = document.createElement("div");
+      timer.className = "timer";
+      timer.setAttribute("role", "timer");
+      timer.setAttribute("aria-label", "30 minute countdown timer");
+      header.append(intro, timer);
+
+      const grid = document.createElement("div");
+      grid.className = "run-grid";
+      grid.appendChild(createRunCard("Customer Behaviour", [behaviour.name, ...behaviour.traits]));
+
+      const scenarioCard = document.createElement("article");
+      scenarioCard.className = "run-card";
+      const scenarioTitle = document.createElement("h2");
+      scenarioTitle.textContent = "Candidate Brief";
+      const brief = document.createElement("p");
+      brief.textContent = scenario.brief;
+      scenarioCard.append(scenarioTitle, brief);
+      appendList(scenarioCard, scenario.known);
+      grid.appendChild(scenarioCard);
+
+      const expectedCard = createRunCard("Investigation Targets", scenario.expected, "full");
+      const hiddenDetails = document.createElement("details");
+      hiddenDetails.className = "run-card full";
+      const summary = document.createElement("summary");
+      summary.textContent = "Evaluator Notes";
+      hiddenDetails.appendChild(summary);
+      appendList(hiddenDetails, scenario.hidden);
+      grid.append(expectedCard, hiddenDetails);
+
+      const actions = document.createElement("div");
+      actions.className = "hero-actions";
+      const back = document.createElement("a");
+      back.className = "button";
+      const backUrl = new URL(window.location.href);
+      backUrl.search = "";
+      back.href = backUrl.toString();
+      back.textContent = "Back to Scenario Library";
+      actions.appendChild(back);
+
+      runContainer.append(header, grid, actions);
+      startTimer(timer);
+    }
+
+
+renderCustomerLibrary();
+renderTechnicalLibrary();
+renderRunPage();
+randomizeButton.addEventListener('click', openRandomTimeAttack);
+customerTab.addEventListener('click',()=>activateScenarioTab('customer'));
+technicalTab.addEventListener('click',()=>activateScenarioTab('technical'));
+[customerTab,technicalTab].forEach((tab,index)=>{
+ tab.addEventListener('keydown',event=>{
+  if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+  event.preventDefault();
+  const next=event.key==='Home'?0:event.key==='End'?1:1-index;
+  activateScenarioTab(next===0?'customer':'technical');
+  [customerTab,technicalTab][next].focus();
+ });
+});
+</script></body></html>
+

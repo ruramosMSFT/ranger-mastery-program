@@ -230,30 +230,11 @@
 
     .resource-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       align-items: stretch;
     }
 
-    .resource-day-1 { grid-column: 1; grid-row: 1; }
-    .resource-day-2 { grid-column: 2; grid-row: 1; }
-    .resource-day-3 { grid-column: 3; grid-row: 1; }
-    .resource-day-5 { grid-column: 4; grid-row: 1; }
-    .resource-day-6 { grid-column: 1; grid-row: 2; }
-    .resource-day-7 { grid-column: 2; grid-row: 2; }
-    .resource-day-8 { grid-column: 3; grid-row: 2; }
-    .resource-day-10 { grid-column: 4; grid-row: 2; }
-    .resource-day-11 { grid-column: 1; grid-row: 3; }
-    .resource-day-12 { grid-column: 2; grid-row: 3; }
-    .resource-day-13 { grid-column: 3; grid-row: 3; }
-    .resource-day-15 { grid-column: 4; grid-row: 3; }
-    .resource-day-16 { grid-column: 1; grid-row: 4; }
-    .resource-day-17 { grid-column: 2; grid-row: 4; }
-    .resource-day-18 { grid-column: 3; grid-row: 4; }
-    .resource-day-21 { grid-column: 1; grid-row: 5; }
-    .resource-day-22 { grid-column: 2; grid-row: 5; }
-    .resource-day-26 { grid-column: 1; grid-row: 6; }
-    .resource-supplemental { grid-column: 4; grid-row: 6; }
 
     .resource {
       display: grid;
@@ -411,6 +392,29 @@
         grid-template-columns: 1fr;
       }
     }
+    .week-section { display: grid; gap: 14px; }
+    .week-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; margin-bottom: 12px; }
+    .week-heading p { color: var(--muted); }
+    .week-section.is-locked .resource-grid { filter: grayscale(1) blur(10px); opacity: .45; pointer-events: none; user-select: none; }
+    .week-section.is-locked .week-heading { color: var(--muted); }
+    .week-availability { padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; font-size: .8rem; color: var(--muted); }
+    .weekly-task { background: #f3ecfc; border-color: #cdb6e6; }
+    .weekly-task .resource-step { background: #714398; }
+    .weekly-task .button { background: #e8d9f7; border-color: #cdb6e6; color: #512c73; gap: 8px; }
+    button { font: inherit; cursor: pointer; }
+    .task-title { padding: 0; border: 0; background: none; color: #512c73; font: inherit; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+    button:focus-visible { outline: 3px solid #714398; outline-offset: 4px; }
+    body:has(#task-dialog[open]) { overflow: hidden; }
+    #task-dialog { width: min(720px, calc(100% - 24px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #cdb6e6; border-radius: 14px; color: var(--ink); background: white; box-shadow: var(--shadow); }
+    #task-dialog::backdrop { background: rgba(23, 32, 42, .6); }
+    .dialog-header { position: sticky; top: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 24px; border-bottom: 1px solid #cdb6e6; background: #f3ecfc; }
+    .dialog-header h2 { margin-top: 6px; font-size: 1.4rem; }
+    .dialog-close { flex: 0 0 auto; padding: 8px 12px; border: 1px solid #cdb6e6; border-radius: 6px; color: #512c73; background: white; }
+    .dialog-body { display: grid; gap: 20px; padding: 24px; }
+    .dialog-body h3 { font-size: 1rem; margin-bottom: 6px; }
+    .dialog-body ol { padding-left: 24px; margin: 0; }
+    .dialog-body li + li { margin-top: 10px; }
+    .task-deliverable { padding: 16px; border-radius: 8px; background: #f3ecfc; }
   </style>
 </head>
 <body>
@@ -424,7 +428,7 @@
     <div class="hero-inner">
       <span class="eyebrow">Resources</span>
       <h1>Program Materials</h1>
-      <p class="lead">Open the program materials in the same order they first appear in the curriculum.</p>
+      <p class="lead">Explore each week’s materials and put them into practice with the selected weekly task.</p>
       <div class="hero-actions">
         <a class="button primary" href="index.html">Return to Home</a>
         <a class="button" href="rangers_program_proposal.html">Open Program Model</a>
@@ -437,12 +441,14 @@
       <div class="section-head">
         <span class="eyebrow">Consumption Order</span>
         <h2>Materials by curriculum sequence</h2>
-        <p>Materials are arranged by their day in the program. Thursday live sessions are omitted because they do not require separate materials.</p>
+        <p>Materials are arranged by their day in the program. Each week includes its selected practical task in lilac. Open a task to see the scenario, required steps, and expected deliverable.</p>
         <div class="resource-flowbar" aria-label="Material consumption direction"></div>
       </div>
     </section>
 
-    <section class="resource-grid" aria-label="Program resources">
+    <section class="week-section" aria-labelledby="week-1">
+      <div class="week-heading"><h2 id="week-1">Week 1</h2><p>Mindset</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-1">
         <span class="resource-step">Day 1</span>
         <h3>Extreme Ownership Summary</h3>
@@ -471,6 +477,12 @@
         <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
         <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 4 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="0" aria-haspopup="dialog" aria-controls="task-dialog">Ranger Mindset Reflection</button></h3>
+        <p>Translate ownership, assertiveness, and composure into observable behavior.</p>
+        <button class="button" type="button" data-task="0" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Ranger Mindset Reflection">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
       <article class="resource resource-day-5">
         <span class="resource-step">Day 5</span>
         <div class="resource-heading">
@@ -480,6 +492,12 @@
         <p>Open the Your most valuable resource module from Recharge Your Energy for Peak Performance by Heidi Hanna.</p>
         <a class="button" href="https://www.linkedin.com/learning/recharge-your-energy-for-peak-performance/your-most-valuable-resource?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-2">
+      <div class="week-heading"><h2 id="week-2">Week 2</h2><p>Structure ambiguity</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-6">
         <span class="resource-step">Day 6</span>
         <h3>The Emergency Mind Summary</h3>
@@ -507,6 +525,15 @@
         <p>Open the Develop an analytical thinking mindset module from Analytical Thinking to Drive Insights by Christina Stathopoulos.</p>
         <a class="button" href="https://www.linkedin.com/learning/analytical-thinking-to-drive-insights/develop-an-analytical-thinking-mindset?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 9 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="1" aria-haspopup="dialog" aria-controls="task-dialog">Scoping in Action</button></h3>
+        <p>Read the Scoping in action guide in the Azure Networking wiki, then apply it to structure an ambiguous customer report.</p>
+        <div class="resource-actions">
+          <a class="button" href="https://dev.azure.com/Supportability/AzureNetworking/_wiki/wikis/Wiki/2647940/Scoping-in-action" target="_blank" rel="noopener">Open Scoping in action guide</a>
+          <button class="button" type="button" data-task="1" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Scoping in Action">View task steps <span aria-hidden="true">↗</span></button>
+        </div>
+      </article>
       <article class="resource resource-day-10">
         <span class="resource-step">Day 10</span>
         <div class="resource-heading">
@@ -516,6 +543,12 @@
         <p>Open the Having difficult conversations module from Communicating through Disagreement by Madecraft and Lynne Hurdle.</p>
         <a class="button" href="https://www.linkedin.com/learning/communicating-through-disagreement-2022/having-difficult-conversations?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-3">
+      <div class="week-heading"><h2 id="week-3">Week 3</h2><p>Set boundaries</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-11">
         <span class="resource-step">Day 11</span>
         <div class="resource-heading">
@@ -543,6 +576,12 @@
         <p>Open the Champion Mindset talk with Patrick Mouratoglou from Talks at Google.</p>
         <a class="button" href="https://www.youtube.com/embed/GWVSeLEcBm4?si=Q0hEk7H3QOAE6MuJ" target="_blank" rel="noopener">Open Video</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 14 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="2" aria-haspopup="dialog" aria-controls="task-dialog">Building a Boundary Phrase Library</button></h3>
+        <p>Build reusable language for firm, professional conversations under pressure.</p>
+        <button class="button" type="button" data-task="2" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Building a Boundary Phrase Library">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
       <article class="resource resource-day-15">
         <span class="resource-step">Day 15</span>
         <div class="resource-heading">
@@ -555,6 +594,12 @@
           <a class="button optional-extra" href="https://a.co/d/04hcIUGP" target="_blank" rel="noopener">Optional Extra: Book</a>
         </div>
       </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-4">
+      <div class="week-heading"><h2 id="week-4">Week 4</h2><p>Improve your working practices</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-16">
         <span class="resource-step">Day 16</span>
         <div class="resource-heading">
@@ -585,6 +630,30 @@
         <p>Open the Uncover the power of delegation module from Delegation Strategies for People Leaders by Madecraft and Carol Walsh.</p>
         <a class="button" href="https://www.linkedin.com/learning/delegation-strategies-for-people-leaders/uncover-the-power-of-delegation?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 19 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="3" aria-haspopup="dialog" aria-controls="task-dialog">Turn Feedback into a Working Habit</button></h3>
+        <p>Reflect on feedback you have received or a recurring personal weakness, then turn it into one concrete working habit.</p>
+        <button class="button" type="button" data-task="3" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Turn Feedback into a Working Habit">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource resource-day-20">
+        <span class="resource-step">Day 20</span>
+        <div class="resource-heading">
+          <h3>Never Split the Difference</h3>
+          <span class="resource-tag">Google Talk</span>
+        </div>
+        <p>Open the Google Talk on negotiation tactics from Never Split the Difference.</p>
+        <div class="resource-actions">
+          <a class="button" href="https://www.youtube.com/watch?v=guZa7mQV1l0" target="_blank" rel="noopener">Open Video</a>
+          <a class="button optional-extra" href="https://www.amazon.com/Never-Split-Difference-Negotiating-Depended/dp/0062407805/ref=asc_df_0062407805?mcid=3b37f19d6f073cc780ee34a4dadc87d2&tag=googshopes-21&linkCode=df0&hvadid=699717042952&hvpos=&hvnetw=g&hvrand=18290614062714127999&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9243588&hvtargid=pla-332673243061&psc=1&hvocijid=18290614062714127999-0062407805-&hvexpln=0" target="_blank" rel="noopener">Optional Extra: Book</a>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-5">
+      <div class="week-heading"><h2 id="week-5">Week 5</h2><p>Deliver concise operational updates</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-21">
         <span class="resource-step">Day 21</span>
         <div class="resource-heading">
@@ -603,6 +672,18 @@
         <p>Open the A few words about the course module from Becoming Assertive: Advocate for Your Interests by TJ Guttormsen.</p>
         <a class="button" href="https://www.linkedin.com/learning/becoming-assertive-advocate-for-your-interests/a-few-words-about-the-course?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 23 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="4" aria-haspopup="dialog" aria-controls="task-dialog">Escalation Update Drill</button></h3>
+        <p>Deliver a decision-oriented escalation update in two minutes or about 150 words.</p>
+        <button class="button" type="button" data-task="4" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Escalation Update Drill">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-6">
+      <div class="week-heading"><h2 id="week-6">Week 6</h2><p>Lead the situation</p></div>
+      <div class="resource-grid">
       <article class="resource resource-day-26">
         <span class="resource-step">Day 26</span>
         <div class="resource-heading">
@@ -612,6 +693,88 @@
         <p>Open the High-stakes communication module from High-Stakes Communication by Jenna Lange.</p>
         <a class="button" href="https://www.linkedin.com/learning/high-stakes-communication/high-stakes-communication?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 27 · Weekly task</span>
+        <h3><button class="task-title" type="button" data-task="5" aria-haspopup="dialog" aria-controls="task-dialog">Crisis Leadership Review</button></h3>
+        <p>Practice prioritization and judgment with incomplete information and competing demands.</p>
+        <button class="button" type="button" data-task="5" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Crisis Leadership Review">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-7">
+      <div class="week-heading"><h2 id="week-7">Week 7</h2><p>Time Attack Scenarios</p></div>
+      <div class="resource-grid">
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 31 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="6" aria-haspopup="dialog" aria-controls="task-dialog">Time Attack Scenario</button></h3>
+        <p>Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.</p>
+        <button class="button" type="button" data-task="6" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Scenario">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 32 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="7" aria-haspopup="dialog" aria-controls="task-dialog">Time Attack Scenario</button></h3>
+        <p>Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.</p>
+        <button class="button" type="button" data-task="7" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Scenario">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 33 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="8" aria-haspopup="dialog" aria-controls="task-dialog">Time Attack Scenario</button></h3>
+        <p>Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.</p>
+        <button class="button" type="button" data-task="8" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Scenario">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 34 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="9" aria-haspopup="dialog" aria-controls="task-dialog">Time Attack Scenario</button></h3>
+        <p>Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.</p>
+        <button class="button" type="button" data-task="9" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Scenario">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 35 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="10" aria-haspopup="dialog" aria-controls="task-dialog">Time Attack Reflection</button></h3>
+        <p>Reflect on your evaluated Time Attack scenario and any free practice sessions, then prepare goals for Reverse Shadowing.</p>
+        <button class="button" type="button" data-task="10" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Reflection">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      </div>
+    </section>
+
+    <section class="week-section" aria-labelledby="week-8">
+      <div class="week-heading"><h2 id="week-8">Week 8</h2><p>Reverse Shadowing and Graduation</p></div>
+      <div class="resource-grid">
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 36 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="11" aria-haspopup="dialog" aria-controls="task-dialog">Reverse Shadowing Session</button></h3>
+        <p>Candidates lead a support session while a mentor observes and provides feedback.</p>
+        <button class="button" type="button" data-task="11" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Reverse Shadowing Session">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 37 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="12" aria-haspopup="dialog" aria-controls="task-dialog">Reverse Shadowing Session</button></h3>
+        <p>Candidates lead a support session while a mentor observes and provides feedback.</p>
+        <button class="button" type="button" data-task="12" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Reverse Shadowing Session">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 38 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="13" aria-haspopup="dialog" aria-controls="task-dialog">Reverse Shadowing Session</button></h3>
+        <p>Candidates lead a support session while a mentor observes and provides feedback.</p>
+        <button class="button" type="button" data-task="13" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Reverse Shadowing Session">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 39 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="14" aria-haspopup="dialog" aria-controls="task-dialog">Reverse Shadowing Session</button></h3>
+        <p>Candidates lead a support session while a mentor observes and provides feedback.</p>
+        <button class="button" type="button" data-task="14" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Reverse Shadowing Session">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      <article class="resource weekly-task">
+        <span class="resource-step">Day 40 · Activity</span>
+        <h3><button class="task-title" type="button" data-task="15" aria-haspopup="dialog" aria-controls="task-dialog">Graduation</button></h3>
+        <p>Close the program with a readiness outcome and continuing development commitments.</p>
+        <button class="button" type="button" data-task="15" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Graduation">View task steps <span aria-hidden="true">↗</span></button>
+      </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="supplemental-title"><div class="week-heading"><h2 id="supplemental-title">Supplemental material</h2></div><div class="resource-grid">
       <article class="resource resource-supplemental">
         <span class="resource-step">Supplemental</span>
         <div class="resource-heading">
@@ -621,7 +784,341 @@
         <p>Open the Welcome module from Performing under Pressure by Eddie Davila.</p>
         <a class="button" href="https://www.linkedin.com/learning/performing-under-pressure/welcome?trk=embed_lil" target="_blank" rel="noopener">Open Training</a>
       </article>
-    </section>
+    </div></section>
   </main>
+  <dialog id="task-dialog" aria-labelledby="task-dialog-title">
+    <div class="dialog-header">
+      <div><span class="eyebrow" id="task-dialog-day"></span><h2 id="task-dialog-title"></h2></div>
+      <form method="dialog"><button class="dialog-close" autofocus>Close</button></form>
+    </div>
+    <div class="dialog-body" id="task-dialog-body"></div>
+  </dialog>
+  <script>
+    const weekSections = [...document.querySelectorAll('.week-section')];
+    function parseProgramWeek(text) {
+      const value = text.trim();
+      if (!/^[1-8]$/.test(value)) throw new Error('Expected a whole number from 1 to 8.');
+      return Number(value);
+    }
+    function applyProgramWeek(currentWeek) {
+      weekSections.forEach((section, index) => {
+        const locked = index + 1 > currentWeek;
+        section.classList.toggle('is-locked', locked);
+        const grid = section.querySelector('.resource-grid');
+        grid.inert = locked;
+        grid.setAttribute('aria-disabled', String(locked));
+        let label = section.querySelector('.week-availability');
+        if (!label) {
+          label = document.createElement('span');
+          label.className = 'week-availability';
+          section.querySelector('.week-heading').append(label);
+        }
+        label.textContent = locked ? 'Not available yet' : 'Available';
+      });
+    }
+    // Keep future weeks inactive until a valid setting has been read.
+    applyProgramWeek(1);
+    async function loadProgramWeek() {
+      if (location.protocol === 'file:') {
+        return;
+      }
+      try {
+        const response = await fetch('weekoftheprogram.txt', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Unable to read program week.');
+        applyProgramWeek(parseProgramWeek(await response.text()));
+      } catch (error) {
+        applyProgramWeek(1);
+        console.warn('Could not load weekoftheprogram.txt; keeping Week 1 available.', error);
+      }
+    }
+    loadProgramWeek();
+  </script>
+  <script>
+    const tasks = [
+  {
+    "day": 4,
+    "title": "Ranger Mindset Reflection",
+    "theme": "Mindset",
+    "summary": "Translate ownership, assertiveness, and composure into observable behavior.",
+    "scenario": "Think of a difficult customer case where the customer is under pressure and the cause is still uncertain.",
+    "steps": [
+      "Describe one concrete behavior that demonstrates ownership. Include what you would say or do to keep the investigation and customer updates moving.",
+      "Describe one concrete behavior that demonstrates assertiveness. Show how you would challenge an unsupported assumption without creating conflict.",
+      "Describe one concrete behavior that demonstrates composure and performance under pressure. Explain how you would organize the impact, known facts, unknowns, and next actions."
+    ],
+    "deliverable": "Three behaviors, each with a realistic example of what you would say or do.",
+    "check": "Use observable actions rather than abstract statements such as “be proactive.”",
+    "example": "Ownership: “I will update the customer with what we know, what we are validating, and when they can expect the next update, even while we wait for Engineering.”"
+  },
+  {
+    "day": 9,
+    "title": "Scoping in Action",
+    "guideUrl": "https://dev.azure.com/Supportability/AzureNetworking/_wiki/wikis/Wiki/2647940/Scoping-in-action",
+    "guideTitle": "Scoping in action · Azure Networking wiki",
+    "theme": "Structure ambiguity",
+    "summary": "Turn an ambiguous customer report into a well-defined investigation.",
+    "scenario": "A customer reports intermittent packet loss affecting a critical application. They believe Azure Networking is the cause, but the evidence is incomplete. Several teams are involved and the customer wants immediate escalation.",
+    "steps": [
+      "Read the linked Scoping in action guide in the Azure Networking wiki before starting. Use it as the reference for this exercise.",
+      "Write a one-sentence problem statement.",
+      "Describe the actual customer impact, identifying what is affected and any impact details that still need confirmation.",
+      "Separate known facts from assumptions.",
+      "Define what is in scope and out of scope for this investigation.",
+      "Write the three questions you would ask next.",
+      "Choose the immediate next action and explain how it will reduce uncertainty."
+    ],
+    "deliverable": "A scoping note covering the problem statement, impact, facts versus assumptions, scope, three questions, and immediate next action.",
+    "check": "Create structure and stay calm under pressure. You are not expected to solve the technical problem."
+  },
+  {
+    "day": 14,
+    "title": "Building a Boundary Phrase Library",
+    "theme": "Set boundaries",
+    "summary": "Build reusable language for firm, professional conversations under pressure.",
+    "scenario": "Prepare phrases you can use when a customer, account manager, manager, or technical team is applying pressure.",
+    "steps": [
+      "Write one phrase for refusing to speculate without evidence.",
+      "Write one phrase for pushing back on an unrealistic timeline.",
+      "Write one phrase for redirecting an unproductive conversation.",
+      "Write one phrase for declining an out-of-scope request.",
+      "Write one phrase for asking a customer to take an action they are resisting.",
+      "Write one phrase for disagreeing with another technical team without creating conflict.",
+      "Label the three parts of every phrase: Acknowledge → Boundary → Next action."
+    ],
+    "deliverable": "A personal library of six phrases, each with an acknowledgment, a clear boundary, and a constructive next action.",
+    "check": "Recognize the other person’s concern, hold the boundary, and offer a practical way forward.",
+    "example": "Acknowledge: “I understand the urgency.” Boundary: “I cannot confirm that Azure caused the issue without evidence.” Next action: “What I can do is validate X and Y in the next 30 minutes.”"
+  },
+  {
+    "day": 19,
+    "title": "Turn Feedback into a Working Habit",
+    "theme": "Improve your working practices",
+    "summary": "Reflect on feedback you have received or a recurring personal weakness, then turn it into one concrete working habit.",
+    "scenario": "Think back to feedback you have received from a colleague, mentor, manager, or customer, or choose a well-known personal weakness that repeatedly affects your support work. Recall a specific case or situation where it appeared and how it affected your work, the customer, or your teammates. Use your own experience as the starting point. Examples include asking for help too late, losing track of customer updates, struggling to prioritize, or taking on too much work yourself.",
+    "steps": [
+      "Reflect and choose: Identify one recurring behavior from previous feedback or a personal weakness you already recognize. Briefly describe a real situation where it appeared, what you did, and its impact. Be specific and focus on behavior you can change: “I asked for help only after spending hours without progress” rather than “I am bad at time management.”",
+      "Create a trigger-and-action rule: Based on that reflection, define what will prompt you to act differently and what you will do. Link your change to the week’s Time Management, Growth Mindset, or Delegation Strategies content. Choose a rule you can realistically apply in your next suitable case.",
+      "Check the improvement: Explain what observable evidence you will review after that case to judge whether the change helped. Compare it with the pattern you identified, and decide what you would adjust if the habit did not help."
+    ],
+    "deliverable": "One short personal improvement plan: the previous feedback or recurring weakness you chose, a specific past situation and its impact, your trigger-and-action rule, and how you will check whether it helped. No simulation or incident report is required.",
+    "check": "Is your plan grounded in feedback you actually received or a recurring weakness you recognize in your own work? Does your reflection connect a specific behavior to its impact without turning it into a fixed judgment about yourself? Include a realistic trigger and action, a connection to the week’s training, and observable evidence to review. Apply Growth Mindset and Time Management, drawing on Delegation Strategies when involving others. Day 20’s negotiation content is not a prerequisite.",
+    "example": "Behavior: I continue investigating alone even when I am no longer making progress. My rule: Before starting an investigation step, I will define the question it should answer and set a review checkpoint. At that checkpoint, if I have no new evidence, I will reassess the approach and request targeted help. My help request will explain what I am trying to establish, what I have checked, and the specific contribution I need. My check: After the case, I will review whether I recognized the blocker earlier and kept my customer-update commitments."
+  },
+  {
+    "day": 23,
+    "title": "Escalation Update Drill",
+    "theme": "Deliver concise operational updates",
+    "summary": "Deliver a decision-oriented escalation update in two minutes or about 150 words.",
+    "scenario": "Practice case: intermittent production failures affect approximately 25% of customer transactions. Backend instances are healthy; failures correlate with gateway traffic, but the origin is unproven. Support is analyzing a network capture. The Product Group is reviewing gateway diagnostics, and validation of diagnostic event X is pending. The next customer update is at 14:30 UTC.",
+    "steps": [
+      "Prepare an update using: Impact → Current status → Known facts → Unknowns → Actions in progress → Owners → Risks/blockers → Explicit ask → Next update.",
+      "Distinguish confirmed observations from hypotheses about the gateway or downstream networking.",
+      "Make ownership explicit and request Product Group confirmation of whether the diagnostic pattern matches known platform behavior.",
+      "Deliver the update aloud in no more than two minutes, or write approximately 150 words.",
+      "Review and tighten the update for clarity, precision, ownership, and actionability."
+    ],
+    "deliverable": "One spoken update of no more than two minutes, or a written update of approximately 150 words, covering all nine elements.",
+    "check": "Can someone understand the situation immediately, distinguish facts from hypotheses, see who owns each action, and identify the ask and next update?"
+  },
+  {
+    "day": 27,
+    "title": "Crisis Leadership Review",
+    "theme": "Lead the situation",
+    "summary": "Practice prioritization and judgment with incomplete information and competing demands.",
+    "scenario": "A customer has a Sev A outage. Three engineering teams are investigating different hypotheses. The customer wants an RCA immediately. One senior engineer wants to restart a component, which could destroy useful evidence. Another team wants 30 more minutes of diagnostics. Management is asking for status every 10 minutes.",
+    "steps": [
+      "Choose the three most important decisions right now and explain your priorities.",
+      "State what you would personally own.",
+      "State what you would delegate and to whom.",
+      "Identify information you would deliberately ignore for now and explain why.",
+      "Draft what you would communicate to the customer in the next five minutes.",
+      "Identify the biggest risk if the team continues on its current path, including the tradeoff between restoring service and preserving evidence."
+    ],
+    "deliverable": "A short decision brief answering all six prompts, including your immediate customer message.",
+    "check": "There is no single perfect answer. Justify your priorities, ownership, delegation, and tradeoffs under pressure."
+  },
+  {
+    "day": 31,
+    "title": "Time Attack Scenario",
+    "summary": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "scenario": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "steps": [
+      "Review evaluation criteria with your mentor: scoping, customer control, technical reasoning, communication, boundaries, ownership, composure, and escalation judgment.",
+      "Complete your evaluated, mentor-selected 30-minute scenario during the four Time Attack days. Scope the issue, validate assumptions, and explain your recommended next actions. After your evaluation, use the remaining sessions for free practice.",
+      "Record your evaluation scorecard and one improvement to apply. Afterward, practice freely with additional scenarios and capture useful learning notes."
+    ],
+    "deliverable": "One evaluation scorecard per candidate, debrief notes, and any additional free practice notes.",
+    "check": "Support your reasoning with evidence and make ownership and next steps clear."
+  },
+  {
+    "day": 32,
+    "title": "Time Attack Scenario",
+    "summary": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "scenario": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "steps": [
+      "Review evaluation criteria with your mentor: scoping, customer control, technical reasoning, communication, boundaries, ownership, composure, and escalation judgment.",
+      "Complete your evaluated, mentor-selected 30-minute scenario during the four Time Attack days. Scope the issue, validate assumptions, and explain your recommended next actions. After your evaluation, use the remaining sessions for free practice.",
+      "Record your evaluation scorecard and one improvement to apply. Afterward, practice freely with additional scenarios and capture useful learning notes."
+    ],
+    "deliverable": "One evaluation scorecard per candidate, debrief notes, and any additional free practice notes.",
+    "check": "Support your reasoning with evidence and make ownership and next steps clear."
+  },
+  {
+    "day": 33,
+    "title": "Time Attack Scenario",
+    "summary": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "scenario": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "steps": [
+      "Review evaluation criteria with your mentor: scoping, customer control, technical reasoning, communication, boundaries, ownership, composure, and escalation judgment.",
+      "Complete your evaluated, mentor-selected 30-minute scenario during the four Time Attack days. Scope the issue, validate assumptions, and explain your recommended next actions. After your evaluation, use the remaining sessions for free practice.",
+      "Record your evaluation scorecard and one improvement to apply. Afterward, practice freely with additional scenarios and capture useful learning notes."
+    ],
+    "deliverable": "One evaluation scorecard per candidate, debrief notes, and any additional free practice notes.",
+    "check": "Support your reasoning with evidence and make ownership and next steps clear."
+  },
+  {
+    "day": 34,
+    "title": "Time Attack Scenario",
+    "summary": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "scenario": "Each candidate completes one evaluated 30-minute Time Attack scenario, then can conduct free practice sessions afterward.",
+    "steps": [
+      "Review evaluation criteria with your mentor: scoping, customer control, technical reasoning, communication, boundaries, ownership, composure, and escalation judgment.",
+      "Complete your evaluated, mentor-selected 30-minute scenario during the four Time Attack days. Scope the issue, validate assumptions, and explain your recommended next actions. After your evaluation, use the remaining sessions for free practice.",
+      "Record your evaluation scorecard and one improvement to apply. Afterward, practice freely with additional scenarios and capture useful learning notes."
+    ],
+    "deliverable": "One evaluation scorecard per candidate, debrief notes, and any additional free practice notes.",
+    "check": "Support your reasoning with evidence and make ownership and next steps clear."
+  },
+  {
+    "day": 35,
+    "title": "Time Attack Reflection",
+    "summary": "Reflect on your evaluated Time Attack scenario and any free practice sessions, then prepare goals for Reverse Shadowing.",
+    "scenario": "Reflect on your evaluated Time Attack scenario and any free practice sessions, then prepare goals for Reverse Shadowing.",
+    "steps": [
+      "Review your evaluation scorecard and any free practice notes to identify strengths and gaps.",
+      "Describe how pressure affected your decisions and communication, using specific examples.",
+      "Agree two or three observable improvement goals with your mentor for Reverse Shadowing."
+    ],
+    "deliverable": "A short reflection and two or three improvement goals.",
+    "check": "Ground each goal in feedback and define observable improvement."
+  },
+  {
+    "day": 36,
+    "title": "Reverse Shadowing Session",
+    "summary": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "scenario": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "steps": [
+      "Drive the troubleshooting conversation using structured questions and clear scoping.",
+      "Apply the goals from your Time Attack reflection while your mentor observes.",
+      "Debrief with your mentor and capture strengths, gaps, and one improvement."
+    ],
+    "deliverable": "Mentor feedback and readiness evidence from the candidate-led session.",
+    "check": "The candidate leads, demonstrating clear scoping, communication, and ownership."
+  },
+  {
+    "day": 37,
+    "title": "Reverse Shadowing Session",
+    "summary": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "scenario": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "steps": [
+      "Own customer updates, separate known facts from unknowns, and make clear commitments.",
+      "Apply the goals from your Time Attack reflection while your mentor observes.",
+      "Debrief with your mentor and capture strengths, gaps, and one improvement."
+    ],
+    "deliverable": "Mentor feedback and readiness evidence from the candidate-led session.",
+    "check": "The candidate leads, demonstrating clear scoping, communication, and ownership."
+  },
+  {
+    "day": 38,
+    "title": "Reverse Shadowing Session",
+    "summary": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "scenario": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "steps": [
+      "Lead with minimal mentor intervention, recover from ambiguity, and manage escalation decisions.",
+      "Apply the goals from your Time Attack reflection while your mentor observes.",
+      "Debrief with your mentor and capture strengths, gaps, and one improvement."
+    ],
+    "deliverable": "Mentor feedback and readiness evidence from the candidate-led session.",
+    "check": "The candidate leads, demonstrating clear scoping, communication, and ownership."
+  },
+  {
+    "day": 39,
+    "title": "Reverse Shadowing Session",
+    "summary": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "scenario": "Candidates lead a support session while a mentor observes and provides feedback.",
+    "steps": [
+      "Lead the end-to-end support motion from intake through next-step commitment.",
+      "Apply the goals from your Time Attack reflection while your mentor observes.",
+      "Debrief with your mentor and capture strengths, gaps, and one improvement."
+    ],
+    "deliverable": "Mentor feedback and readiness evidence from the candidate-led session.",
+    "check": "The candidate leads, demonstrating clear scoping, communication, and ownership."
+  },
+  {
+    "day": 40,
+    "title": "Graduation",
+    "summary": "Close the program with a readiness outcome and continuing development commitments.",
+    "scenario": "Close the program with a readiness outcome and continuing development commitments.",
+    "steps": [
+      "Review Time Attack scorecards, reflection, and Reverse Shadowing feedback with your mentor.",
+      "Confirm the final readiness outcome and capture strengths and development areas.",
+      "Document commitments for future high-severity incidents and celebrate completion."
+    ],
+    "deliverable": "A confirmed graduation outcome and final operating commitments.",
+    "check": "Support the outcome and development commitments with program evidence."
+  }
+];
+    const dialog = document.getElementById('task-dialog');
+    const body = document.getElementById('task-dialog-body');
+    function addSection(title, text, className) {
+      const section = document.createElement('section');
+      if (className) section.className = className;
+      const heading = document.createElement('h3');
+      heading.textContent = title;
+      const paragraph = document.createElement('p');
+      paragraph.textContent = text;
+      section.append(heading, paragraph);
+      body.append(section);
+    }
+    document.querySelectorAll('[data-task]').forEach(button => {
+      button.addEventListener('click', () => {
+        const index = Number(button.dataset.task);
+        const task = tasks[index];
+        document.getElementById('task-dialog-day').textContent = 'Week ' + Math.ceil(task.day / 5) + ' · Day ' + task.day;
+        document.getElementById('task-dialog-title').textContent = task.title;
+        body.replaceChildren();
+        if (task.guideUrl) {
+          const guide = document.createElement('a');
+          guide.className = 'button';
+          guide.href = task.guideUrl;
+          guide.target = '_blank';
+          guide.rel = 'noopener';
+          guide.textContent = task.guideTitle;
+          body.append(guide);
+        }
+        addSection('Scenario', task.scenario);
+        const steps = document.createElement('section');
+        const heading = document.createElement('h3');
+        heading.textContent = 'Required steps';
+        const list = document.createElement('ol');
+        task.steps.forEach(text => {
+          const item = document.createElement('li');
+          item.textContent = text;
+          list.append(item);
+        });
+        steps.append(heading, list);
+        body.append(steps);
+        addSection('Expected deliverable', task.deliverable, 'task-deliverable');
+        if (task.example) addSection('Example', task.example);
+        addSection('Completion check', task.check);
+        dialog.showModal();
+        dialog.scrollTop = 0;
+      });
+    });
+    dialog.addEventListener('click', event => {
+      const bounds = dialog.getBoundingClientRect();
+      if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+    });
+  </script>
 </body>
 </html>

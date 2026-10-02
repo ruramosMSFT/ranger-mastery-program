@@ -396,6 +396,7 @@
     .week-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; margin-bottom: 12px; }
     .week-heading p { color: var(--muted); }
     .week-section.is-locked .resource-grid { filter: grayscale(1) blur(10px); opacity: .45; pointer-events: none; user-select: none; }
+    .resource.is-locked { filter: grayscale(1) blur(8px); opacity: .45; pointer-events: none; user-select: none; }
     .week-section.is-locked .week-heading { color: var(--muted); }
     .week-availability { padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; font-size: .8rem; color: var(--muted); }
     .weekly-task { background: #f3ecfc; border-color: #cdb6e6; }
@@ -426,12 +427,12 @@
       </a>
     </nav>
     <div class="hero-inner">
-      <span class="eyebrow">Resources</span>
+      <span class="eyebrow">Program Materials</span>
       <h1>Program Materials</h1>
       <p class="lead">Explore each week’s materials and put them into practice with the selected weekly task.</p>
       <div class="hero-actions">
-        <a class="button primary" href="index.html">Return to Home</a>
-        <a class="button" href="rangers_program_proposal.html">Open Program Model</a>
+        <a class="button primary" href="index.html">Home</a>
+        <a class="button" href="program_model.html">Program Model</a>
       </div>
     </div>
   </header>
@@ -703,7 +704,7 @@
     </section>
 
     <section class="week-section" aria-labelledby="week-7">
-      <div class="week-heading"><h2 id="week-7">Week 7</h2><p>Time Attack Scenarios</p></div>
+      <div class="week-heading"><h2 id="week-7">Week 7</h2><p>Closure: Time Attacks, Reverse Shadowing, and Graduation</p></div>
       <div class="resource-grid">
       <article class="resource weekly-task">
         <span class="resource-step">Day 31 · Activity</span>
@@ -735,12 +736,6 @@
         <p>Reflect on your evaluated Time Attack scenario and any free practice sessions, then prepare goals for Reverse Shadowing.</p>
         <button class="button" type="button" data-task="10" aria-haspopup="dialog" aria-controls="task-dialog" aria-label="View steps: Time Attack Reflection">View task steps <span aria-hidden="true">↗</span></button>
       </article>
-      </div>
-    </section>
-
-    <section class="week-section" aria-labelledby="week-8">
-      <div class="week-heading"><h2 id="week-8">Week 8</h2><p>Reverse Shadowing and Graduation</p></div>
-      <div class="resource-grid">
       <article class="resource weekly-task">
         <span class="resource-step">Day 36 · Activity</span>
         <h3><button class="task-title" type="button" data-task="11" aria-haspopup="dialog" aria-controls="task-dialog">Reverse Shadowing Session</button></h3>
@@ -795,30 +790,48 @@
   </dialog>
   <script>
     const weekSections = [...document.querySelectorAll('.week-section')];
+    // Use 0 to lock all, 1-7 for complete weeks, or week.day for a partial current week.
     function parseProgramWeek(text) {
       const value = text.trim();
-      if (!/^[1-8]$/.test(value)) throw new Error('Expected a whole number from 1 to 8.');
-      return Number(value);
+      if (/^[0-7]$/.test(value)) return { week: Number(value), day: null };
+      const partialWeek = value.match(/^([1-7])\.([1-9]\d*)$/);
+      if (partialWeek) return { week: Number(partialWeek[1]), day: Number(partialWeek[2]) };
+      throw new Error('Expected 0 to 7, or a partial week in week.day format.');
     }
-    function applyProgramWeek(currentWeek) {
+    function applyProgramWeek({ week: currentWeek, day: currentDay }) {
       weekSections.forEach((section, index) => {
-        const locked = index + 1 > currentWeek;
+        const weekNumber = index + 1;
+        const locked = weekNumber > currentWeek;
         section.classList.toggle('is-locked', locked);
         const grid = section.querySelector('.resource-grid');
         grid.inert = locked;
         grid.setAttribute('aria-disabled', String(locked));
+        [...grid.querySelectorAll('.resource')].forEach((resource, resourceIndex) => {
+          const partiallyLocked = !locked && weekNumber === currentWeek && currentDay !== null && resourceIndex + 1 > currentDay;
+          resource.classList.toggle('is-locked', partiallyLocked);
+          resource.inert = locked || partiallyLocked;
+          resource.setAttribute('aria-disabled', String(locked || partiallyLocked));
+        });
         let label = section.querySelector('.week-availability');
         if (!label) {
           label = document.createElement('span');
           label.className = 'week-availability';
           section.querySelector('.week-heading').append(label);
         }
-        label.textContent = locked ? 'Not available yet' : 'Available';
+        label.textContent = locked
+          ? 'Not available yet'
+          : weekNumber === currentWeek && currentDay !== null
+            ? `Day ${currentDay} available`
+            : 'Available';
       });
     }
-    // Keep future weeks inactive until a valid setting has been read.
-    applyProgramWeek(1);
+    // Keep all weeks inactive until a valid setting has been read.
+    applyProgramWeek({ week: 0, day: null });
     async function loadProgramWeek() {
+      if (location.hash === '#admin') {
+        applyProgramWeek({ week: 7, day: null });
+        return;
+      }
       if (location.protocol === 'file:') {
         return;
       }
@@ -827,11 +840,12 @@
         if (!response.ok) throw new Error('Unable to read program week.');
         applyProgramWeek(parseProgramWeek(await response.text()));
       } catch (error) {
-        applyProgramWeek(1);
-        console.warn('Could not load weekoftheprogram.txt; keeping Week 1 available.', error);
+        applyProgramWeek({ week: 0, day: null });
+        console.warn('Could not load weekoftheprogram.txt; keeping all weeks unavailable.', error);
       }
     }
     loadProgramWeek();
+    window.addEventListener('hashchange', loadProgramWeek);
   </script>
   <script>
     const tasks = [
@@ -1084,7 +1098,7 @@
       button.addEventListener('click', () => {
         const index = Number(button.dataset.task);
         const task = tasks[index];
-        document.getElementById('task-dialog-day').textContent = 'Week ' + Math.ceil(task.day / 5) + ' · Day ' + task.day;
+        document.getElementById('task-dialog-day').textContent = 'Week ' + Math.min(7, Math.ceil(task.day / 5)) + ' · Day ' + task.day;
         document.getElementById('task-dialog-title').textContent = task.title;
         body.replaceChildren();
         if (task.guideUrl) {

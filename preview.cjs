@@ -1,5 +1,5 @@
 // Run with: node preview.cjs
-// Open http://127.0.0.1:4173/resources.html (not the file:// version).
+// Open http://127.0.0.1:4173/program_materials.html (not the file:// version).
 const http = require('node:http');
 const fs = require('node:fs/promises');
 const path = require('node:path');
@@ -35,6 +35,6 @@ http.createServer(async (request, response) => {
     response.writeHead(404).end();
   }
 }).listen(4173, '127.0.0.1', () => {
-  console.log('Program Materials preview: http://127.0.0.1:4173/resources.html');
+  console.log('Program Materials preview: http://127.0.0.1:4173/program_materials.html');
   console.log('Edit weekoftheprogram.txt and refresh the page to apply changes.');
 });

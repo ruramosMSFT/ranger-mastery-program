@@ -2,7 +2,7 @@
 
 Production draft for an introductory video and a weekly video series. Audience: candidates joining the program, with the overview also suitable for managers and mentors. Voice: direct, encouraging, and practical. Read the narration aloud; bracketed cues are production directions, not spoken text. Timings are approximate and allow for pauses and visual transitions.
 
-The weekly sequence follows the current `resources.html`: Weeks 1–6 learning and activities; Week 7 Time Attacks and reflection; Week 8 Reverse Shadowing and Graduation. Week 0 is included as a separate onboarding introduction. Earlier timelines elsewhere in the repository differ; this script follows the latest agreed schedule. Examples below are illustrative practice situations.
+The weekly sequence follows the current `program_materials.html`: Weeks 1–6 provide the core learning and activities, while Week 7 closes the program with Time Attacks, reflection, Reverse Shadowing, and Graduation. Week 0 is included as a separate onboarding introduction. Examples below are illustrative practice situations.
 
 Use the program logo, simple captions, and recordings of the relevant resources page. Keep activity title cards purple, matching the website. Each script can be recorded separately or used as a chapter in a longer video.
 
@@ -20,7 +20,7 @@ What do you do next?
 
 How you respond in that moment shapes the investigation, the team's focus, and the customer's confidence.
 
-Welcome to the Ranger Mastery Program: eight weeks of learning, practice, and feedback designed to help you lead through high-pressure customer situations.
+Welcome to the Ranger Mastery Program: six weeks of learning, practice, and feedback designed to help you lead through high-pressure customer situations.
 
 **Purpose**
 
@@ -40,7 +40,7 @@ Technical knowledge supports all of this. Here, we practice how you use that kno
 
 **The journey**
 
-[Show an eight-week timeline. Highlight each week as it is introduced.]
+[Show the six core learning weeks, with Week 0 as the introduction and Week 7 as the closure. Highlight each phase as it is introduced.]
 
 We begin with your baseline and expectations during onboarding. You identify your strengths, your development priorities, and what you want to improve.
 
@@ -56,9 +56,7 @@ Week 5 is about concise operational updates. You practice helping people quickly
 
 Week 6 brings these skills into crisis leadership: prioritizing, delegating, and explaining your judgment when demands compete.
 
-Week 7 is dedicated to Time Attacks. Across four days, each candidate completes one evaluated scenario and can practice freely afterward. The fifth day is for reflection and setting goals for the final week.
-
-In Week 8, you lead during Reverse Shadowing while a mentor observes and gives feedback. The first four days focus on candidate-led sessions. The final day is Graduation: reviewing your readiness, recognizing your progress, and agreeing how you will keep developing.
+Week 7 closes the program. It begins with Time Attacks and reflection, then moves into Reverse Shadowing while a mentor observes and gives feedback. Graduation reviews your readiness, recognizes your progress, and confirms how you will keep developing.
 
 **How to participate**
 
@@ -84,13 +82,13 @@ Bring that answer with you. Let's get started.
 
 **Estimated duration:** 1–2 minutes
 
-[Presenter beside the self-assessment page.]
+[Presenter beside the Program Assessment page.]
 
 Before we begin Week 1, take a moment to look at how you work today.
 
 Think about a recent difficult case. What helped you stay effective? Where did you lose time, confidence, or clarity? What feedback have you heard more than once?
 
-Week 0 gives you a starting point for the program. Complete the self-assessment honestly. Its purpose is to establish a baseline for growth.
+Week 0 gives you a starting point for the program. Complete the Engineer Assessment honestly, while your manager completes the Manager Assessment. Together, they establish a baseline for growth.
 
 [On screen: Strengths → Development priorities → Personal intention.]
 
@@ -298,9 +296,11 @@ When you finish, check that every delegated action has an owner and that your cu
 
 You will bring this same discipline into the Time Attack sessions next week.
 
-## Week 7 — Time Attacks and reflection
+## Week 7 — Closure
 
-**Estimated duration:** 2–3 minutes
+**Estimated duration:** 4–6 minutes
+
+**Time Attacks and reflection**
 
 [On screen: Week 7. Four purple activity cards labeled “Time Attack Scenario,” followed by “Time Attack Reflection.”]
 
@@ -326,13 +326,11 @@ The fifth day is for reflection. Review your evaluated scenario and any practice
 
 Agree two or three observable improvement goals with your mentor for Reverse Shadowing.
 
-Your outputs are one evaluation scorecard, debrief notes, any additional practice notes, and a short reflection with goals for the final week.
+Your outputs are one evaluation scorecard, debrief notes, any additional practice notes, and a short reflection with goals for Reverse Shadowing.
 
 Open the Time Attack activity, review the criteria, and use the feedback to guide your practice.
 
-## Week 8 — Reverse Shadowing and Graduation
-
-**Estimated duration:** 2–3 minutes
+**Reverse Shadowing and Graduation**
 
 [On screen: Four purple “Reverse Shadowing Session” cards, followed by “Graduation.”]
 
@@ -368,8 +366,8 @@ Thank you for the work you have put into the Ranger Mastery Program.
 
 ## Source and editorial notes
 
-- `resources.html`: authoritative sequence for these scripts; weekly materials, task instructions, deliverables, and the latest Week 7–8 changes.
+- `program_materials.html`: authoritative sequence for these scripts; weekly materials, task instructions, deliverables, and the Week 7 closure activities.
 - `index.html`: program purpose, hybrid learning model, and four pillars. Its older timeline was not used to determine weekly scheduling.
-- `rangers_week0_overview.md` and `faq.html`: baseline, participant expectations, working agreements, and the developmental purpose of self-assessment.
+- `rangers_week0_overview.md` and `faq.html`: baseline, participant expectations, working agreements, and the developmental purpose of the Program Assessment.
 - No fixed cohort size or weekly time commitment is stated in the narration because repository documents differ or require cohort-specific confirmation.
 - Video durations are production estimates, not program requirements. Visuals are suggestions. The scripts summarize the curriculum rather than claim to reproduce the contents of the linked courses or books.

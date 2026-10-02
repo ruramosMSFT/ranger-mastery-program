@@ -1,13 +1,13 @@
 # Rangers Program – Week 0 Overview
 
-**Selection, Baseline, Expectations**
+**Introduction, Baseline, Expectations**
 
 Week 0 happens 2–3 weeks before Week 1. Its job is to select the right cohort, capture baselines, and align expectations so the program can run smoothly and have impact.
 
 ## 1. Week 0 Goals
 
 - Select 6–8 Rangers against clear, behavior-based criteria.
-- Capture baselines: self-assessment and manager input.
+- Capture baselines through the Engineer and Manager assessments.
 - Align expectations on time commitment, ways of working, and psychological safety.
 - Secure manager support so participants can fully engage in the program.
 
@@ -34,11 +34,11 @@ When choosing 6–8 participants, aim for:
 
 ## 3. Baseline – Instruments and Data
 
-### 3.1 The Self-assessment (participant)
+### 3.1 Program Assessment
 
-Each selected participant completes the “Rangers Pre-Program Self-Assessment” (12 rating items + 3 open questions).
+Each selected participant completes the Engineer Assessment, and their manager completes the Manager Assessment.
 
-Send it with a short note: this is for growth, not performance rating.
+Send both with a short note: these assessments are for growth, not performance rating.
 
 Ask them to bring:
 - Their 1–2 highest-scored items (strengths).
@@ -50,7 +50,7 @@ Ask them to bring:
 ### 4.1 Objectives
 
 - Create a shared understanding of what a Ranger is and why this program exists.
-- Increase self-awareness using the self-assessment results.
+- Increase self-awareness by comparing the Engineer and Manager assessment results.
 - Clarify logistics and prepare for Week 1.
 
 ### 4.2 Suggested agenda
@@ -69,7 +69,7 @@ Total time: 60–90 minutes (remote-friendly).
    - Walk through the four pillars: perform under pressure, Extreme Ownership, executive communication, personal operating system.  
    - Connect to the kind of crisis leader you want Rangers to be.
 
-4. Self-assessment reflection (20–25 min)  
+4. Program Assessment reflection (20–25 min)
       - Plenary: Providae each individual space to elaborate on expectations
 
 5. Cohort working agreement (15–20 min)  
@@ -88,8 +88,8 @@ Total time: 60–90 minutes (remote-friendly).
 
 By the end of Week 0 you should have:
 - Final cohort list with a short rationale for each participant.
-- Completed self-assessments stored for comparison at Week 7.
-- Each Ranger’s initial focus areas (based on their lowest self-assessment items).
+- Completed Engineer and Manager assessments stored for comparison at the Week 7 closure.
+- Each Ranger’s initial focus areas based on the Program Assessment results.
 - A one-page cohort working agreement summarising norms and expectations.
 
-These give you a clean starting point for the full 8-week Rangers program.
+These give you a clean starting point for the six-week Ranger Mastery Program.

@@ -5,6 +5,7 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 
 const types = {
+  '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.pdf': 'application/pdf',

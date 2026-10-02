@@ -58,6 +58,7 @@
     }
 
     .topbar {
+      width: min(1040px, calc(100% - 32px));
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -331,22 +332,6 @@
     }
 
     @media (max-width: 940px) {
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav,
-      .hero-actions {
-        justify-content: flex-start;
-        width: 100%;
-      }
-
-      .nav a,
-      .button {
-        flex: 1 1 180px;
-      }
-
       .resource-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -357,16 +342,30 @@
       }
     }
 
+    @media (max-width: 760px) {
+      .topbar {
+        width: min(100% - 20px, 1040px);
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar .hero-actions {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .topbar .button {
+        flex: 1 1 100%;
+        width: 100%;
+        white-space: normal;
+      }
+    }
+
     @media (max-width: 640px) {
       .topbar,
       .hero-inner,
       main {
         width: min(100% - 20px, 1180px);
-      }
-
-      .brand img {
-        width: 40px;
-        height: 40px;
       }
 
       .nav a,
@@ -417,23 +416,23 @@
     .dialog-body li + li { margin-top: 10px; }
     .task-deliverable { padding: 16px; border-radius: 8px; background: #f3ecfc; }
   </style>
+  <link rel="stylesheet" href="site-navigation.css">
 </head>
-<body>
+<body class="has-site-home-button">
   <header class="site-header">
     <nav class="topbar" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="Go to home page">
         <img src="logo.png" alt="Ranger Mastery Program logo" width="48" height="48">
         <span>Ranger Mastery Program</span>
       </a>
+      <div class="hero-actions">
+        <a class="button primary site-home-button" href="index.html" aria-label="Return to home page">Home</a>
+      </div>
     </nav>
     <div class="hero-inner">
       <span class="eyebrow">Program Materials</span>
       <h1>Program Materials</h1>
       <p class="lead">Explore each week’s materials and put them into practice with the selected weekly task.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="index.html">Home</a>
-        <a class="button" href="program_model.html">Program Model</a>
-      </div>
     </div>
   </header>
 

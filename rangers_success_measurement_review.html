@@ -57,10 +57,38 @@
       background: linear-gradient(135deg, #ffffff 0%, #f7fafc 56%, #e9f3f1 100%);
     }
 
+    .topbar,
     .hero-inner,
     main {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
+    }
+
+    .topbar {
+      width: min(1040px, calc(100% - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: inherit;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: #ffffff;
+      object-fit: contain;
     }
 
     .hero-inner {
@@ -285,10 +313,16 @@
       font-size: 0.92rem;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 760px) {
+      .topbar,
       .hero-inner,
       main {
         width: min(100% - 20px, 1120px);
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .hero-inner {
@@ -330,16 +364,21 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="site-navigation.css">
 </head>
-<body>
+<body class="has-site-home-button">
   <header class="hero">
+    <nav class="topbar" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Go to home page">
+        <img src="logo.png" alt="Ranger Mastery Program logo" width="48" height="48">
+        <span>Ranger Mastery Program</span>
+      </a>
+      <a class="button site-home-button" href="index.html" aria-label="Return to home page">Home</a>
+    </nav>
     <div class="hero-inner">
       <span class="eyebrow">Success Measurement</span>
       <h1>Ranger Mastery Program Success Measurement</h1>
       <p class="lead">A practical way to check whether the cohort is showing better behaviours in high-severity incidents: calmer execution, clearer communication, stronger ownership, and more consistent operating habits.</p>
-      <div class="hero-actions">
-        <a class="button" href="faq.html">Back to FAQ</a>
-      </div>
     </div>
   </header>
 

@@ -62,7 +62,7 @@
     }
 
     .topbar {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1040px, calc(100% - 32px));
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -502,7 +502,6 @@
           #f7fafc;
       }
 
-      .topbar,
       .section-head {
         align-items: flex-start;
         flex-direction: column;
@@ -513,12 +512,10 @@
         right: 16px;
       }
 
-      .nav,
       .hero-actions {
         width: 100%;
       }
 
-      .nav a,
       .button {
         flex: 1 1 180px;
       }
@@ -526,6 +523,24 @@
       .quick-stats,
       .pillar-grid {
         grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        width: min(100% - 20px, 1040px);
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .nav a {
+        flex: 1 1 100%;
+        width: 100%;
+        white-space: normal;
       }
     }
 
@@ -544,11 +559,6 @@
       .quick-stats,
       main {
         width: min(100% - 20px, 1180px);
-      }
-
-      .brand img {
-        width: 40px;
-        height: 40px;
       }
 
       .copilot-credit {

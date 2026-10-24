@@ -415,6 +415,53 @@
     .dialog-body ol { padding-left: 24px; margin: 0; }
     .dialog-body li + li { margin-top: 10px; }
     .task-deliverable { padding: 16px; border-radius: 8px; background: #f3ecfc; }
+    [hidden] { display: none !important; }
+    .instructor-desk {
+      display: grid;
+      gap: 24px;
+      padding: clamp(16px, 3vw, 28px);
+      border: 1px solid #d5bf93;
+      border-top: 5px solid var(--gold);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fffaf0, #ffffff);
+      box-shadow: var(--shadow);
+    }
+    .instructor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .instructor-status { color: var(--muted); font-size: .9rem; }
+    .instructor-weeks { display: grid; gap: 24px; }
+    .instructor-week { display: grid; gap: 12px; }
+    .instructor-guides {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 14px;
+    }
+    .instructor-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      border: 1px solid #e2d4b8;
+      border-radius: 8px;
+      background: white;
+    }
+    .instructor-card h4 { margin: 0; color: var(--navy); font-size: 1.1rem; }
+    .instructor-card .button { margin-top: auto; }
+    .instructor-guide-link {
+      display: inline-block;
+      width: fit-content;
+      color: #785014;
+      font-size: .85rem;
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+    .instructor-guide-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   </style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
@@ -437,6 +484,19 @@
   </header>
 
   <main>
+    <section class="instructor-desk" id="instructor-desk" aria-labelledby="instructor-title" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Behind the sessions</span>
+        <h2 id="instructor-title">Instructor Desk</h2>
+        <p>Your preparation shelf: open a guide before the session, then use the matching materials below. All program weeks are unlocked in this view.</p>
+      </div>
+      <div class="instructor-toolbar">
+        <p class="instructor-status" id="instructor-status"></p>
+        <a class="button" href="#participant">Return to participant view</a>
+      </div>
+      <div class="instructor-weeks" id="instructor-weeks"></div>
+      <p class="instructor-status">Instructor links are hidden in participant view, not access-protected. New guides will join this shelf as the program grows.</p>
+    </section>
     <section aria-label="Program material order">
       <div class="section-head">
         <span class="eyebrow">Consumption Order</span>
@@ -789,6 +849,61 @@
   </dialog>
   <script>
     const weekSections = [...document.querySelectorAll('.week-section')];
+    // Add future PDFs here; week and day determine grouping and display order.
+    const instructorGuides = [
+      { week: 1, day: 1, title: 'Extreme Ownership', file: 'ranger-mastery-day1-extreme-ownership-instructor-guide.pdf' },
+      { week: 1, day: 2, title: 'Time Management Mindset', file: 'ranger-mastery-day2-time-management-mindset-instructor-guide.pdf' },
+      { week: 1, day: 3, title: 'Being Assertive', file: 'ranger-mastery-day3-being-assertive-instructor-guide.pdf' }
+    ];
+    const instructorDesk = document.getElementById('instructor-desk');
+    const instructorLinks = [];
+    function createGuideLink(guide, text, className) {
+      const link = document.createElement('a');
+      link.href = guide.file;
+      link.textContent = text;
+      link.className = className;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('aria-label', `${text}: ${guide.title} (PDF, opens in a new tab)`);
+      return link;
+    }
+    const instructorWeeks = document.getElementById('instructor-weeks');
+    const guideWeeks = new Map();
+    [...instructorGuides].sort((a, b) => a.week - b.week || a.day - b.day).forEach(guide => {
+      let grid = guideWeeks.get(guide.week);
+      if (!grid) {
+        const section = document.createElement('section');
+        section.className = 'instructor-week';
+        const heading = document.createElement('h3');
+        heading.id = `instructor-week-${guide.week}`;
+        heading.textContent = `Week ${guide.week}`;
+        section.setAttribute('aria-labelledby', heading.id);
+        grid = document.createElement('div');
+        grid.className = 'instructor-guides';
+        section.append(heading, grid);
+        instructorWeeks.append(section);
+        guideWeeks.set(guide.week, grid);
+      }
+      const card = document.createElement('article');
+      card.className = 'instructor-card';
+      const day = document.createElement('span');
+      day.className = 'eyebrow';
+      day.textContent = `Day ${guide.day} / Instructor guide`;
+      const title = document.createElement('h4');
+      title.textContent = guide.title;
+      card.append(day, title, createGuideLink(guide, 'Open guide', 'button'));
+      grid.append(card);
+      const material = document.querySelector(`#week-${guide.week}`)?.closest('.week-section')
+        .querySelector(`.resource-day-${guide.day}`);
+      if (material) {
+        const link = createGuideLink(guide, 'Instructor guide', 'instructor-guide-link');
+        link.hidden = true;
+        material.append(link);
+        instructorLinks.push(link);
+      }
+    });
+    document.getElementById('instructor-status').textContent =
+      `${instructorGuides.length} guides / ${guideWeeks.size} ${guideWeeks.size === 1 ? 'week' : 'weeks'} / PDF library`;
     // Use 0 to lock all, 1-7 for complete weeks, or week.day for a partial current week.
     function parseProgramWeek(text) {
       const value = text.trim();
@@ -826,19 +941,27 @@
     }
     // Keep all weeks inactive until a valid setting has been read.
     applyProgramWeek({ week: 0, day: null });
+    let programWeekRequest = 0;
     async function loadProgramWeek() {
-      if (location.hash === '#admin') {
+      const request = ++programWeekRequest;
+      const instructorMode = location.hash === '#instructor';
+      instructorDesk.hidden = !instructorMode;
+      instructorLinks.forEach(link => { link.hidden = !instructorMode; });
+      if (location.hash === '#admin' || instructorMode) {
         applyProgramWeek({ week: 7, day: null });
         return;
       }
+      applyProgramWeek({ week: 0, day: null });
       if (location.protocol === 'file:') {
         return;
       }
       try {
         const response = await fetch('weekoftheprogram.txt', { cache: 'no-store' });
         if (!response.ok) throw new Error('Unable to read program week.');
-        applyProgramWeek(parseProgramWeek(await response.text()));
+        const setting = parseProgramWeek(await response.text());
+        if (request === programWeekRequest) applyProgramWeek(setting);
       } catch (error) {
+        if (request !== programWeekRequest) return;
         applyProgramWeek({ week: 0, day: null });
         console.warn('Could not load weekoftheprogram.txt; keeping all weeks unavailable.', error);
       }

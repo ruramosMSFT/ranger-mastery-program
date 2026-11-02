@@ -32,7 +32,9 @@ jobs:
             -name "*.txt" -o \
             -name "*.md" \
           \) -exec cp {} site/ \;
+          cp -R instructorguide site/
           test -f site/index.html
+          test -f site/instructorguide/ranger-mastery-day1-extreme-ownership-instructor-guide.pdf
 
       - name: Login to Azure
         uses: azure/login@v2

@@ -30,11 +30,16 @@ Open [Program Materials in instructor mode](program_materials.html#instructor) t
 
 To add a guide:
 
-1. Place the PDF in the website root alongside the existing instructor PDFs.
-2. Add an entry to the `instructorGuides` array in [program_materials.html](program_materials.html) with `week`, `day` (the program-wide day number), `title`, and `file` (the exact PDF filename).
+1. Place the PDF in the `instructorguide/` folder.
+2. Add an entry to the `instructorGuides` array in [program_materials.html](program_materials.html) with `week`, `day` (the program-wide day number), `title`, and `file` (the relative URL, such as `instructorguide/ranger-mastery-day1-extreme-ownership-instructor-guide.pdf`). Use forward slashes and match filename case exactly.
 3. The desk automatically sorts entries, creates week groups, and updates its guide count. A matching `.resource-day-N` card in that week also receives an instructor link when present.
 
 This is hidden-only mode, not restricted access. Instructor PDFs remain publicly accessible by direct URL, and the catalog is visible in the page source. Do not publish confidential documents using this mechanism.
+
+The Azure deployment workflow copies root-level website assets and the complete
+`instructorguide/` folder into its `site/` package, preserving guide URLs.
+Changing a local link alone is not sufficient if its folder is omitted from
+that package. Deploy the updated workflow and files together.
 
 ## Local Preview
 

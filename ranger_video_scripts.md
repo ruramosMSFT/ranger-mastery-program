@@ -150,25 +150,25 @@ Welcome to Week 2: structuring ambiguity.
 
 This week's materials explore performance under pressure, stress responses, analytical thinking, and communicating through disagreement. Together, they support a practical skill: keeping an investigation organized while the answer is still uncertain.
 
-[Purple title card: Day 9 — Scoping in Action.]
+[Purple title card: Day 9 — The Emergency Mind Reflection.]
 
-For the Scoping in Action activity, begin with the linked Azure Networking wiki guide. Then use the practice case to build a clear scoping note.
+For The Emergency Mind Reflection, draw on Day 6 and think of a difficult incident where impact is high, the cause is uncertain, and several teams want immediate answers.
 
-Write a one-sentence problem statement. Describe the actual customer impact, including what you still need to confirm. Separate known facts from assumptions. Define what is in scope and what is outside the investigation.
+Describe one preparation that would help before the incident: clear roles, ready access, or a usable playbook.
 
-Then write the next three questions you would ask and choose an immediate action that will reduce uncertainty.
+Choose one safe next action using what is known. Explain how it reduces impact or uncertainty without skipping required approvals.
 
-[On screen: Problem → Impact → Facts and assumptions → Scope → Questions → Next action.]
+Then describe one specific request for team support and one improvement to capture in a blame-free debrief.
 
-For example, you might ask when the failures started, which traffic paths are affected, and whether successful and failed requests share the same conditions.
+[On screen: Prepare → Next safe action → Team support and learning.]
 
-Explain why your next action is useful. Which question will it answer? How could the result change your direction?
+For example: “Please own customer updates while I validate the next diagnostic step. Let us confirm the next update time.”
 
-The activity asks you to create structure; it does not require a complete technical solution.
+Your deliverable is three short responses, each with a realistic example of what you would say or do.
 
-Before you finish, read your note as if you were a teammate joining the case. Can you understand the problem, see the uncertainty, and identify what happens next?
+Use observable actions, not just “stay calm.” You are not expected to solve the incident.
 
-Open Scoping in Action and build that note.
+Open The Emergency Mind Reflection and write your examples.
 
 ## Week 3 — Set boundaries with clarity
 

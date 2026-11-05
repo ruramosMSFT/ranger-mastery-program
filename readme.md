@@ -16,6 +16,9 @@ Static website for the Ranger Mastery Program.
 
 ## Program Material Visibility
 
+The Program Materials page displays Weeks 1 through 6 only. Week 7 and
+Supplemental material are not displayed, including in admin and instructor previews.
+
 Edit `weekoftheprogram.txt` to control material availability:
 
 - `0` - Lock all weeks.

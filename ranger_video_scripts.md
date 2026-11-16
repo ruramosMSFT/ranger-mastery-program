@@ -226,7 +226,7 @@ For example: “Before I begin an investigation step, I will identify the questi
 
 Finally, decide how you will check whether the habit helped. Did you recognize the blocker sooner? Was your request for help clearer? Did you maintain your customer-update commitments?
 
-Connect your rule to the week's learning about time management, growth mindset, or delegation. You can complete this activity before the Day 20 negotiation material.
+Connect your rule to the week's learning about time management, growth mindset, or delegation.
 
 Your deliverable is one short personal improvement plan: the behavior, a specific example and its impact, your rule, and the evidence you will review.
 

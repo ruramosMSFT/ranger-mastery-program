@@ -1,51 +1,60 @@
-name: Deploy static site to Azure Web App - RangerMasteryProgram
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP app to Azure Web App - RangerMasteryProgram
 
 on:
   push:
     branches:
-      - main
+      - 'main'
   workflow_dispatch:
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     permissions:
-      id-token: write
-      contents: read
+      contents: read #This is required for actions/checkout
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Prepare static site package
-        shell: bash
-        run: |
-          mkdir site
-          find . -maxdepth 1 -type f \( \
-            -name "*.html" -o \
-            -name "*.css" -o \
-            -name "*.pdf" -o \
-            -name "*.png" -o \
-            -name "*.jpg" -o \
-            -name "*.jpeg" -o \
-            -name "*.webp" -o \
-            -name "*.txt" -o \
-            -name "*.md" \
-          \) -exec cp {} site/ \;
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
 
-          cp -R instructorguide site/
-          cp -R time-attacks site/
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
 
-          test -f site/index.html
-          test -f site/instructorguide/ranger-mastery-day1-extreme-ownership-instructor-guide.pdf
-          test -f site/time-attacks/index.html
+      - name: Restore NuGet packages
+        run: nuget restore
 
+      - name: Publish to folder
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: ASP-app
+          path: '/published/**'
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: ASP-app
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B9DF9083881C47CA8C4E5A3EA580DCE0 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA3D73B1206C431F9B56DCD1ACB65635 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A1E19CA1DA0444239E0F4B282BFACF7A }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_16204C9619104D0CAF109D7B5171DD88 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E21F4693D2E24D42B5E09E0ACA232775 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_34E45BAA2444413981625AFCF525407F }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -53,4 +62,5 @@ jobs:
         with:
           app-name: 'RangerMasteryProgram'
           slot-name: 'Production'
-          package: site
+          package: .
+          

@@ -388,9 +388,42 @@ button:focus-visible, summary:focus-visible { outline:3px solid var(--accent); o
 .run-header h1 { font-size:clamp(1.8rem,4vw,3.8rem); overflow-wrap:anywhere; }
 @media(max-width:760px) { .scenario-list,.run-grid,.run-header {grid-template-columns:1fr;} .topbar{flex-wrap:wrap;} .timer{min-width:0;} .run-header{position:static;} }
 @media(prefers-reduced-motion:reduce) { .timer.warning{animation:none;} }
+
+.assignment-form label,.evaluation label {display:block;margin:14px 0;font-weight:600}
+input,textarea,select {font:inherit;border:1px solid var(--line);border-radius:6px;padding:9px;max-width:100%;background:white;color:var(--ink)}
+textarea {width:100%;min-height:85px} input,select {width:100%}
+.assignment-row {padding:16px 0;border-bottom:1px solid var(--line)}
+.evaluation fieldset {border:1px solid var(--line);border-radius:8px;margin:18px 0;padding:16px}
+.evaluation legend {font-weight:700} .evaluation select {max-width:340px}
+.status {padding:12px;background:var(--soft);margin:12px 0} .report-actions {display:flex;gap:12px;flex-wrap:wrap}
+
+.option-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.option-card{display:flex;flex-direction:column;gap:14px;border:1px solid var(--line);border-radius:12px;padding:24px;background:white;text-decoration:none;box-shadow:0 6px 18px #17202a08}
+.option-card:hover,.option-card:focus-visible{border-color:var(--accent);outline:2px solid #0e6f6833;outline-offset:3px}
+.option-card h3{font-size:1.4rem}.option-card p{color:var(--muted)}.option-action{margin-top:auto;padding-top:10px;color:var(--accent);font-weight:700}
+.overview-facts{display:flex;flex-wrap:wrap;gap:20px;padding:20px;background:var(--soft);border-radius:10px;margin:20px 0 36px}.overview-facts span{flex:1;min-width:170px}.overview-facts strong{display:block;color:var(--accent)}
+.how-it-works{margin-top:32px}#testSetupForm{max-width:680px}#testSetupForm .button{margin-top:20px}.assignment-row .button{margin:6px 8px 0 0}
+@media(max-width:900px){.option-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{flex-wrap:wrap}.nav{justify-content:flex-start}}
+@media(max-width:600px){.option-grid{grid-template-columns:1fr}.option-card{padding:20px}.nav a{white-space:normal}}
 </style></head><body>
-<header class="site-header"><nav class="topbar" aria-label="Primary navigation"><a class="brand" href="index.html">Time Attack</a></nav><div class="hero-inner"><span class="eyebrow">Practice under pressure</span><h1>Time Attack</h1><p class="lead">Combine customer behaviour and technical challenges in a 30-minute support drill.</p></div></header>
-<main>    <section class="time-attack" id="timeAttackSection" aria-labelledby="timeAttackHeading">
+<header class="site-header"><nav class="topbar" aria-label="Primary navigation"><a class="brand" href="index.html">Time Attack</a><div class="nav"><a href="index.html">Overview</a><a href="index.html?timeAttack=customers">Customer behaviors</a><a href="index.html?timeAttack=technical">Technical behaviors</a><a href="index.html?timeAttack=schedule">Pre-schedule test</a><a href="index.html?timeAttack=setup">Run test</a></div></nav><div class="hero-inner"><span class="eyebrow">Ranger Mastery Program</span><h1>Lead with calm, ownership,<br>and clarity under pressure.</h1><p class="lead">The Ranger Mastery Program helps technically ready engineers develop reliable leadership in high-severity customer incidents. Time Attacks are 30-minute simulations within that journey: a technical scenario and a customer role create the pressure in which candidates demonstrate composure, ownership, clear communication, and adaptability.</p></div></header>
+<main>
+<section class="time-attack" id="overview">
+<div class="section-head"><span class="eyebrow">The purpose</span><h2>What we observe: reliable behavior under pressure</h2><p>We observe whether the candidate stays composed, creates structure from incomplete information, prioritizes actions, and takes responsibility for outcomes. We look for clear updates about status, risk, and next steps; respectful handling of disagreement; and the flexibility to adapt to the customer while maintaining professional boundaries. Preparation, time management, feedback, and follow-through turn these behaviors into repeatable working habits. Technical scenarios provide the setting; the assessment measures behavioral execution rather than technical knowledge.</p></div>
+<div class="overview-facts"><span><strong>30 minutes</strong> per test</span><span><strong>10 customer roles</strong> to adapt to</span><span><strong>15 technical scenarios</strong> as realistic context</span><span><strong>1–5 ratings</strong> with observed evidence</span></div>
+<div class="section-head"><h2>Choose what you want to do</h2><p>Browse the preparation material, create a random pairing, plan tests for a group, or run a test with details you already know.</p></div>
+<div class="option-grid">
+<a class="option-card" href="index.html?timeAttack=customers"><span class="eyebrow">Explore · customer roles</span><h3>Customer Behaviors</h3><p>Understand the people behind the pressure. Browse all customer roles and download individual briefs or the complete PDF.</p><span class="option-action">Browse customer roles →</span></a>
+<a class="option-card" href="index.html?timeAttack=technical"><span class="eyebrow">Explore · technical scenarios</span><h3>Technical Behaviors</h3><p>Review the incidents, known facts, and investigation targets. Download an individual scenario or the complete PDF.</p><span class="option-action">Browse technical scenarios →</span></a>
+<a class="option-card" href="index.html?timeAttack=random"><span class="eyebrow">Run · random pairing</span><h3>Randomize Test</h3><p>Generate a random customer behavior and technical scenario. Enter the candidate and Ranger names, review the pairing, then start when ready.</p><span class="option-action">Create a random test →</span></a>
+<a class="option-card" href="index.html?timeAttack=schedule"><span class="eyebrow">Plan · group assignments</span><h3>Pre-schedule Test</h3><p>Enter candidates and conducting Rangers. Assign a Ranger, customer role, and technical scenario to every candidate in advance.</p><span class="option-action">Plan candidate tests →</span></a>
+<a class="option-card" href="index.html?timeAttack=setup"><span class="eyebrow">Run · chosen details</span><h3>Run Test</h3><p>Enter the candidate and conducting Ranger, then select the customer behavior and technical scenario from dropdowns.</p><span class="option-action">Set up a test →</span></a>
+</div>
+<div class="section-head how-it-works"><h2>One assessment flow, whichever test you choose</h2><p>Prepare the Ranger privately → start the timer when everyone is ready → record ratings and evidence → save an HTML report at any time. At zero, the completed report is saved and downloaded automatically. Time Attacks provide one part of the readiness evidence, alongside observed execution, shadowing, feedback, and the final review. The aim is consistent leadership when pressure is highest.</p><p><a href="output/pdf/time-attack-facilitator-guide.pdf">Download facilitator guide (PDF)</a></p></div>
+</section>
+<section class="time-attack assignment-form" id="schedulePage" hidden><div class="section-head"><span class="eyebrow">Plan ahead</span><h2>Pre-schedule Test</h2><p>Each candidate receives one conducting Ranger, a random customer role, and a random technical scenario. Rangers are distributed evenly; a Ranger may conduct several tests. Arrange separate time slots when reusing a Ranger.</p></div><label for="scheduleCandidates">Candidates · one name per line</label><textarea id="scheduleCandidates" placeholder="Candidate name"></textarea><label for="scheduleRangers">Conducting Rangers · one name per line</label><textarea id="scheduleRangers" placeholder="Ranger name"></textarea><button class="button primary" id="createSchedule">Assign tests</button><p class="status" id="scheduleStatus" role="status"></p><div id="scheduledTests"></div></section>
+<section class="time-attack assignment-form" id="setupPage" hidden><div class="section-head"><span class="eyebrow">Use your chosen details</span><h2>Run Test</h2><p>Enter the candidate and conducting Ranger, and select the pre-assigned customer role and technical scenario. You can review the assessment before starting the timer.</p></div><form id="testSetupForm"><label for="setupCandidate">Candidate name</label><input id="setupCandidate" required><label for="setupRanger">Conducting Ranger</label><input id="setupRanger" required><label for="setupBehavior">Customer behavior</label><select id="setupBehavior"></select><label for="setupTechnical">Technical scenario</label><select id="setupTechnical"></select><button class="button primary" type="submit">Open assessment</button><p id="setupStatus" role="status"></p></form></section>
+<section class="time-attack assignment-form" id="instructorAssignments" hidden><div class="section-head"><span class="eyebrow">Prepare in advance</span><h2>Instructor assignments</h2><p>Enter one instructor per line. Each receives a customer acting role and technical scenario with a private assessment link. Share these briefs before the session.</p></div><label for="instructors">Instructor names</label><textarea id="instructors" placeholder="Alex Morgan&#10;Sam Taylor"></textarea><button class="button primary" id="assignInstructors" type="button">Assign scenarios and roles</button><p id="assignmentStatus" role="status"></p><div id="assignments"></div></section><section class="time-attack" id="facilitatorMaterials" hidden><div class="section-head"><span class="eyebrow">Facilitator resources</span><h2>Run the assessment</h2><p>Illustrated facilitator guide and individual customer acting briefs. These materials contain evaluator information; keep them off the candidate screen.</p></div><a class="button primary" href="output/pdf/time-attack-facilitator-guide.pdf">Download facilitator guide (PDF)</a></section>    <section class="time-attack" id="timeAttackSection" hidden aria-labelledby="timeAttackHeading">
       <div class="section-head">
         <span class="eyebrow">Time Attack</span>
         <h2 id="timeAttackHeading">Scenario Library</h2>
@@ -404,13 +437,14 @@ button:focus-visible, summary:focus-visible { outline:3px solid var(--accent); o
         <button class="button randomize-button" type="button" id="randomizeTimeAttack">Randomize Time Attack</button>
       </div>
       <div class="scenario-panel" id="customerPanel" role="tabpanel" aria-labelledby="customerTab">
-        <div class="scenario-list" id="customerScenarioList"></div>
+        <p><a class="button primary" href="output/pdf/customer-behaviours-all.pdf" download>Download all customer behaviours (PDF)</a></p><p>All 10 customer roles, including acting instructions and example dialogue. For instructor and actor preparation.</p><div class="scenario-list" id="customerScenarioList"></div>
       </div>
       <div class="scenario-panel" id="technicalPanel" role="tabpanel" aria-labelledby="technicalTab" hidden>
-        <div class="scenario-list" id="technicalScenarioList"></div>
+        <p><a class="button primary" href="output/pdf/technical-scenarios-all.pdf" download>Download all technical scenarios (PDF)</a></p><p>Instructor PDFs include private evaluator notes. Share only the candidate brief and known facts with candidates.</p><div class="scenario-list" id="technicalScenarioList"></div>
       </div>
     </section>
 
+<section class="time-attack" id="savedReports" hidden></section>
 </main>
 <section class="time-attack-run" id="timeAttackRun" hidden></section>
 <script>
@@ -508,178 +542,326 @@ button:focus-visible, summary:focus-visible { outline:3px solid var(--accent); o
 
     const technicalScenarios = [
       {
-        name: "Azure Firewall FQDN Rule Not Matching Exchange Online",
-        level: "SEV A",
-        brief: "The customer reports that an Azure Firewall network rule allowing smtp.office365.com on ports 25 and 587 is not working. Logs show default deny under Network Rule, even though the FQDN appears to be allowed.",
-        known: [
-          "Hub/spoke Azure networking architecture",
-          "Azure Firewall is in the hub",
-          "The spoke workload VM initiates SMTP traffic",
-          "The customer initially shows only Network Rule logs"
-        ],
-        hidden: [
-          "The spoke VNet uses custom DNS servers",
-          "The clients are not using Azure Firewall DNS Proxy",
-          "The client and the firewall resolve smtp.office365.com to different Exchange Online frontend IPs",
-          "Exchange Online endpoint ranges are global and cannot be reliably constrained to West Europe only"
-        ],
-        expected: [
-          "Ask how the client resolves DNS and whether Azure Firewall DNS Proxy is used",
-          "Explain that FQDN-based network rules depend on DNS consistency between client and firewall",
-          "Recommend making Azure Firewall the DNS resolution source for this flow",
-          "Avoid inventing unsupported region-specific Exchange Online IP filtering guidance"
-        ]
+            "name": "Azure Firewall FQDN Rule Not Matching Exchange Online",
+            "level": "SEV A",
+            "brief": "The customer reports that an Azure Firewall network rule allowing smtp.office365.com on ports 25 and 587 is not working. Logs show default deny under Network Rule, even though the FQDN appears to be allowed.",
+            "known": [
+                  "Hub/spoke Azure networking architecture",
+                  "Azure Firewall is in the hub",
+                  "The spoke workload VM initiates SMTP traffic",
+                  "The customer initially shows only Network Rule logs"
+            ],
+            "hidden": [
+                  "The spoke VNet uses custom DNS servers",
+                  "The clients are not using Azure Firewall DNS Proxy",
+                  "The client and the firewall resolve smtp.office365.com to different Exchange Online frontend IPs",
+                  "Exchange Online endpoint ranges are global and cannot be reliably constrained to West Europe only"
+            ],
+            "expected": [
+                  "Ask how the client resolves DNS and whether Azure Firewall DNS Proxy is used",
+                  "Explain that FQDN-based network rules depend on DNS consistency between client and firewall",
+                  "Recommend making Azure Firewall the DNS resolution source for this flow",
+                  "Avoid inventing unsupported region-specific Exchange Online IP filtering guidance"
+            ]
       },
       {
-        name: "Private Endpoint Works from Hub but Not from Spoke",
-        level: "P1",
-        brief: "The customer says a storage account private endpoint resolves and connects from a hub jump box, but spoke workloads still resolve the public endpoint and fail policy checks.",
-        known: [
-          "Private endpoint exists in the hub",
-          "Hub VNet is linked to a privatelink.blob.core.windows.net private DNS zone",
-          "Spoke workloads use custom DNS"
-        ],
-        hidden: [
-          "The custom DNS servers are not forwarding private endpoint zones to Azure DNS",
-          "The spoke VNet is not linked to the private DNS zone",
-          "A stale public DNS record is cached on the workload"
-        ],
-        expected: [
-          "Validate name resolution from the failing spoke workload",
-          "Check private DNS zone links and conditional forwarding",
-          "Confirm the resolved private IP matches the private endpoint NIC",
-          "Separate DNS failure from storage firewall or RBAC failure"
-        ]
+            "name": "Private Endpoint Works from Hub but Not from Spoke",
+            "level": "P1",
+            "brief": "The customer says a storage account private endpoint resolves and connects from a hub jump box, but spoke workloads still resolve the public endpoint and fail policy checks.",
+            "known": [
+                  "Private endpoint exists in the hub",
+                  "Hub VNet is linked to a privatelink.blob.core.windows.net private DNS zone",
+                  "Spoke workloads use custom DNS"
+            ],
+            "hidden": [
+                  "The custom DNS servers are not forwarding private endpoint zones to Azure DNS",
+                  "The spoke VNet is not linked to the private DNS zone",
+                  "A stale public DNS record is cached on the workload"
+            ],
+            "expected": [
+                  "Validate name resolution from the failing spoke workload",
+                  "Check private DNS zone links and conditional forwarding",
+                  "Confirm the resolved private IP matches the private endpoint NIC",
+                  "Separate DNS failure from storage firewall or RBAC failure"
+            ]
       },
       {
-        name: "Application Rule Fails Because TLS SNI Is Missing",
-        level: "P1",
-        brief: "Outbound HTTPS traffic is denied by Azure Firewall Application Rules even though the target FQDN is listed in the rule collection.",
-        known: [
-          "The destination is accessed over TCP 443",
-          "The application sometimes connects by IP address",
-          "Firewall logs show no expected FQDN rule match"
-        ],
-        hidden: [
-          "The client does not consistently send SNI",
-          "Some requests use a certificate common name that differs from the allowed FQDN",
-          "A fallback library path bypasses the proxy configuration"
-        ],
-        expected: [
-          "Ask whether the client sends TLS SNI and which hostname is used",
-          "Compare Network Rule versus Application Rule behavior",
-          "Use firewall logs to confirm rule type and matched target",
-          "Recommend hostname-consistent access or a network rule where appropriate"
-        ]
+            "name": "Application Rule Fails Because TLS SNI Is Missing",
+            "level": "P1",
+            "brief": "Outbound HTTPS traffic is denied by Azure Firewall Application Rules even though the target FQDN is listed in the rule collection.",
+            "known": [
+                  "The destination is accessed over TCP 443",
+                  "The application sometimes connects by IP address",
+                  "Firewall logs show no expected FQDN rule match"
+            ],
+            "hidden": [
+                  "The client does not consistently send SNI",
+                  "Some requests use a certificate common name that differs from the allowed FQDN",
+                  "A fallback library path bypasses the proxy configuration"
+            ],
+            "expected": [
+                  "Ask whether the client sends TLS SNI and which hostname is used",
+                  "Compare Network Rule versus Application Rule behavior",
+                  "Use firewall logs to confirm rule type and matched target",
+                  "Recommend hostname-consistent access or a network rule where appropriate"
+            ]
       },
       {
-        name: "AKS Egress Breaks After Forcing Traffic Through Firewall",
-        level: "P1",
-        brief: "An AKS cluster loses image pulls and control-plane dependent operations after a route table is updated to send outbound traffic to Azure Firewall.",
-        known: [
-          "UDR sends 0.0.0.0/0 from node subnets to Azure Firewall",
-          "Pods can reach some internal services",
-          "Image pulls and extension updates are failing"
-        ],
-        hidden: [
-          "Required Microsoft Container Registry and Azure management FQDNs are not allowed",
-          "DNS for the cluster nodes is inconsistent",
-          "NTP and package repository dependencies were not considered"
-        ],
-        expected: [
-          "Identify AKS outbound dependencies before adding broad allows",
-          "Review Azure Firewall FQDN tags or documented required endpoints",
-          "Validate DNS and route table association on node subnets",
-          "Explain why successful internal traffic does not prove outbound readiness"
-        ]
+            "name": "AKS Egress Breaks After Forcing Traffic Through Firewall",
+            "level": "P1",
+            "brief": "An AKS cluster loses image pulls and control-plane dependent operations after a route table is updated to send outbound traffic to Azure Firewall.",
+            "known": [
+                  "UDR sends 0.0.0.0/0 from node subnets to Azure Firewall",
+                  "Pods can reach some internal services",
+                  "Image pulls and extension updates are failing"
+            ],
+            "hidden": [
+                  "Required Microsoft Container Registry and Azure management FQDNs are not allowed",
+                  "DNS for the cluster nodes is inconsistent",
+                  "NTP and package repository dependencies were not considered"
+            ],
+            "expected": [
+                  "Identify AKS outbound dependencies before adding broad allows",
+                  "Review Azure Firewall FQDN tags or documented required endpoints",
+                  "Validate DNS and route table association on node subnets",
+                  "Explain why successful internal traffic does not prove outbound readiness"
+            ]
       },
       {
-        name: "ExpressRoute Traffic Becomes Asymmetric Through the Hub",
-        level: "SEV A",
-        brief: "On-premises clients intermittently fail to reach a spoke application after a hub firewall insertion project. Packet captures show requests arrive, but responses are inconsistent.",
-        known: [
-          "ExpressRoute terminates in the hub",
-          "Spokes are peered to the hub",
-          "Azure Firewall is intended to inspect north-south traffic"
-        ],
-        hidden: [
-          "Return routes from the spoke are more specific through a different next hop",
-          "Gateway route propagation is enabled where it should be controlled",
-          "One spoke subnet is missing the UDR back to Azure Firewall"
-        ],
-        expected: [
-          "Map forward and return paths separately",
-          "Check effective routes on the application NIC and subnet",
-          "Verify UDRs, propagation, and peering gateway transit settings",
-          "Explain asymmetric routing impact on stateful inspection"
-        ]
+            "name": "ExpressRoute Traffic Becomes Asymmetric Through the Hub",
+            "level": "SEV A",
+            "brief": "On-premises clients intermittently fail to reach a spoke application after a hub firewall insertion project. Packet captures show requests arrive, but responses are inconsistent.",
+            "known": [
+                  "ExpressRoute terminates in the hub",
+                  "Spokes are peered to the hub",
+                  "Azure Firewall is intended to inspect north-south traffic"
+            ],
+            "hidden": [
+                  "Return routes from the spoke are more specific through a different next hop",
+                  "Gateway route propagation is enabled where it should be controlled",
+                  "One spoke subnet is missing the UDR back to Azure Firewall"
+            ],
+            "expected": [
+                  "Map forward and return paths separately",
+                  "Check effective routes on the application NIC and subnet",
+                  "Verify UDRs, propagation, and peering gateway transit settings",
+                  "Explain asymmetric routing impact on stateful inspection"
+            ]
       },
       {
-        name: "VPN Forced Tunnel Accidentally Captures Azure Platform Traffic",
-        level: "P1",
-        brief: "After enabling BGP-learned forced tunneling over VPN, Azure workloads lose access to platform services and monitoring agents stop reporting.",
-        known: [
-          "A default route is learned from on-premises",
-          "The same workloads can still reach some private networks",
-          "Failures started after a routing change"
-        ],
-        hidden: [
-          "A broad 0.0.0.0/0 route is preferred over expected internet egress",
-          "Azure service dependencies are being sent to on-premises security devices",
-          "No explicit route exception exists for required platform flows"
-        ],
-        expected: [
-          "Inspect effective routes before blaming the application",
-          "Identify whether the default route is BGP-learned or UDR-based",
-          "Confirm where Azure platform and internet-bound traffic exits",
-          "Recommend deliberate route exceptions or firewall egress design"
-        ]
+            "name": "VPN Forced Tunnel Accidentally Captures Azure Platform Traffic",
+            "level": "P1",
+            "brief": "After enabling BGP-learned forced tunneling over VPN, Azure workloads lose access to platform services and monitoring agents stop reporting.",
+            "known": [
+                  "A default route is learned from on-premises",
+                  "The same workloads can still reach some private networks",
+                  "Failures started after a routing change"
+            ],
+            "hidden": [
+                  "A broad 0.0.0.0/0 route is preferred over expected internet egress",
+                  "Azure service dependencies are being sent to on-premises security devices",
+                  "No explicit route exception exists for required platform flows"
+            ],
+            "expected": [
+                  "Inspect effective routes before blaming the application",
+                  "Identify whether the default route is BGP-learned or UDR-based",
+                  "Confirm where Azure platform and internet-bound traffic exits",
+                  "Recommend deliberate route exceptions or firewall egress design"
+            ]
       },
       {
-        name: "TLS Inspection Breaks Authentication Flow",
-        level: "P1",
-        brief: "Azure Firewall Premium TLS inspection was enabled and users immediately report login failures to a SaaS application.",
-        known: [
-          "The SaaS endpoint is allowed by application rule",
-          "TLS inspection is enabled on the rule collection",
-          "Browser errors mention certificate trust or connection reset"
-        ],
-        hidden: [
-          "The enterprise CA used by Azure Firewall is not trusted on all clients",
-          "The identity provider uses certificate pinning on part of the flow",
-          "Some authentication endpoints are missing from the allow list"
-        ],
-        expected: [
-          "Separate trust-chain failures from policy denies",
-          "Check whether the client trusts the TLS inspection CA",
-          "Identify endpoints that should be excluded from inspection",
-          "Use logs to distinguish TLS handshake failure from rule mismatch"
-        ]
+            "name": "TLS Inspection Breaks Authentication Flow",
+            "level": "P1",
+            "brief": "Azure Firewall Premium TLS inspection was enabled and users immediately report login failures to a SaaS application.",
+            "known": [
+                  "The SaaS endpoint is allowed by application rule",
+                  "TLS inspection is enabled on the rule collection",
+                  "Browser errors mention certificate trust or connection reset"
+            ],
+            "hidden": [
+                  "The enterprise CA used by Azure Firewall is not trusted on all clients",
+                  "The identity provider uses certificate pinning on part of the flow",
+                  "Some authentication endpoints are missing from the allow list"
+            ],
+            "expected": [
+                  "Separate trust-chain failures from policy denies",
+                  "Check whether the client trusts the TLS inspection CA",
+                  "Identify endpoints that should be excluded from inspection",
+                  "Use logs to distinguish TLS handshake failure from rule mismatch"
+            ]
       },
       {
-        name: "Load Balancer Health Probe Fails Behind Security Controls",
-        level: "P2",
-        brief: "A public application intermittently drops out of rotation after NSG and firewall hardening. The backend service is healthy when tested locally.",
-        known: [
-          "Azure Load Balancer fronts two backend VMs",
-          "NSGs were tightened recently",
-          "Health probe status is unhealthy for one or more nodes"
-        ],
-        hidden: [
-          "The NSG allows client traffic but blocks the AzureLoadBalancer service tag",
-          "The probe port differs from the application port",
-          "A host firewall rule allows local tests but blocks probe source traffic"
-        ],
-        expected: [
-          "Check probe configuration, protocol, port, and path",
-          "Validate NSG rules for AzureLoadBalancer",
-          "Test from the perspective of the probe, not only localhost",
-          "Explain why healthy service process does not guarantee probe health"
-        ]
+            "name": "Load Balancer Health Probe Fails Behind Security Controls",
+            "level": "P2",
+            "brief": "A public application intermittently drops out of rotation after NSG and firewall hardening. The backend service is healthy when tested locally.",
+            "known": [
+                  "Azure Load Balancer fronts two backend VMs",
+                  "NSGs were tightened recently",
+                  "Health probe status is unhealthy for one or more nodes"
+            ],
+            "hidden": [
+                  "The NSG allows client traffic but blocks the AzureLoadBalancer service tag",
+                  "The probe port differs from the application port",
+                  "A host firewall rule allows local tests but blocks probe source traffic"
+            ],
+            "expected": [
+                  "Check probe configuration, protocol, port, and path",
+                  "Validate NSG rules for AzureLoadBalancer",
+                  "Test from the perspective of the probe, not only localhost",
+                  "Explain why healthy service process does not guarantee probe health"
+            ]
+      },
+      {
+            "name": "Application Gateway Returns HTTP 400",
+            "level": "P1",
+            "brief": "After an SDK deployment, checkout requests through Application Gateway return HTTP 400. Browser requests to the same endpoint succeed. The customer wants the gateway restarted.",
+            "known": [
+                  "Application Gateway v2 has an HTTPS listener on port 443",
+                  "Only the updated SDK clients fail; browser requests work",
+                  "The backend health probe is healthy"
+            ],
+            "hidden": [
+                  "A sanitized failing request contains an invalid Content-Length value introduced by the SDK wrapper",
+                  "A valid replay through the same listener succeeds",
+                  "The failing request has no corresponding backend request; the gateway rejects it before forwarding"
+            ],
+            "expected": [
+                  "Compare a failing request with a working request, including protocol, Host and headers",
+                  "Correlate gateway access logs with backend logs to locate the component returning 400",
+                  "Use a sanitized request capture to identify malformed Content-Length; fix the SDK wrapper and replay",
+                  "Do not equate HTTP 400 with unhealthy backends or disable security controls without evidence"
+            ]
+      },
+      {
+            "name": "Application Gateway Returns HTTP 500",
+            "level": "P1",
+            "brief": "Users see HTTP 500 on the order submission path through Application Gateway after an application release. The customer insists that the Azure gateway is broken.",
+            "known": [
+                  "Application Gateway v2 fronts two application instances",
+                  "The health endpoint returns 200",
+                  "Only order submission fails; static pages load"
+            ],
+            "hidden": [
+                  "Gateway access logs show a backend response status of 500 for the affected request",
+                  "The matching backend request ID has a database connection configuration exception",
+                  "A controlled direct backend request with the correct hostname reproduces the 500"
+            ],
+            "expected": [
+                  "Distinguish the client-facing status from the backend status using correlated request IDs and timestamps",
+                  "Explain why a healthy probe does not prove every application path works",
+                  "Validate the release configuration with the app owner and propose rollback or correction with verification",
+                  "If evidence instead identifies a gateway-generated 500 without a backend source, collect diagnostics and engage Azure support"
+            ]
+      },
+      {
+            "name": "Application Gateway HTTP 504 on Slow Reports",
+            "level": "P1",
+            "brief": "Interactive pages work, but report generation through Application Gateway v2 returns HTTP 504 at a repeatable interval.",
+            "known": [
+                  "Only the report path fails",
+                  "Backend health remains healthy",
+                  "The symptom appeared after report volume grew"
+            ],
+            "hidden": [
+                  "Backend request timeout is configured to 20 seconds",
+                  "Correlated report requests take 45 seconds and eventually finish on the backend",
+                  "A controlled direct test with the same payload reproduces the long runtime"
+            ],
+            "expected": [
+                  "Compare gateway timing, configured timeout and backend duration",
+                  "Separate slow application work from connectivity or probe failures",
+                  "Discuss query optimization or asynchronous report processing with the application owner",
+                  "Evaluate a bounded timeout change against capacity and client timeouts, then verify the same request"
+            ]
+      },
+      {
+            "name": "WAF Blocks a Legitimate Search Request",
+            "level": "P1",
+            "brief": "A legitimate search query starts returning HTTP 403 after a WAF policy update. The customer asks to disable the entire WAF.",
+            "known": [
+                  "Application Gateway WAF runs in Prevention mode",
+                  "Simple searches work",
+                  "The issue is limited to one query parameter"
+            ],
+            "hidden": [
+                  "A correlated WAF log identifies the matching managed rule and argument",
+                  "The affected parameter contains a legitimate expression resembling an attack signature",
+                  "The app owner can reproduce with sanitized input in a test environment"
+            ],
+            "expected": [
+                  "Correlate WAF and access logs for the failed request",
+                  "Validate the input with the app owner before calling it a false positive",
+                  "Propose a narrowly scoped exclusion or rule adjustment after testing",
+                  "Verify legitimate traffic and a malicious control remain correctly handled; retain rollback"
+            ]
+      },
+      {
+            "name": "Azure Firewall SNAT Exhaustion Under Load",
+            "level": "P1",
+            "brief": "Outbound calls to a partner API time out during batch peaks. The same requests work during quiet periods.",
+            "known": [
+                  "Many workers call the same public destination and port",
+                  "Traffic exits through Azure Firewall",
+                  "Allow rules and DNS checks succeed"
+            ],
+            "hidden": [
+                  "SNAT port utilization rises sharply during the failure window",
+                  "Workers create fresh connections for each request instead of reusing connections",
+                  "Partner-side logs show some requests never arrive"
+            ],
+            "expected": [
+                  "Correlate connection failures with SNAT utilization and workload concurrency",
+                  "Separate SNAT pressure from policy denies and destination throttling",
+                  "Recommend connection reuse and bounded concurrency with the workload owner",
+                  "Assess supported public IP or NAT Gateway capacity options for this topology; verify under representative load"
+            ]
+      },
+      {
+            "name": "Front Door HTTPS Origin Certificate Mismatch",
+            "level": "P1",
+            "brief": "Azure Front Door returns HTTP 502 after an origin certificate rotation, although a direct browser test to the app works.",
+            "known": [
+                  "Front Door connects to the origin using HTTPS",
+                  "The failure began at the certificate rotation time",
+                  "The origin application is otherwise responding"
+            ],
+            "hidden": [
+                  "The certificate presented by the origin does not cover the configured origin hostname",
+                  "The browser test used a different hostname from Front Door",
+                  "The complete origin certificate chain must also be checked"
+            ],
+            "expected": [
+                  "Compare the configured origin hostname, SNI and certificate SANs",
+                  "Test the origin using the same hostname and TLS context as Front Door",
+                  "Correct the hostname or certificate and verify the full chain",
+                  "Retain certificate validation and verify end-to-end recovery"
+            ]
+      },
+      {
+            "name": "NSG Priority Blocks a New Application Port",
+            "level": "P1",
+            "brief": "A newly deployed service on TCP 8443 is unreachable from the spoke, even though the customer added an allow rule.",
+            "known": [
+                  "The service listens on TCP 8443",
+                  "A local connection succeeds",
+                  "A subnet NSG and NIC NSG both apply"
+            ],
+            "hidden": [
+                  "A lower-numbered deny rule in the NIC NSG takes precedence over the new allow",
+                  "The source IP and destination port in the failed flow match that deny",
+                  "Effective routes point to the expected destination path"
+            ],
+            "expected": [
+                  "Validate the actual source, destination, port and listening socket",
+                  "Inspect effective NSG rules at subnet and NIC scopes and use IP flow verification",
+                  "Explain priority ordering and that both applicable NSGs must permit the flow",
+                  "Propose a least-privilege rule correction, then retest from the original source"
+            ]
       }
-    ];
+];
 
 
+const actorPdfFiles = ["actor-01-aggressive-expert.pdf", "actor-02-silent-gatekeeper.pdf", "actor-03-the-escalation-threat.pdf", "actor-04-the-confident-but-wrong-architect.pdf", "actor-05-the-distracted-customer.pdf", "actor-06-the-just-give-me-the-fix-customer.pdf", "actor-07-the-emotional-escalation.pdf", "actor-08-the-partial-information-provider.pdf", "actor-09-the-over-talker.pdf", "actor-10-the-constraint-blocker.pdf"];
 const randomizeButton = document.getElementById('randomizeTimeAttack');
 const customerTab = document.getElementById('customerTab');
 const technicalTab = document.getElementById('technicalTab');
@@ -710,6 +892,11 @@ const runContainer = document.getElementById('timeAttackRun');
         title.textContent = behaviour.name;
         card.append(meta, title);
         appendList(card, behaviour.traits);
+        const actorLink = document.createElement("a");
+        actorLink.className = "button";
+        actorLink.href = "output/pdf/" + actorPdfFiles[index];
+        actorLink.textContent = "Download actor brief (PDF)";
+        card.appendChild(actorLink);
         customerList.appendChild(card);
       });
     }
@@ -727,6 +914,13 @@ const runContainer = document.getElementById('timeAttackRun');
         brief.textContent = scenario.brief;
         card.append(meta, title, brief);
         appendList(card, scenario.expected);
+        const pdfLink = document.createElement("a");
+        pdfLink.className = "button";
+        const slug = scenario.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        pdfLink.href = `output/pdf/technical-${String(index + 1).padStart(2, '0')}-${slug}.pdf`;
+        pdfLink.download = '';
+        pdfLink.textContent = "Download technical scenario (PDF)";
+        card.appendChild(pdfLink);
         technicalList.appendChild(card);
       });
     }
@@ -744,6 +938,8 @@ const runContainer = document.getElementById('timeAttackRun');
       const behaviourIndex = Math.floor(Math.random() * customerBehaviours.length);
       const technicalIndex = Math.floor(Math.random() * technicalScenarios.length);
       const runUrl = new URL(window.location.href);
+      runUrl.search = "";
+      runUrl.searchParams.set("session", crypto.randomUUID());
       runUrl.searchParams.set("timeAttack", "run");
       runUrl.searchParams.set("behaviour", String(behaviourIndex));
       runUrl.searchParams.set("technical", String(technicalIndex));
@@ -758,28 +954,6 @@ const runContainer = document.getElementById('timeAttackRun');
       card.appendChild(title);
       appendList(card, items);
       return card;
-    }
-
-    function startTimer(timerElement) {
-      const totalSeconds = 30 * 60;
-      const endAt = Date.now() + totalSeconds * 1000;
-      let timerInterval;
-
-      function update() {
-        const remaining = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
-        const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
-        const seconds = String(remaining % 60).padStart(2, "0");
-        timerElement.textContent = `${minutes}:${seconds}`;
-        timerElement.classList.toggle("warning", remaining > 0 && remaining <= 300);
-        timerElement.classList.toggle("expired", remaining === 0);
-        if (remaining === 0) {
-          timerElement.setAttribute("aria-label", "Time expired");
-          clearInterval(timerInterval);
-        }
-      }
-
-      update();
-      timerInterval = setInterval(update, 1000);
     }
 
     async function renderRunPage() {
@@ -844,14 +1018,143 @@ const runContainer = document.getElementById('timeAttackRun');
       const backUrl = new URL(window.location.href);
       backUrl.search = "";
       back.href = backUrl.toString();
-      back.textContent = "Back to Scenario Library";
+      back.textContent = "Back to overview";
       actions.appendChild(back);
 
       runContainer.append(header, grid, actions);
-      startTimer(timer);
+      setupAssessment(timer, grid, params);
     }
 
 
+const competencies = [
+ ['Structure under stress','Mission 1','Did the candidate remain composed, set priorities and manage time and boundaries?'],
+ ['Scoping and ambiguity','Missions 1 & 3','Did the candidate establish impact, timeline, recent changes and missing evidence before acting?'],
+ ['Decision-making','Missions 2 & 3','Did the candidate state a testable hypothesis, compare options and explain risk and trade-offs?'],
+ ['End-to-end ownership','Mission 2','Did the candidate own the resolution path, name action owners and define escalation and follow-up?'],
+ ['Customer communication / CARES','Mission 3','Did the candidate acknowledge customer concerns, listen, adapt to the assigned behavior and give clear updates?'],
+ ['Execution and team enablement','Missions 3 & 4','Did the candidate validate outcomes, summarize evidence and leave a useful handover for the team?']
+];
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let storageWarning = '';
+function readSaved(key, fallback) { try {return JSON.parse(localStorage.getItem(key)) ?? fallback;} catch {storageWarning='Browser storage unavailable. Keep this page open and download reports.';return fallback;} }
+function saveLocal(key, value) {try {localStorage.setItem(key, JSON.stringify(value));return true;} catch {storageWarning='Browser storage unavailable or full. Download the HTML report to retain results.';return false;} }
+function downloadHtml(html, name) {const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);}
+function initializeAssignments() {
+ const assignmentPage=new URLSearchParams(location.search).get('timeAttack')==='assignments';
+ if(!assignmentPage)return;
+ document.getElementById('instructorAssignments').hidden=false;
+ document.getElementById('facilitatorMaterials').hidden=true;
+ document.getElementById('timeAttackSection').hidden=true;
+ document.querySelector('.hero-inner h1').textContent='Instructor assignments';
+ document.querySelector('.hero-inner .lead').textContent='Prepare customer roles and technical scenarios for instructors before the assessment.';
+ document.title='Time Attack | Instructor assignments';
+ const names=document.getElementById('instructors'), output=document.getElementById('assignments');
+ names.value=readSaved('ta-instructors','');
+ function render(rows) {output.innerHTML=rows.map(row=>`<article class="assignment-row"><h3>${esc(row.instructor)}</h3><p><strong>Customer role:</strong> ${esc(customerBehaviours[row.behaviour].name)}</p><p>${esc(customerBehaviours[row.behaviour].traits.join(' • '))}</p><p><strong>Technical scenario:</strong> ${esc(technicalScenarios[row.technical].name)}</p><a class="button" href="${esc(row.url)}">Open private assessment</a> <a class="button" href="output/pdf/${actorPdfFiles[row.behaviour]}">Customer acting brief</a></article>`).join('');}
+ render(readSaved('ta-assignments',[]));
+ document.getElementById('assignInstructors').onclick=()=>{
+ const instructors=[...new Set(names.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean))];
+ if(!instructors.length){document.getElementById('assignmentStatus').textContent='Enter at least one instructor.';return;}
+ const shuffled=n=>Array.from({length:n},(_,i)=>i).sort(()=>Math.random()-.5);
+ const roles=shuffled(customerBehaviours.length), cases=shuffled(technicalScenarios.length);
+ const rows=instructors.map((instructor,i)=>{const behaviour=roles[i%roles.length],technical=cases[i%cases.length];const url=new URL(location.href);url.search='';url.searchParams.set('timeAttack','run');url.searchParams.set('behaviour',behaviour);url.searchParams.set('technical',technical);url.searchParams.set('instructor',instructor);url.searchParams.set('session',crypto.randomUUID());return {instructor,behaviour,technical,url:String(url)};});
+ saveLocal('ta-instructors',names.value);saveLocal('ta-assignments',rows);render(rows);document.getElementById('assignmentStatus').textContent=storageWarning||'Assignments saved on this browser. Open each private link to review or copy it for the instructor.';
+ };
+}
+function initializeSavedReports() {
+ const reports=readSaved('ta-reports',[]), saved=document.getElementById('savedReports');
+ if(reports.length){saved.hidden=false;const heading=document.createElement('h3');heading.textContent='Saved assessment reports';saved.append(heading);reports.forEach(r=>{const b=document.createElement('button');b.className='button';b.textContent=`Download: ${r.candidate || 'Unnamed candidate'} — ${new Date(r.finished).toLocaleString()}`;b.onclick=()=>downloadHtml(r.html,`time-attack-${r.id}.html`);saved.append(b);});}
+}
+function setupAssessment(timer, grid, params) {
+ const key='ta-session-'+(params.get('session')||`${params.get('behaviour')}-${params.get('technical')}-${params.get('instructor')||'direct'}`);
+ let state=readSaved(key,null)||{id:crypto.randomUUID(),candidate:params.get('candidate')||'',instructor:params.get('instructor')||'',behaviour:Number(params.get('behaviour'))||0,technical:Number(params.get('technical'))||0,skills:competencies.map((_,i)=>i),answers:{},notes:'',started:null,endAt:null,finished:null};
+ if(!customerBehaviours[state.behaviour])state.behaviour=0;if(!technicalScenarios[state.technical])state.technical=0;
+ const panel=document.createElement('article');panel.className='run-card full evaluation';
+ panel.innerHTML=`<h2>Candidate evaluation</h2><p>Private instructor console. Select the customer behavior, technical scenario and soft skills before starting. Record observed evidence during the call.</p><p>Ranger Mastery Program: Missions 1–4 and evaluation framework. This drill contributes evidence; it does not certify program readiness.</p><label>Candidate name<input id="candidate" required></label><label>Conducting Ranger<input id="instructor"></label><label>Customer behavior<select id="behaviorChoice">${customerBehaviours.map((x,i)=>`<option value="${i}">${esc(x.name)}</option>`).join('')}</select></label><label>Technical scenario<select id="technicalChoice">${technicalScenarios.map((x,i)=>`<option value="${i}">${esc(x.name)}</option>`).join('')}</select></label><fieldset id="skillChoices"><legend>Soft skills to observe</legend>${competencies.map((c,i)=>`<label><input type="checkbox" value="${i}" style="width:auto"> ${esc(c[0])}</label>`).join('')}</fieldset><p>Scoring: 1 = needs substantial guidance; 2 = inconsistent / prompted; 3 = independent and effective; 4 = consistent and enables others; 5 = exemplary leadership under pressure. Leave unobserved items unrated.</p><div id="questions"></div><label>Overall evidence, feedback and next practice steps<textarea id="overallNotes"></textarea></label><div class="report-actions"><button class="button primary" id="startAssessment">Start 30-minute assessment</button><button class="button" id="saveProgress" hidden>Save results as HTML</button><button class="button" id="downloadReport" hidden>Download HTML report</button><button class="button" id="newAssessment" hidden>New assessment</button></div><p id="assessmentStatus" class="status" role="status"></p>`;
+ grid.prepend(panel);
+ const q=id=>panel.querySelector('#'+id), status=q('assessmentStatus');
+ q('candidate').value=state.candidate;q('instructor').value=state.instructor;q('behaviorChoice').value=state.behaviour;q('technicalChoice').value=state.technical;q('overallNotes').value=state.notes;
+ panel.querySelectorAll('#skillChoices input').forEach(c=>c.checked=state.skills.includes(Number(c.value)));
+ function persist(){saveLocal(key,state);if(storageWarning)status.textContent=storageWarning;}
+ function renderQuestions(){q('questions').innerHTML=state.skills.map(i=>({id:'soft'+i,title:competencies[i][0],question:competencies[i][2],mission:competencies[i][1]})).map(item=>`<fieldset><legend>${esc(item.title)}</legend><p>${esc(item.mission)} · ${esc(item.question)}</p><label>Observed performance<select data-score="${item.id}"><option value="">Not observed</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${String(state.answers[item.id]?.score)===String(n)?'selected':''}>${n}</option>`).join('')}</select></label><label>Evidence / candidate response<textarea data-evidence="${item.id}">${esc(state.answers[item.id]?.evidence||'')}</textarea></label></fieldset>`).join('');}
+ function updateBrief(){const behavior=customerBehaviours[state.behaviour],scenario=technicalScenarios[state.technical];grid.querySelectorAll(':scope > article:not(.evaluation), :scope > details').forEach(x=>x.remove());grid.append(createRunCard('Customer Behaviour',[behavior.name,...behavior.traits]),createRunCard('Candidate Brief',[scenario.brief,...scenario.known]),createRunCard('Investigation Targets',scenario.expected,'full'),createRunCard('Evaluator Notes — private',scenario.hidden,'full'));runContainer.querySelector('h1').textContent=scenario.name;document.title='Time Attack | '+scenario.name;}
+ function lock(){panel.querySelectorAll('#candidate,#instructor,#behaviorChoice,#technicalChoice,#skillChoices input').forEach(e=>e.disabled=!!state.started);q('startAssessment').hidden=!!state.started;q('saveProgress').hidden=!state.started||!!state.finished;if(state.finished)panel.querySelectorAll('input,select,textarea').forEach(e=>e.disabled=true);}
+ renderQuestions();updateBrief();lock();
+ panel.addEventListener('input',e=>{const el=e.target;if(el.dataset.score||el.dataset.evidence){const id=el.dataset.score||el.dataset.evidence;state.answers[id]||={};state.answers[id][el.dataset.score?'score':'evidence']=el.value;}else if(el.id==='candidate'||el.id==='instructor')state[el.id]=el.value;else if(el.id==='overallNotes')state.notes=el.value;persist();});
+ q('skillChoices').onchange=()=>{state.skills=Array.from(panel.querySelectorAll('#skillChoices input:checked'),c=>Number(c.value));renderQuestions();persist();};
+ q('behaviorChoice').onchange=()=>{state.behaviour=Number(q('behaviorChoice').value);updateBrief();persist();};
+ q('technicalChoice').onchange=()=>{state.technical=Number(q('technicalChoice').value);Object.keys(state.answers).filter(k=>k.startsWith('tech')).forEach(k=>delete state.answers[k]);renderQuestions();updateBrief();persist();};
+ function report(){const savedAt=Date.now();const elapsedMinutes=Math.floor((Math.min(state.finished||savedAt,state.endAt)-state.started)/60000);const fields=Array.from(q('questions').querySelectorAll('fieldset'));const scored=fields.map(f=>Number(f.querySelector('select').value)).filter(n=>n>0);return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Time Attack assessment — ${esc(state.candidate)}</title><style>body{font:16px/1.6 Segoe UI,Arial,sans-serif;max-width:960px;margin:40px auto;padding:24px;color:#17202a}h1,h2{color:#0e6f68}section{border:1px solid #d8e0ea;border-radius:8px;padding:18px;margin:16px 0}p{white-space:pre-wrap}small{color:#526173}@media print{body{margin:0}section{break-inside:avoid}}</style><h1>Time Attack · Candidate assessment</h1><p><b>Candidate:</b> ${esc(state.candidate)}<br><b>Conducting Ranger:</b> ${esc(state.instructor)}<br><b>Customer role:</b> ${esc(customerBehaviours[state.behaviour].name)}<br><b>Technical scenario:</b> ${esc(technicalScenarios[state.technical].name)}<br><b>Started:</b> ${esc(new Date(state.started).toLocaleString())}<br><b>Status:</b> ${state.finished?'Completed — timer expired':'In progress — saved snapshot'}<br><b>${state.finished?'Completed':'Saved'}:</b> ${esc(new Date(state.finished||savedAt).toLocaleString())}<br><b>Elapsed:</b> ${elapsedMinutes} minutes of 30</p><h2>Observed performance</h2><p>${scored.length} of ${fields.length} criteria rated. ${scored.length?'Average across rated criteria: '+(scored.reduce((a,b)=>a+b,0)/scored.length).toFixed(2)+' / 5.':'No scores recorded.'} Unobserved criteria excluded.</p><p>1: substantial guidance · 2: inconsistent / prompted · 3: independent and effective · 4: consistent and enables others · 5: exemplary leadership under pressure.</p>${fields.map(f=>`<section><h2>${esc(f.querySelector('legend').textContent)}</h2><p>${esc(f.querySelector('p').textContent)}</p><p><b>Rating:</b> ${esc(f.querySelector('select').value||'Not observed')}</p><p><b>Evidence:</b> ${esc(f.querySelector('textarea').value||'No evidence recorded.')}</p></section>`).join('')}<h2>Feedback and next steps</h2><p>${esc(state.notes||'No feedback recorded.')}</p><small>Aligned to Ranger Mastery Program Missions 1–4 and Evaluation Framework, sections 5 and 8 of the local playbook. Proposed practice rubric; panel calibration required. A single drill does not establish program readiness.</small></html>`;}
+ function finish(auto){if(!state.finished){state.finished=Date.now();persist();}lock();const html=report();const reports=readSaved('ta-reports',[]).filter(r=>r.id!==state.id);reports.push({id:state.id,candidate:state.candidate,finished:state.finished,html});const stored=saveLocal('ta-reports',reports);q('downloadReport').hidden=false;q('newAssessment').hidden=false;status.textContent=stored?'Assessment complete. Results saved in this browser. Use Download HTML report if the automatic download was blocked.':storageWarning;q('downloadReport').onclick=()=>downloadHtml(html,`time-attack-${state.id}.html`);if(auto)q('downloadReport').click();}
+ q('saveProgress').onclick=()=>{
+ const requested=window.prompt('Name this HTML results file:',`time-attack-${state.candidate.trim()||state.id}-progress.html`);
+ if(requested===null)return;
+ const filename=requested.trim().replace(/[<>:"/\\|?*\x00-\x1f]/g,'-').replace(/[. ]+$/g,'');
+ if(!filename){status.textContent='Enter a filename to save the results.';return;}
+ persist();
+ downloadHtml(report(),/\.html$/i.test(filename)?filename:filename+'.html');
+ status.textContent=storageWarning||'HTML snapshot download requested. The assessment continues; you can save again at any time.';
+ };
+ let interval;
+ function tick(){const remaining=Math.max(0,Math.ceil((state.endAt-Date.now())/1000));timer.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');timer.classList.toggle('warning',remaining>0&&remaining<=300);timer.classList.toggle('expired',!remaining);if(!remaining){clearInterval(interval);timer.setAttribute('aria-label','Time expired');finish(!state.finished);}}
+ q('startAssessment').onclick=()=>{if(!state.candidate.trim()||!state.instructor.trim()||!state.skills.length){status.textContent='Enter candidate and instructor names and select at least one soft skill.';return;}state.started=Date.now();state.endAt=state.started+1800000;persist();lock();status.textContent='Assessment running. Scores and evidence save as you type.';interval=setInterval(tick,1000);tick();};
+ q('newAssessment').onclick=()=>{try{localStorage.removeItem(key);}catch{}location.reload();};
+ timer.textContent='30:00';status.textContent=storageWarning||'Ready. The timer starts when you click Start assessment.';
+ if(state.started){if(!state.finished)interval=setInterval(tick,1000);tick();}
+}
+
+function assessmentUrl(candidate, instructor, behaviour, technical) {
+ const url=new URL(location.href);url.search='';url.hash='';
+ for(const [key,value] of Object.entries({timeAttack:'run',candidate,instructor,behaviour,technical,session:crypto.randomUUID()}))url.searchParams.set(key,value);
+ return String(url);
+}
+function shuffledPool(length) {
+ const pool=Array.from({length},(_,i)=>i);
+ for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+ return pool;
+}
+function initializeNavigation() {
+ const mode=new URLSearchParams(location.search).get('timeAttack')||'overview';
+ const overview=document.getElementById('overview');overview.hidden=mode!=='overview';
+ document.querySelectorAll('.nav a').forEach(a=>{const target=new URL(a.href).searchParams.get('timeAttack')||'overview';if(target===mode)a.setAttribute('aria-current','page');});
+ const setHeading=(title,description)=>{document.querySelector('.hero-inner h1').textContent=title;document.querySelector('.hero-inner .lead').textContent=description;document.title='Time Attack | '+title;};
+ if(mode==='random'){openRandomTimeAttack();return;}
+ if(mode==='customers'||mode==='technical'){
+  document.getElementById('timeAttackSection').hidden=false;
+  const customer=mode==='customers';
+  setHeading(customer?'Customer Behaviors':'Technical Behaviors',customer?'Prepare the customer role: understand the pressure, adapt the delivery, and reward effective candidate communication.':'Explore technical scenarios that test evidence-led investigation, judgment, and ownership under pressure.');
+  document.getElementById('timeAttackHeading').textContent=customer?'Customer role library':'Technical scenario library';
+  document.querySelector('#timeAttackSection .section-head p').textContent=customer?'Browse the 10 roles and download the acting briefs for preparation.':'Browse the 15 scenarios and download the incident briefs for preparation.';
+  document.querySelector('.scenario-toolbar').hidden=true;activateScenarioTab(customer?'customer':'technical');
+ }
+ if(mode==='setup'){
+  document.getElementById('setupPage').hidden=false;setHeading('Run Test','Set up an assessment using the candidate, conducting Ranger, and scenario pairing you have chosen.');
+  document.getElementById('setupBehavior').innerHTML=customerBehaviours.map((x,i)=>`<option value="${i}">${esc(x.name)}</option>`).join('');
+  document.getElementById('setupTechnical').innerHTML=technicalScenarios.map((x,i)=>`<option value="${i}">${esc(x.name)}</option>`).join('');
+  document.getElementById('testSetupForm').onsubmit=event=>{event.preventDefault();const candidate=document.getElementById('setupCandidate').value.trim(),ranger=document.getElementById('setupRanger').value.trim();if(!candidate||!ranger){document.getElementById('setupStatus').textContent='Enter both names.';return;}location.assign(assessmentUrl(candidate,ranger,document.getElementById('setupBehavior').value,document.getElementById('setupTechnical').value));};
+ }
+ if(mode==='schedule'){
+  document.getElementById('schedulePage').hidden=false;setHeading('Pre-schedule Test','Assign a conducting Ranger and a customer / technical pairing to every candidate before the session.');
+  const candidates=document.getElementById('scheduleCandidates'),rangers=document.getElementById('scheduleRangers'),output=document.getElementById('scheduledTests'),status=document.getElementById('scheduleStatus');
+  candidates.value=readSaved('ta-schedule-candidates','');rangers.value=readSaved('ta-schedule-rangers','');
+  const render=rows=>{output.innerHTML=rows.map(row=>`<article class="assignment-row"><h3>${esc(row.candidate)}</h3><p><strong>Conducting Ranger:</strong> ${esc(row.instructor)}</p><p><strong>Customer behavior:</strong> ${esc(customerBehaviours[row.behaviour].name)}</p><p><strong>Technical scenario:</strong> ${esc(technicalScenarios[row.technical].name)}</p><a class="button primary" href="${esc(row.url)}">Open assigned test</a><button class="button" type="button" data-copy="${esc(row.url)}">Copy test link</button><a class="button" href="output/pdf/${actorPdfFiles[row.behaviour]}" download>Download customer brief</a></article>`).join('');};
+  render(readSaved('ta-scheduled-tests',[]));
+  output.onclick=async event=>{const button=event.target.closest('[data-copy]');if(!button)return;try{await navigator.clipboard.writeText(button.dataset.copy);status.textContent='Test link copied. Share privately with the conducting Ranger.';}catch{window.prompt('Copy this private test link:',button.dataset.copy);}};
+  const names=value=>[...new Set(value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean))];
+  document.getElementById('createSchedule').onclick=()=>{
+   const candidateNames=names(candidates.value),rangerNames=names(rangers.value);
+   if(!candidateNames.length||!rangerNames.length){status.textContent='Enter at least one candidate and one conducting Ranger.';return;}
+   const roles=shuffledPool(customerBehaviours.length),cases=shuffledPool(technicalScenarios.length),people=shuffledPool(rangerNames.length);
+   const rows=candidateNames.map((candidate,i)=>{const instructor=rangerNames[people[i%people.length]],behaviour=roles[i%roles.length],technical=cases[i%cases.length];return {candidate,instructor,behaviour,technical,url:assessmentUrl(candidate,instructor,behaviour,technical)};});
+   saveLocal('ta-schedule-candidates',candidates.value);saveLocal('ta-schedule-rangers',rangers.value);saveLocal('ta-scheduled-tests',rows);render(rows);
+   status.textContent=storageWarning||`${rows.length} candidate tests assigned and saved in this browser. Share each test link with its conducting Ranger. Clicking Assign tests again creates new assignments.`;
+  };
+ }
+}
+
+initializeNavigation();
+initializeAssignments();
+if(!new URLSearchParams(location.search).has("timeAttack"))initializeSavedReports();
 renderCustomerLibrary();
 renderTechnicalLibrary();
 renderRunPage();

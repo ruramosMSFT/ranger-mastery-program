@@ -23,8 +23,9 @@ http.createServer(async (request, response) => {
   }
   try {
     const name = decodeURIComponent(new URL(request.url, 'http://localhost').pathname).slice(1) || 'index.html';
-    // This static site uses root-level assets. Never expose directories or code.
-    if (name.includes('/') || name.includes('\\') || name.includes(':') || name.startsWith('.') || !types[path.extname(name)]) {
+    // Permit generated PDFs only within their fixed output folder.
+    const isPackPdf = /^output\/pdf\/[a-z0-9-]+\.pdf$/.test(name);
+    if ((!isPackPdf && name.includes('/')) || name.includes('\\') || name.includes(':') || name.startsWith('.') || !types[path.extname(name)]) {
       response.writeHead(404).end();
       return;
     }

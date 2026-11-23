@@ -6,6 +6,7 @@ Static website for the Ranger Mastery Program.
 
 - `index.html` - Home page and program flow
 - `program_materials.html` - Program materials and weekly activities
+- `time_attacks_scheduling.html` - Week 5 Time-attacks session times and assignments
 - `program_model.html` - Program model
 - `program_playbook.html` - Program playbook
 - `Program_Assessment.html` - Engineer and Manager assessments
@@ -26,6 +27,14 @@ Edit `weekoftheprogram.txt` to control material availability:
 - `<week>.<day>` - Make earlier weeks available and reveal materials through that day in the current week. For example, `1.1` reveals only Day 1 of Week 1.
 
 Preview all materials at `program_materials.html#admin`. This URL fragment is a convenience preview only; it is not authentication or an access-control boundary.
+
+Week 5 contains five daily **Time-attacks** activity cards for 23–27 November
+2026. Each card uses the standard purple activity styling and content-sized
+layout, and links to its day on the
+[Time-attacks scheduling page](time_attacks_scheduling.html), which contains
+all assignments, both Wednesday rooms, and session times for Portugal, Spain,
+Romania, and Jordan.
+The release setting is `5`, making Weeks 1–5 available while Week 6 stays locked.
 
 ## Instructor Guides
 

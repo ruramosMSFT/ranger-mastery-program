@@ -7,6 +7,7 @@ Static website for the Ranger Mastery Program.
 - `index.html` - Home page and program flow
 - `program_materials.html` - Program materials and weekly activities
 - `time_attacks_scheduling.html` - Week 5 Time-attacks session times and assignments
+- `reverse_shadowing_scheduling.html` - Week 6 participant-led rotation and Ranger shadow assignments
 - `program_model.html` - Program model
 - `program_playbook.html` - Program playbook
 - `Program_Assessment.html` - Engineer and Manager assessments
@@ -34,7 +35,18 @@ layout, and links to its day on the
 [Time-attacks scheduling page](time_attacks_scheduling.html), which contains
 all assignments, both Wednesday rooms, and session times for Portugal, Spain,
 Romania, and Jordan.
-The release setting is `5`, making Weeks 1–5 available while Week 6 stays locked.
+Week 6 uses the same five daily activity cards for **Reverse Shadowing**,
+each with a generic activity description and a link to its day on the
+[Reverse shadowing scheduling page](reverse_shadowing_scheduling.html).
+Dates, holidays, and pair assignments appear only on the schedule, which
+covers 30 November–4 December 2026.
+The Week 6 schedule follows the Week 5 schedule's site styling and shared
+Home navigation, with a narrower table for its three columns.
+Tuesday is a public holiday with no rotation, and Wednesday contains Pair A
+and Pair B on the schedule, reached from a single daily card. Participants
+act as Main Rangers while the assigned Rangers shadow. No session times
+have been specified for Week 6.
+The release setting is `6`, making all six displayed weeks available.
 
 ## Instructor Guides
 
